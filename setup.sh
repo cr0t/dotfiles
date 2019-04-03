@@ -20,7 +20,7 @@ function _link_it {
   if [ ! -f $VIM_PLUG ]; then
     echo "Install vim-plug..."
     # https://github.com/junegunn/vim-plug
-    curl -fLo $VIM_PLUG_DIR --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl -fLo $VIM_PLUG --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 }
 
