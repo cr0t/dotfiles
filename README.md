@@ -7,7 +7,7 @@ A set of configuration files I prefer to have across machines I use.
 Clone it, link them:
 
 ```
-$ git clone git@github.com:cr0t/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/cr0t/dotfiles.git ~/.dotfiles
 $ ~/.dotfiles/setup.sh link
 ```
 
