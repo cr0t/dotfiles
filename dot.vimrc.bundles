@@ -1,4 +1,8 @@
 call plug#begin('~/.vim/bundle')
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'janko/vim-test'
 Plug 'elixir-lang/vim-elixir'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pbrisbin/vim-mkdir'
 call plug#end()
