@@ -1,0 +1,4 @@
+call plug#begin('~/.vim/bundle')
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
+call plug#end()

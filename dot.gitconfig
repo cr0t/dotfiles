@@ -1,0 +1,14 @@
+[user]
+  name = Sergey Kuznetsov
+  email = kuznecov.sg@gmail.com
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[alias]
+  st = status
+  co = checkout
+  aa = add . --all
+[push]
+  default = simple
