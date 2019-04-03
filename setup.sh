@@ -2,6 +2,7 @@
 
 REPO_DIR=$(dirname $0)
 FILES=$(ls $REPO_DIR/dot.*)
+VIM_PLUG=~/.vim/autoload/plug.vim
 
 function _linkpath {
   BASENAME=$(basename $1)
@@ -15,6 +16,12 @@ function _link_it {
     echo -n "Linking $f to $LINKPATH : "
     ln -s $f $LINKPATH && echo "done"
   done
+
+  if [ ! -f $VIM_PLUG ]; then
+    echo "Install vim-plug..."
+    # https://github.com/junegunn/vim-plug
+    curl -fLo $VIM_PLUG_DIR --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
 }
 
 function _clean_it {
