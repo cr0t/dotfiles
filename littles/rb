@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+#
+# A tiny inline Ruby script that can be used during the shell session.
+#
+# Examples
+#
+# Extract docker images from running containers
+#
+# ```shell
+# > docker ps | rb drop 1 | rb -l split[1]
+# ubuntu
+# postgres
+# ```
+#
+# Display how much time ago containers have exited
+#
+# ```shell
+# > docker ps -a | rb grep /Exited/ | rb -l 'split.last.ljust(20) + " => " + split(/ {2,}/)[-2]'
+# angry_hamilton      => Exited (0) 18 hours ago
+# dreamy_lamport      => Exited (0) 3 days ago
+# prickly_hypatia     => Exited (0) 2 weeks ago
+# ```
+#
+# Count files by their extension
+#
+# ```shell
+# > find . -type f | rb 'group_by(&File.method(:extname)).map { |ext, o| "#{ext.chomp}: #{o.size}" }'
+# : 3
+# .rb: 19
+# .md: 1
+# ```
+#
+# Origin: https://github.com/thisredone/rb
+
+File.join(Dir.home, '.rbrc').tap { |f| load f if File.exists?(f) }
+
+def execute(_, code)
+  puts _.instance_eval(&code)
+rescue Errno::EPIPE
+  exit
+end
+
+single_line = ARGV.delete('-l')
+code = eval("Proc.new { #{ARGV.join(' ')} }")
+single_line ? STDIN.each { |l| execute(l.chomp, code) } : execute(STDIN.each_line, code)
