@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR=$(dirname $0)
+REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
