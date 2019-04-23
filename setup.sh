@@ -6,12 +6,14 @@ VIM_PLUG="$HOME/.vim/autoload/plug.vim"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
 
+# Replaces 'dot.' with a simple '.' in the given parameter
 function _linkpath {
   BASENAME=$(basename $1)
   NO_DOT="${BASENAME/dot./.}"
   echo "$HOME/$NO_DOT"
 }
 
+# Installs vim-plug package manager, if it's not installed yet
 function _install_vim_plug {
   if [ ! -f $VIM_PLUG ]; then
     echo "Install vim-plug..."
@@ -20,6 +22,7 @@ function _install_vim_plug {
   fi
 }
 
+# Links ~/.config/fish/conf.d directory
 function _link_fish_conf {
   echo -n "Linking $FISH_CONF_FROM directory : "
 
@@ -32,11 +35,15 @@ function _link_fish_conf {
   mkdir -p $NO_CONF_D && ln -s $FISH_CONF_FROM $FISH_CONF_TO && echo "done"
 }
 
+# Unlinks ~/config.d/fish/conf.d directory
 function _unlink_fish_conf {
   echo -n "Removing $FISH_CONF_FROM directory : "
   rm $FISH_CONF_TO && echo "done"
 }
 
+# 1. Links regular dot.* files from the repository to their counterparts
+# 2. Runs vim-plug installation
+# 3. Runs fish configuration linking process
 function _create_links {
   for f in $FILES; do
     if [ ! -d $f ]; then
@@ -50,6 +57,8 @@ function _create_links {
   _link_fish_conf
 }
 
+# 1. Removes links from regular dot.* files
+# 2. Runs fish configuration clean up process
 function _remove_links {
   for f in $FILES; do
     if [ ! -d $f ]; then
@@ -61,6 +70,8 @@ function _remove_links {
 
   _unlink_fish_conf
 }
+
+###
 
 while [ -n "$1" ]; do
   case "$1" in
