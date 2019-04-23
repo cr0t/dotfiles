@@ -28,7 +28,8 @@ function _link_fish_conf {
     exit 1
   fi
 
-  ln -s $FISH_CONF_FROM $FISH_CONF_TO && echo "done"
+  NO_CONF_D="${FISH_CONF_TO/conf.d/}"
+  mkdir -p $NO_CONF_D && ln -s $FISH_CONF_FROM $FISH_CONF_TO && echo "done"
 }
 
 function _unlink_fish_conf {
