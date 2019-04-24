@@ -4,9 +4,18 @@
 # what processes consumes too much memory. Also, combines multiprocesses apps
 # and calculates their total memory footprint.
 
-# Uncomment this to clean up some RAM (you will need to input your sudo
-# password every time you run this script).
-#`sudo purge`
+case ARGV[0]
+when /-h|--help/
+  puts "macOS memory usage statistics utility"
+  puts "Usage: #{File.basename(__FILE__)} [options]"
+  puts "      -p, --purge      Cleans up some RAM, prompts for sudo password"
+  puts "      -h, --help       Prints this help"
+  exit
+when /-p|--purge/
+  if RUBY_PLATFORM =~ /darwin/ # macOS
+    `sudo purge`
+  end
+end
 
 PRC_NAME_CROP_AT=160
 TOP_COUNT = 20
