@@ -25,3 +25,14 @@ install them manually to the bin directory; or make them available in your
 ```bash
 $ export PATH="$PATH:~/.dotfiles/littles"
 ```
+
+## How to use [vim-plug](https://github.com/junegunn/vim-plug)
+
+Please, remember to run `:PlugInstall` command when you open your vim–to ensure
+that all plugins are installed and up to date.
+
+Alternatively, you can run this command from the shell directly:
+
+```bash
+$ vim -c PlugInstall -c qall
+```
