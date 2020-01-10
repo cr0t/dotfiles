@@ -11,20 +11,23 @@
 
 defmodule IExHelpers do
   @tips_n_tricks [
-    ":observer.start() - a graphical tool for observing the characteristics of Erlang systems"
+    ":observer.start() - a graphical tool for observing the characteristics of Erlang systems",
+    "runtime_info <:memory|:applications|...> - prints VM/runtime information"
   ]
 
   def print_tips_n_tricks() do
     print_bright("--- Tips & Tricks:")
+
     @tips_n_tricks
     |> Enum.map(&print_bright/1)
+
     IO.puts("---")
   end
 
   def print_bright(text) do
     (IO.ANSI.bright() <>
-      text <>
-      IO.ANSI.reset())
+       text <>
+       IO.ANSI.reset())
     |> IO.puts()
   end
 
