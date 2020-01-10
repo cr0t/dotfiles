@@ -9,6 +9,33 @@
 # # ...
 # end
 
+defmodule IExHelpers do
+  @tips_n_tricks [
+    ":observer.start() - a graphical tool for observing the characteristics of Erlang systems"
+  ]
+
+  def print_tips_n_tricks() do
+    print_bright("--- Tips & Tricks:")
+    @tips_n_tricks
+    |> Enum.map(&print_bright/1)
+    IO.puts("---")
+  end
+
+  def print_bright(text) do
+    (IO.ANSI.bright() <>
+      text <>
+      IO.ANSI.reset())
+    |> IO.puts()
+  end
+
+  # Get queue length for the IEx process: this is fun to see while playing with nodes
+  def queue_length do
+    self()
+    |> Process.info()
+    |> Keyword.get(:message_queue_len)
+  end
+end
+
 # First time I've learned about custom .iex.exs here
 # https://www.youtube.com/watch?v=E0bmtcYrz9M
 # Here is a good article:
@@ -16,32 +43,19 @@
 # Most of the code below, originally found here:
 # https://www.adiiyengar.com/blog/20180709/my-iex-exs
 
-print_bright = fn text ->
-  (IO.ANSI.bright() <>
-     text <>
-     IO.ANSI.reset())
-  |> IO.puts()
-end
-
-# Get queue length for the IEx process: this is fun to see while playing with nodes
-queue_length = fn ->
-  self()
-  |> Process.info()
-  |> Keyword.get(:message_queue_len)
-end
-
 # Will be using `ANSI`
 Application.put_env(:elixir, :ansi_enabled, true)
 
 # Letting people know what iex.exs they are using
-print_bright.("Using global .iex.exs (located in ~/.iex.exs)")
+IExHelpers.print_tips_n_tricks()
+IExHelpers.print_bright("Using global .iex.exs (located in ~/.iex.exs)")
 
 inspect_limit = 5_000
 history_size = 100
 
 prefix = IO.ANSI.green() <> "%prefix" <> IO.ANSI.reset()
 counter = IO.ANSI.green() <> "-%node-(%counter)" <> IO.ANSI.reset()
-info = IO.ANSI.light_blue() <> "✉ #{queue_length.()}" <> IO.ANSI.reset()
+info = IO.ANSI.light_blue() <> "✉ #{IExHelpers.queue_length()}" <> IO.ANSI.reset()
 last = IO.ANSI.yellow() <> "➤" <> IO.ANSI.reset()
 
 alive =
@@ -88,10 +102,10 @@ phoenix_app =
 # Check if Phoenix app is found
 case phoenix_app do
   nil ->
-    print_bright.("No Phoenix app found")
+    IExHelpers.print_bright("No Phoenix app found")
 
   {app, _pid} ->
-    print_bright.("Phoenix app found: #{app}")
+    IExHelpers.print_bright("Phoenix app found: #{app}")
 
     ecto_app =
       app
@@ -112,10 +126,10 @@ case phoenix_app do
     # Check if Ecto app exists or running
     case ecto_exists do
       false ->
-        print_bright.("Ecto app #{ecto_app} doesn't exist or isn't running")
+        IExHelpers.print_bright("Ecto app #{ecto_app} doesn't exist or isn't running")
 
       true ->
-        print_bright.("Ecto app found: #{ecto_app}")
+        IExHelpers.print_bright("Ecto app found: #{ecto_app}")
 
         # Ecto Support
         import_if_available(Ecto.Query)
