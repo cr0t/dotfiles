@@ -73,10 +73,8 @@ function _remove_links {
 
 ###
 
-while [ -n "$1" ]; do
-  case "$1" in
-    link) _create_links;;
-    clean) _remove_links;;
-  esac
-  shift
-done
+case "$1" in
+  "link") _create_links;;
+  "clean") _remove_links;;
+  *) echo "Please, specify the task: setup.sh <link|clean>" && exit 1;;
+esac
