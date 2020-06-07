@@ -1,5 +1,5 @@
 syntax on
-set colorcolumn=80
+set colorcolumn=120
 " took from https://github.com/thoughtbot/dotfiles
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
