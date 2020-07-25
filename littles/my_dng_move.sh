@@ -6,6 +6,7 @@
 
 CURRENT_WORKING_DIR=$(pwd)
 NECESSARY_PARENT="Mavic Panoramas"
+FOLDER_NAME="DNGs"
 
 # Prevents from running outside of our special parent folder
 if [[ ! $CURRENT_WORKING_DIR =~ $NECESSARY_PARENT ]]; then
@@ -14,8 +15,10 @@ if [[ ! $CURRENT_WORKING_DIR =~ $NECESSARY_PARENT ]]; then
 fi
 
 find . -name "*.DNG" -print0 | while read -d $'\0' file; do
-  NEW_DIR=$(dirname "$file")
-  echo "Moving files to ./DNGs/$NEW_DIR..."
-  mkdir -pv "./DNGs/$NEW_DIR"
-  mv "$file" "./DNGs/$NEW_DIR"
+  if [[ ! "$file" =~ .*"$FOLDER_NAME".* ]]; then
+    NEW_DIR=$(dirname "$file" | sed 's/^\.\///g')
+    echo "Moving files to ./$FOLDER_NAME/$NEW_DIR..."
+    mkdir -pv "./$FOLDER_NAME/$NEW_DIR"
+    mv "$file" "./$FOLDER_NAME/$NEW_DIR"
+  fi
 done
