@@ -1,6 +1,9 @@
 [user]
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
+  signingkey = 75C6EB55
+[commit]
+  gpgsign = true
 [color]
   branch = auto
   diff = auto
