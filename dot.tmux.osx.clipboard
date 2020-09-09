@@ -1,0 +1,9 @@
+# Ctrl+C/Ctrl+V
+bind C-c run "tmux save-buffer - | pbcopy"
+bind C-v run "tmux set-buffer \"$(pbpaste)\"; tmux paste-buffer"
+
+# vi-like bindings for test selection
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
