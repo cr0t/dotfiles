@@ -5,4 +5,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish'
 call plug#end()
