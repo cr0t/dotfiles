@@ -36,3 +36,11 @@ Alternatively, you can run this command from the shell directly:
 ```bash
 $ vim -c PlugInstall -c qall
 ```
+
+## How to use [tmux plugins](https://github.com/tmux-plugins)
+
+Please install `tpm` before you can use tmux plugins:
+
+```bash
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
