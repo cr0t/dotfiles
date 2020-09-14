@@ -8,6 +8,11 @@ function tbase --description="Initiates a base tmux session (or attaches it)"
         return
     end
 
-    # create or attach to a session named as current user
-    tmux new -A -s "$USER"
+    # tmux doesn't allow us to use dots in session name
+    set --local user (string replace --all '.' '-' $USER)
+    set --local host (string split '.' $hostname)[1]
+    set --local session_name (string join '[at]' $user $host)
+
+    # create or attach to a session
+    tmux new -A -s $session_name
 end
