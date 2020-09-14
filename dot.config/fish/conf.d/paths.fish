@@ -6,7 +6,7 @@ set --local vs_code "/Applications/Visual Studio Code.app/Contents/Resources/app
 set --local paths $lo_sbin $littles $vs_code
 
 for path in $paths
-  if test -d $path
-    set -gx PATH $path $PATH
-  end
+    if test -d $path
+        set -gx PATH $path $PATH
+    end
 end
