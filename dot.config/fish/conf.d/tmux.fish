@@ -10,7 +10,7 @@ function tbase --description="Initiates a base tmux session (or attaches it)"
 
     # tmux doesn't allow us to use dots in session name
     set --local user (string replace --all '.' '-' $USER)
-    set --local host (string split '.' $hostname)[1]
+    set --local host (hostname | string split '.')[1]
     set --local session_name (string join '[at]' $user $host)
 
     # create or attach to a session
