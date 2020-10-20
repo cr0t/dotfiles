@@ -7,4 +7,5 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
