@@ -44,3 +44,13 @@ Please install `tpm` before you can use tmux plugins:
 ```bash
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+## Copy and update `.gitconfig.local`
+
+After setting up these files, you'll see `.gitconfig.local.example` one that is
+created in the home directory. You need to check what it contains and update if
+needed.
+
+```bash
+$ cp ~/.gitconfig.local.example ~/.gitconfig.local
+```

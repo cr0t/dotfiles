@@ -13,7 +13,5 @@
   pf = push --force-with-lease # https://thoughtbot.com/blog/git-push-force-with-lease
 [push]
   default = simple
-[core]
- attributesFile = ~/.gitattributes
 [include]
   path = ~/.gitconfig.local
