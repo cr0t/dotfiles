@@ -11,6 +11,8 @@
   co = checkout
   aa = add . --all
   pf = push --force-with-lease # https://thoughtbot.com/blog/git-push-force-with-lease
+[pull]
+  ff = only
 [push]
   default = simple
 [include]
