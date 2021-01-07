@@ -1,7 +1,0 @@
-Host example.com
-  User hoster
-  ForwardAgent yes
-
-Host under-tv
-  Hostname 192.168.0.2
-  User media

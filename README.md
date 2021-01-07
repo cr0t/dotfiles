@@ -15,6 +15,20 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
+## Setup `.ssh`
+
+Don't forget to set up the `~/.ssh` folder. Here is an example of `~/.ssh/config` file:
+
+```
+Host example.com
+  User hoster
+  ForwardAgent yes
+
+Host under-tv
+  Hostname 192.168.0.2
+  User media
+```
+
 ## Directory `littles`
 
 Contains a set of my tiny scripts, a variety of helpers, snippets, etc. Most of
