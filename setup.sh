@@ -62,7 +62,6 @@ function _create_links {
     if [ ! -d $f ]; then
       LINKPATH=$(_linkpath $f)
       echo -n "Linking $f to $LINKPATH : "
-      
       LN_OUTPUT=$(ln -s $f $LINKPATH 2>&1)
 
       if [ $? -eq 0 ]; then
