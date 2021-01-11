@@ -1,0 +1,25 @@
+# iTerm2 key mappings
+#
+# Using "Keys -> Key Bindings" settings in iTerm2 helps to achieve some nice
+# ways to use CMD+... shortcuts.
+#
+# This little macOS utility can help with finding correct hex codes:
+# Key Codes (https://manytricks.com/keycodes/)
+#
+# We just need to send first CTRL+A (0x01) hex code and then what we want to
+# bind in tmux.
+#
+# Below there are a few examples which mimic "default" iTerm2 behavior with
+# tabs and session history:
+
+# create a new window (or tab in terms of desktop UI)
+unbind t # iTerm2: CMD+t -> Send Hex Codes 0x01 0x74
+bind t new-window -c "#{pane_current_path}"
+
+# kill current pane
+unbind w # iTerm2: CMD+t -> Send Hex Codes 0x01 0x77
+bind w confirm-before -p "kill-pane #W? (y/n)" kill-pane
+
+# clear screen by CTRL+l or screen&history by CTRL+k
+bind C-l send-keys 'C-l'                 # iTerm2: CMD+k -> Send Hex Codes 0x01 0x0c
+bind C-k send-keys 'C-l'\; clear-history # iTerm2: CMD+k -> Send Hex Codes 0x01 0x0b
