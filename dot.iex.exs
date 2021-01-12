@@ -12,7 +12,8 @@
 defmodule IExHelpers do
   @tips_n_tricks [
     ":observer.start() - a graphical tool for observing the characteristics of Erlang systems",
-    "runtime_info <:memory|:applications|...> - prints VM/runtime information"
+    "runtime_info <:memory|:applications|...> - prints VM/runtime information",
+    "IEx.configure(inspect: [limit: :infinity]) - shows full values in output without cuts"
   ]
 
   def print_tips_n_tricks() do
