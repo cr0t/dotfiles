@@ -1,25 +1,28 @@
 # iTerm2 key mappings
 #
 # Using "Keys -> Key Bindings" settings in iTerm2 helps to achieve some nice
-# ways to use CMD+... shortcuts.
+# ways to use CMD-... (press a button together with CMD pressed) shortcuts.
+#
+# In the comments to settings you can find the shortcut and "Send Hex Codes"
+# value we need to configure in the iTerm2 key bindings.
 #
 # This little macOS utility can help with finding correct hex codes:
-# Key Codes (https://manytricks.com/keycodes/)
+# Key Codes (https://manytricks.com/keycodes/).
 #
-# We just need to send first CTRL+A (0x01) hex code and then what we want to
-# bind in tmux.
+# We just need to send first CTRL-A (0x01) hex code and then the key that we
+# want to bind to in tmux.
 #
 # Below there are a few examples which mimic "default" iTerm2 behavior with
 # tabs and session history:
 
-# create a new window (or tab in terms of desktop UI)
-unbind t # iTerm2: CMD+t -> Send Hex Codes 0x01 0x74
+# create a new window
+unbind t                                         # iTerm2: CMD-t -> 0x01 0x74
 bind t new-window -c "#{pane_current_path}"
 
-# kill current pane
-unbind w # iTerm2: CMD+t -> Send Hex Codes 0x01 0x77
+# kill current pane with confirmation
+unbind w                                         # iTerm2: CMD-w -> 0x01 0x77
 bind w confirm-before -p "kill-pane #W? (y/n)" kill-pane
 
-# clear screen by CTRL+l or screen&history by CTRL+k
-bind C-l send-keys 'C-l'                 # iTerm2: CMD+k -> Send Hex Codes 0x01 0x0c
-bind C-k send-keys 'C-l'\; clear-history # iTerm2: CMD+k -> Send Hex Codes 0x01 0x0b
+# clear screen or screen including history
+bind C-l send-keys 'C-l'                         # iTerm2: CMD-l -> 0x01 0x0c
+bind C-k send-keys 'C-l'\; clear-history         # iTerm2: CMD-k -> 0x01 0x0b
