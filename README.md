@@ -23,6 +23,8 @@ Don't forget to set up the `~/.ssh` folder. Here is an example of `~/.ssh/config
 Host example.com
   User hoster
   ForwardAgent yes
+  ServerAliveInterval 300
+  ServerAliveCountMax 2
 
 Host under-tv
   Hostname 192.168.0.2
