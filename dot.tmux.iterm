@@ -17,7 +17,8 @@
 
 # create a new window
 unbind t                                         # iTerm2: CMD-t -> 0x01 0x74
-bind t new-window -c "#{pane_current_path}"
+# bind t new-window -c "#{pane_current_path}"
+bind t new-window
 
 # kill current pane with confirmation
 unbind w                                         # iTerm2: CMD-w -> 0x01 0x77
