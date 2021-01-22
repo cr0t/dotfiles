@@ -15,5 +15,7 @@
   ff = only
 [push]
   default = simple
+[init]
+  defaultBranch = master
 [include]
   path = ~/.gitconfig.local
