@@ -3,6 +3,8 @@
 REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
+VIM_SNIPPETS_FROM="$REPO_DIR/dot.vimsnippets"
+VIM_SNIPPETS_TO="$HOME/.vimsnippets"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
 
@@ -33,6 +35,24 @@ function _install_vim_plug {
     # https://github.com/junegunn/vim-plug
     curl -fLo $VIM_PLUG --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
+}
+
+# Links ~/.vimsnippets directory
+function _link_vim_snippets {
+  echo -n "Linking $VIM_SNIPPETS_FROM directory : "
+
+  if [ -d $VIM_SNIPPETS_TO ]; then
+    _echo_error "directory $VIM_SNIPPETS_TO already exists, consider to back it up!"
+    exit 1
+  fi
+
+  ln -s $VIM_SNIPPETS_FROM $VIM_SNIPPETS_TO && _echo_success "done"
+}
+
+# Unlinks ~/.vimsnippets directory
+function _unlink_vim_snippets {
+  echo -n "Removing $VIM_SNIPPETS_TO directory : "
+  rm $VIM_SNIPPETS_TO && _echo_success "done"
 }
 
 # Links ~/.config/fish/conf.d directory
@@ -73,6 +93,7 @@ function _create_links {
   done
 
   _install_vim_plug
+  _link_vim_snippets
   _link_fish_conf
 }
 
@@ -87,6 +108,7 @@ function _remove_links {
     fi
   done
 
+  _unlink_vim_snippets
   _unlink_fish_conf
 }
 

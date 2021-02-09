@@ -35,6 +35,10 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite
 
+if filereadable(expand("~/.vimrc.snippets"))
+  source ~/.vimrc.snippets
+endif
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
