@@ -7,12 +7,21 @@ set colorcolumn=120
 " add some colors to the screen
 syntax enable
 filetype plugin on
+filetype indent on
 
 " search down into folders
 set path+=**
 
 " display all matching files when we tab complete
 set wildmenu
+
+" indentation
+set autoindent
+set cindent
+set smartindent
+set tabstop=2     " set tab width to 2 columns
+set shiftwidth=2  " use 2 columns for indentation
+set expandtab     " use spaces when pressing TAB
 
 " next is taken from https://github.com/thoughtbot/dotfiles
 set backspace=2   " Backspace deletes like most programs in insert mode
