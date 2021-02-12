@@ -16,12 +16,29 @@ set path+=**
 set wildmenu
 
 " indentation
-set autoindent
-set cindent
-set smartindent
+"set autoindent
+"set cindent
+"set smartindent
 set tabstop=2     " set tab width to 2 columns
 set shiftwidth=2  " use 2 columns for indentation
 set expandtab     " use spaces when pressing TAB
+
+nnoremap <C-1> :buffer! 1<CR>
+nnoremap <C-2> :buffer! 2<CR>
+
+" hardmode... no arrow keys!
+nnoremap <Left> <Nop>
+vnoremap <Left> <Nop>
+inoremap <Left> <Nop>
+nnoremap <Down> <Nop>
+vnoremap <Down> <Nop>
+inoremap <Down> <Nop>
+nnoremap <Up> <Nop>
+vnoremap <Up> <Nop>
+inoremap <Up> <Nop>
+nnoremap <Right> <Nop>
+vnoremap <Right> <Nop>
+inoremap <Right> <Nop>
 
 " next is taken from https://github.com/thoughtbot/dotfiles
 set backspace=2   " Backspace deletes like most programs in insert mode
