@@ -1,12 +1,23 @@
 call plug#begin('~/.vim/bundle')
+
+"" Fuzzy finder and organization
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'janko/vim-test'
-Plug 'elixir-lang/vim-elixir'
+
+"" Languages
+Plug 'elixir-lang/vim-elixir', {'for': ['elixir', 'eelixir']}
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'ts', 'typescriptreact', 'tsx']}
+Plug 'peitalin/vim-jsx-typescript', {'for': ['typescriptreact', 'tsx']}
+Plug 'dag/vim-fish'
 Plug 'vim-ruby/vim-ruby'
+
+"" Other
+"Plug 'janko/vim-test'
 "Plug 'pbrisbin/vim-mkdir'
 "Plug 'christoomey/vim-tmux-navigator'
-"Plug 'dag/vim-fish'
 "Plug 'sheerun/vim-polyglot'
+
 call plug#end()
