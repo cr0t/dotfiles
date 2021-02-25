@@ -52,8 +52,8 @@ set shiftwidth=2  " use 2 columns for indentation
 set expandtab     " use spaces when pressing TAB
 
 " highlight current line and current column
-set cursorline
-set cursorcolumn
+"set cursorline
+"set cursorcolumn
 
 " search
 set incsearch  " enable incremental search

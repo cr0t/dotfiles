@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/bundle')
 
-"" Fuzzy finder and organization
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
+"" File tree and fuzzy search
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
