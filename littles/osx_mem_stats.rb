@@ -21,6 +21,7 @@ PRC_NAME_CROP_AT=160
 TOP_COUNT = 20
 MULTI_PROCESS_APPS = [
   'Google Chrome.app',
+  'Google Chrome Dev.app',
   'Slack.app',
   'Visual Studio Code.app',
   'Dropbox.app',
