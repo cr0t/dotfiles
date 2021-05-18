@@ -12,6 +12,8 @@
   aa = add . --all
   pf = push --force-with-lease # https://thoughtbot.com/blog/git-push-force-with-lease
   recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
+[fetch]
+  prune = true
 [pull]
   ff = only
 [push]
