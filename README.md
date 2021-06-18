@@ -15,6 +15,14 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
+### Install `asdf` runtime versions control utility
+
+For macOS only, of course:
+
+```console
+$ brew install asdf
+```
+
 ## Setup `.ssh`
 
 Don't forget to set up the `~/.ssh` folder. Here is an example of `~/.ssh/config` file:
