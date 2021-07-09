@@ -11,10 +11,15 @@ FISH_CONF_TO="$HOME/.config/fish/conf.d"
 # Colors
 RED='\033[0;31m'
 GRN='\033[0;32m'
+YEL='\033[0;33m'
 CLR='\033[0m'
 
 function _echo_error {
   echo -e "${RED}$1${CLR}"
+}
+
+function _echo_warning {
+  echo -e "${YEL}$1${CLR}"
 }
 
 function _echo_success {
@@ -43,7 +48,7 @@ function _link_vim_snippets {
 
   if [ -d $VIM_SNIPPETS_TO ]; then
     _echo_error "directory $VIM_SNIPPETS_TO already exists, consider to back it up!"
-    exit 1
+    return 1
   fi
 
   ln -s $VIM_SNIPPETS_FROM $VIM_SNIPPETS_TO && _echo_success "done"
@@ -61,7 +66,7 @@ function _link_fish_conf {
 
   if [ -d $FISH_CONF_TO ]; then
     _echo_error "directory $FISH_CONF_TO already exists, consider to back it up!"
-    exit 1
+    return 1
   fi
 
   NO_CONF_D="${FISH_CONF_TO/conf.d/}"
@@ -85,9 +90,9 @@ function _create_links {
       LN_OUTPUT=$(ln -s $f $LINKPATH 2>&1)
 
       if [ $? -eq 0 ]; then
-	_echo_success "done"
+	      _echo_success "done"
       else
-	_echo_error "already exists"
+	      _echo_error "already exists"
       fi
     fi
   done
@@ -95,6 +100,8 @@ function _create_links {
   _install_vim_plug
   _link_vim_snippets
   _link_fish_conf
+
+  echo && _echo_warning "NOTE: Consider to run brew_fre.sh if it's a fresh macOS installation!"
 }
 
 # 1. Removes links from regular dot.* files

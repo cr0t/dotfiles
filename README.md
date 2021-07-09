@@ -15,6 +15,11 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
+### Brew in apps and utilities
+
+In case of fresh machine installation, consider to run `brew_fre.sh` little script that
+will install some of basic apps.
+
 ### Install `asdf` runtime versions control utility
 
 For macOS only, of course:
