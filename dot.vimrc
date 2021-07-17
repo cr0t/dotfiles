@@ -14,6 +14,9 @@ set colorcolumn=120
 " switch syntax highlighting on
 syntax on
 
+" search highlighting on
+set hlsearch
+
 " autoread file modifications
 set autoread
 
