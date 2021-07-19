@@ -1,13 +1,13 @@
 " hardmode... no arrow keys!
 nnoremap <Left> <Nop>
 vnoremap <Left> <Nop>
-inoremap <Left> <Nop>
+"inoremap <Left> <Nop>
 nnoremap <Down> <Nop>
 vnoremap <Down> <Nop>
-inoremap <Down> <Nop>
+"inoremap <Down> <Nop>
 nnoremap <Up> <Nop>
 vnoremap <Up> <Nop>
-inoremap <Up> <Nop>
+"inoremap <Up> <Nop>
 nnoremap <Right> <Nop>
 vnoremap <Right> <Nop>
-inoremap <Right> <Nop>
+"inoremap <Right> <Nop>
