@@ -17,5 +17,6 @@ Plug 'vim-ruby/vim-ruby'
 "Plug 'pbrisbin/vim-mkdir'
 "Plug 'christoomey/vim-tmux-navigator'
 "Plug 'sheerun/vim-polyglot'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
