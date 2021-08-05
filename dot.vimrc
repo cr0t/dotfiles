@@ -8,9 +8,6 @@
 " do not pretend that vim is vi
 set nocompatible
 
-" enable use of a mouse (to switch between windows, for example)
-set mouse=a
-
 " something modern again
 set colorcolumn=120
 
