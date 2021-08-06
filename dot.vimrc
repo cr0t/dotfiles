@@ -17,6 +17,11 @@ syntax on
 " search highlighting on
 set hlsearch
 
+" trailing whitespace highlighting
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 " autoread file modifications
 set autoread
 
