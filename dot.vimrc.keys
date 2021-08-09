@@ -1,0 +1,26 @@
+" hardmode... no arrow keys!
+" uncomment below if you dare
+"nnoremap <Left> <Nop>
+"vnoremap <Left> <Nop>
+"inoremap <Left> <Nop>
+"nnoremap <Down> <Nop>
+"vnoremap <Down> <Nop>
+"inoremap <Down> <Nop>
+"nnoremap <Up> <Nop>
+"vnoremap <Up> <Nop>
+"inoremap <Up> <Nop>
+"nnoremap <Right> <Nop>
+"vnoremap <Right> <Nop>
+"inoremap <Right> <Nop>
+
+" traverse buffers
+" iTerm2 key bindings and corresponding hex codes:
+" - CMD+[ -> 0x5b 0x62
+" - CMD+] -> 0x5d 0x62
+" - SHIFT+CMD+[ -> 0x5b 0x42
+" - SHIFT+CMD+] -> 0x5d 0x42
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+

@@ -2,10 +2,12 @@
 "autocmd VimEnter * NERDTree | wincmd p
 
 " exit vim if NERDTree is the only window left
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | 
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
       \ quit | endif
 
-nnoremap /n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+" show/hide, for CMD+b configure iTerm to send Hex Code 0x2 on this shortcut
+" see more about iTerm CMD mappings in dot.tmux.iterm comments
+nnoremap <C-b> :NERDTreeToggle<CR>
+
+" reveal or show current file in NERDTree window
 nnoremap <C-f> :NERDTreeFind<CR>

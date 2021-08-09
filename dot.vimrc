@@ -68,14 +68,11 @@ set incsearch  " enable incremental search
 set ignorecase " make searches case insensitive
 set smartcase  " make searches case sensitive if search starts with a capital
 
-nnoremap <C-1> :buffer! 1<CR>
-nnoremap <C-2> :buffer! 2<CR>
-
 " next is mostly taken from https://github.com/thoughtbot/dotfiles
 set nobackup
 set nowritebackup
 set noswapfile
-set history=50
+set history=1000
 set autowrite
 
 if filereadable(expand("~/.vimrc.snippets"))
@@ -90,6 +87,6 @@ if filereadable(expand("~/.vimrc.nerdtree"))
   source ~/.vimrc.nerdtree
 endif
 
-if filereadable(expand("~/.vimrc.noarrowkeys"))
-  source ~/.vimrc.noarrowkeys
+if filereadable(expand("~/.vimrc.keys"))
+  source ~/.vimrc.keys
 endif
