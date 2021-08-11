@@ -1,19 +1,7 @@
-" hardmode... no arrow keys!
-" uncomment below if you dare
-"nnoremap <Left> <Nop>
-"vnoremap <Left> <Nop>
-"inoremap <Left> <Nop>
-"nnoremap <Down> <Nop>
-"vnoremap <Down> <Nop>
-"inoremap <Down> <Nop>
-"nnoremap <Up> <Nop>
-"vnoremap <Up> <Nop>
-"inoremap <Up> <Nop>
-"nnoremap <Right> <Nop>
-"vnoremap <Right> <Nop>
-"inoremap <Right> <Nop>
+" show/hide invisible characters (tab, new line, etc.)
+nmap <leader>l :set list!<CR>
 
-" traverse buffers
+" traverse through available buffers
 " iTerm2 key bindings and corresponding hex codes:
 " - CMD+[ -> 0x5b 0x62
 " - CMD+] -> 0x5d 0x62
@@ -23,4 +11,3 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-

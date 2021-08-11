@@ -28,7 +28,7 @@ set autoread
 " enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 
-" search down into folders
+" search down into folders (for `:find` ex command, for example)
 set path+=**
 
 " display all matching files when we tab complete
@@ -90,3 +90,7 @@ endif
 if filereadable(expand("~/.vimrc.keys"))
   source ~/.vimrc.keys
 endif
+
+" if filereadable(expand("~/.vimrc.noarrowkeys"))
+"   source ~/.vimrc.noarrowkeys
+" end
