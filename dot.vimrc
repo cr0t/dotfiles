@@ -55,9 +55,10 @@ set showcmd
 set laststatus=2
 
 " indentation
-set tabstop=2     " set tab width to 2 columns
-set shiftwidth=2  " use 2 columns for indentation
-set expandtab     " use spaces when pressing TAB
+set tabstop=2     " set tab width to 2 columns (spaces)
+set shiftwidth=2  " use 2 columns (spaces) for indentation
+set softtabstop=2 " fine-tuning for inserting/deletion of whitespace (equal it to shiftwidth)
+set expandtab     " replace TAB with spaces
 
 " highlight current line and current column
 "set cursorline
