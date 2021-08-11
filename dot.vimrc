@@ -63,6 +63,12 @@ set expandtab     " use spaces when pressing TAB
 "set cursorline
 "set cursorcolumn
 
+" show/hide invisible characters (tab, new line, etc.)
+nmap <leader>l :set list!<CR>
+
+" use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
 " search
 set incsearch  " enable incremental search
 set ignorecase " make searches case insensitive
