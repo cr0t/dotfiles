@@ -55,6 +55,13 @@ install them manually to the bin directory; or make them available in your
 $ export PATH="$PATH:~/.dotfiles/littles"
 ```
 
+### Local `littles`
+
+By default we set up `$PATH` to look into `~/.littles.local` directory too. If you need to have
+some scripts available only on some particular machine (like temp scripts for your current
+projects) which you do not want to commit to this repo, `mkdir ~/.littles.local` and put these
+scripts there.
+
 ## How to use [vim-plug](https://github.com/junegunn/vim-plug)
 
 Please, remember to run `:PlugInstall` command when you open your vim–to ensure

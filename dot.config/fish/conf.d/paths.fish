@@ -2,9 +2,10 @@ set --local lo_sbin "/usr/local/sbin"
 set --local littles "$HOME/.dotfiles/littles/"
 set --local vs_code "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 set --local escripts "$HOME/.mix/escripts"
+set --local lo_littles "$HOME/.littles.local"
 
 # Check if path exist and add it to the $PATH
-set --local paths $lo_sbin $littles $vs_code $escripts
+set --local paths $lo_sbin $littles $vs_code $escripts $lo_littles
 
 for path in $paths
     if test -d $path
