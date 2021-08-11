@@ -1,6 +1,3 @@
-" show/hide invisible characters (tab, new line, etc.)
-nmap <leader>l :set list!<CR>
-
 " traverse through available buffers
 " iTerm2 key bindings and corresponding hex codes:
 " - CMD+[ -> 0x5b 0x62
