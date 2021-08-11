@@ -3,8 +3,8 @@
 REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
-VIM_SNIPPETS_FROM="$REPO_DIR/dot.vimsnippets"
-VIM_SNIPPETS_TO="$HOME/.vimsnippets"
+VIM_CONF_FROM="$REPO_DIR/dot.vimconf"
+VIM_CONF_TO="$HOME/.vimconf"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
 
@@ -42,22 +42,22 @@ function _install_vim_plug {
   fi
 }
 
-# Links ~/.vimsnippets directory
-function _link_vim_snippets {
-  echo -n "Linking $VIM_SNIPPETS_FROM directory : "
+# Links ~/.vimconf directory
+function _link_vim_conf {
+  echo -n "Linking $VIM_CONF_FROM directory : "
 
-  if [ -d $VIM_SNIPPETS_TO ]; then
-    _echo_error "directory $VIM_SNIPPETS_TO already exists, consider to back it up!"
+  if [ -d $VIM_CONF_TO ]; then
+    _echo_error "directory $VIM_CONF_TO already exists, consider to back it up!"
     return 1
   fi
 
-  ln -s $VIM_SNIPPETS_FROM $VIM_SNIPPETS_TO && _echo_success "done"
+  ln -s $VIM_CONF_FROM $VIM_CONF_TO && _echo_success "done"
 }
 
-# Unlinks ~/.vimsnippets directory
-function _unlink_vim_snippets {
-  echo -n "Removing $VIM_SNIPPETS_TO directory : "
-  rm $VIM_SNIPPETS_TO && _echo_success "done"
+# Unlinks ~/.vimconf directory
+function _unlink_vim_conf {
+  echo -n "Removing $VIM_CONF_TO directory : "
+  rm $VIM_CONF_TO && _echo_success "done"
 }
 
 # Links ~/.config/fish/conf.d directory
@@ -98,7 +98,7 @@ function _create_links {
   done
 
   _install_vim_plug
-  _link_vim_snippets
+  _link_vim_conf
   _link_fish_conf
 
   echo && _echo_warning "NOTE: Consider to run brew_fre.sh if it's a fresh macOS installation!"
@@ -115,7 +115,7 @@ function _remove_links {
     fi
   done
 
-  _unlink_vim_snippets
+  _unlink_vim_conf
   _unlink_fish_conf
 }
 

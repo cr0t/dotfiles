@@ -75,22 +75,22 @@ set noswapfile
 set history=1000
 set autowrite
 
-if filereadable(expand("~/.vimrc.snippets"))
-  source ~/.vimrc.snippets
+if filereadable(expand("~/.vimconf/rc.snippets"))
+  source ~/.vimconf/rc.snippets
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.vimconf/rc.bundles"))
+  source ~/.vimconf/rc.bundles
 endif
 
-if filereadable(expand("~/.vimrc.nerdtree"))
-  source ~/.vimrc.nerdtree
+if filereadable(expand("~/.vimconf/rc.nerdtree"))
+  source ~/.vimconf/rc.nerdtree
 endif
 
-if filereadable(expand("~/.vimrc.keys"))
-  source ~/.vimrc.keys
+if filereadable(expand("~/.vimconf/rc.keys"))
+  source ~/.vimconf/rc.keys
 endif
 
-" if filereadable(expand("~/.vimrc.noarrowkeys"))
-"   source ~/.vimrc.noarrowkeys
+" if filereadable(expand("~/.vimconf/rc.noarrowkeys"))
+"   source ~/.vimconf/rc.noarrowkeys
 " end
