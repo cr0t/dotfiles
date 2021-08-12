@@ -6,8 +6,8 @@ if ! command -v brew &> /dev/null; then
   exit 1
 fi
 
-UTILITIES=(ack asdf gping htop mtr tree)
-PACKAGES=(ansible exiftool ffmpeg fish git git-lfs imagemagick rbenv-gemset tmux)
+UTILITIES=(ack asdf bat dust fd fzf gping htop mtr ripgrep tree)
+PACKAGES=(ansible exiftool fish ffmpeg git git-lfs imagemagick rbenv-gemset tmux)
 
 _brew_install() {
   while (($#)); do

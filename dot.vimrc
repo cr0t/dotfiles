@@ -41,6 +41,9 @@ set mouse=a
 set ttymouse=xterm2 " works better than default, at least in iTerm2
 set clipboard=unnamed
 
+" improve ESC waiting time (open/close plugins or change modes blazing fast!)
+set timeoutlen=1000 ttimeoutlen=0
+
 " make backspace behave in a sane manner:
 "
 " indent  allow backspacing over autoindent

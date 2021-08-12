@@ -2,7 +2,8 @@ call plug#begin('~/.vim/bundle')
 
 "" File tree and fuzzy search
 Plug 'preservim/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "" Languages
 Plug 'elixir-lang/vim-elixir', {'for': ['elixir', 'eelixir']}
