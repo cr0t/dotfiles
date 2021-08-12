@@ -33,6 +33,13 @@ set path+=**
 
 " display all matching files when we tab complete
 set wildmenu
+set wildignorecase
+set wildmode=list:longest,full
+
+" support mouse and macOS system clipboard
+set mouse=a
+set ttymouse=xterm2 " works better than default, at least in iTerm2
+set clipboard=unnamed
 
 " make backspace behave in a sane manner:
 "
