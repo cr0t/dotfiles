@@ -36,6 +36,10 @@ set wildmenu
 set wildignorecase
 set wildmode=list:longest,full
 
+" more natural windows split opening (new window gets active), https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+set splitbelow
+set splitright
+
 " support mouse and macOS system clipboard
 set mouse=a
 set ttymouse=xterm2 " works better than default, at least in iTerm2
