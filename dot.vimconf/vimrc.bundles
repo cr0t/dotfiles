@@ -19,5 +19,7 @@ Plug 'vim-ruby/vim-ruby'
 "Plug 'christoomey/vim-tmux-navigator'
 "Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
