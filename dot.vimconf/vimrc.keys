@@ -1,13 +1,16 @@
 " traverse through available buffers
+" exclamation mark (!) allows us to switch between buffers without saving them
+" first
+"
 " iTerm2 key bindings and corresponding hex codes:
 " - CMD+[ -> 0x5b 0x62
 " - CMD+] -> 0x5d 0x62
 " - SHIFT+CMD+[ -> 0x5b 0x42
 " - SHIFT+CMD+] -> 0x5d 0x42
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> [b :bprevious!<CR>
+nnoremap <silent> ]b :bnext!<CR>
+nnoremap <silent> [B :bfirst!<CR>
+nnoremap <silent> ]B :blast!<CR>
 
 " switch between windows via `CTRL+hjkl` (see tmux.conf settings!)
 nnoremap <C-h> <C-w>h

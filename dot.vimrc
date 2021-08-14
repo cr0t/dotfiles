@@ -93,7 +93,7 @@ set ignorecase " make searches case insensitive
 set smartcase  " make searches case sensitive if search starts with a capital
 
 " fine-tuning
-set autowrite    " automatically :write before running commands
+"set autowrite    " automatically :write before running commands
 set history=1000 " store more items in the command/search history
 
 " let's make less garbage files on the disk
@@ -111,6 +111,10 @@ endif
 
 if filereadable(expand("~/.vimconf/vimrc.nerdtree"))
   source ~/.vimconf/vimrc.nerdtree
+endif
+
+if filereadable(expand("~/.vimconf/vimrc.bufferline"))
+  source ~/.vimconf/vimrc.bufferline
 endif
 
 if filereadable(expand("~/.vimconf/vimrc.keys"))
