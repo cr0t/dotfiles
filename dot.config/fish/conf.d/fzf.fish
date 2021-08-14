@@ -4,6 +4,6 @@
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git --exclude node_modules'
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
-function fzf-preview --description="Shortcut to run fzf with --preview option params"
+function fzfpreview --description="Shortcut to run fzf with --preview option params"
     fzf --preview "bat --style=numbers --color=always --line-range :500 {}"
 end
