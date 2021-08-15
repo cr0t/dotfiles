@@ -73,6 +73,16 @@ Alternatively, you can run this command from the shell directly:
 $ vim -c PlugInstall -c qall
 ```
 
+### `coc.nvim` notes
+
+After we install vim plugins, we might need to install coc-engines we need.
+
+For example, for Elixir we need to do next. Inside `vim` session we need to run
+`:CocInstall coc-elixir` command. As well, as we might need to download and unpack
+latest ElixirLS binaries.
+
+Read more here: https://github.com/elixir-lsp/coc-elixir#vim-plug.
+
 ## How to use [tmux plugins](https://github.com/tmux-plugins)
 
 Please install `tpm` before you can use tmux plugins:
