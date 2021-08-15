@@ -18,6 +18,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" fzf: switch by CTRL+p, search (grep) by CTRL+r
-nnoremap <C-p> :Files<CR>
-nnoremap <C-r> :Rg<CR>
+" fzf: switch by `\ p`, search (grep) by `\ f`
+nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>f :Rg<CR>
