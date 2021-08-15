@@ -11,6 +11,8 @@ nnoremap <silent> [b :bprevious!<CR>
 nnoremap <silent> ]b :bnext!<CR>
 nnoremap <silent> [B :bfirst!<CR>
 nnoremap <silent> ]B :blast!<CR>
+" closes current buffer; tmux sends `CTRL-w q` sequence, when we press CMD+w (actually, CTRL-A w)
+nnoremap <C-w>q :bd<CR>
 
 " switch between windows via `CTRL+hjkl` (see tmux.conf settings!)
 nnoremap <C-h> <C-w>h
@@ -18,6 +20,5 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" fzf: switch by `\ p`, search (grep) by `\ f`
-nnoremap <silent> <leader>p :Files<CR>
-nnoremap <silent> <leader>f :Rg<CR>
+" show/hide invisible characters (TAB, new line, etc.)
+nnoremap <leader>l :set list!<CR>

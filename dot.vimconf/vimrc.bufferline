@@ -1,6 +1,0 @@
-function! BufferlineInit()
-  let g:bufferline_show_bufnr = 0
-  let g:bufferline_modified = '*'
-endfunction
-
-autocmd VimEnter * call BufferlineInit()

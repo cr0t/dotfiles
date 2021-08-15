@@ -84,9 +84,6 @@ set nojoinspaces
 " invisible characters (TAB, new line, etc.)
 set listchars=tab:▸\ ,eol:¬ " use the same symbols as TextMate for tabstops and EOLs
 
-" show/hide invisible characters (TAB, new line, etc.)
-nmap <leader>l :set list!<CR>
-
 " search
 set incsearch  " enable incremental search
 set ignorecase " make searches case insensitive
@@ -101,28 +98,32 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-if filereadable(expand("~/.vimconf/vimrc.bundles"))
-  source ~/.vimconf/vimrc.bundles
+if filereadable(expand("~/.vim.d/vimrc.bundles"))
+  source ~/.vim.d/vimrc.bundles
 endif
 
-if filereadable(expand("~/.vimconf/vimrc.snippets"))
-  source ~/.vimconf/vimrc.snippets
+if filereadable(expand("~/.vim.d/vimrc.snippets"))
+  source ~/.vim.d/vimrc.snippets
 endif
 
-if filereadable(expand("~/.vimconf/vimrc.nerdtree"))
-  source ~/.vimconf/vimrc.nerdtree
+if filereadable(expand("~/.vim.d/vimrc.fzf"))
+  source ~/.vim.d/vimrc.fzf
 endif
 
-if filereadable(expand("~/.vimconf/vimrc.bufferline"))
-  source ~/.vimconf/vimrc.bufferline
+if filereadable(expand("~/.vim.d/vimrc.nerdtree"))
+  source ~/.vim.d/vimrc.nerdtree
 endif
 
-if filereadable(expand("~/.vimconf/vimrc.keys"))
-  source ~/.vimconf/vimrc.keys
+if filereadable(expand("~/.vim.d/vimrc.airline"))
+  source ~/.vim.d/vimrc.airline
 endif
 
-"if filereadable(expand("~/.vimconf/vimrc.noarrowkeys"))
-"  source ~/.vimconf/vimrc.noarrowkeys
+if filereadable(expand("~/.vim.d/vimrc.keys"))
+  source ~/.vim.d/vimrc.keys
+endif
+
+"if filereadable(expand("~/.vim.d/vimrc.noarrowkeys"))
+"  source ~/.vim.d/vimrc.noarrowkeys
 "endif
 
 if filereadable(expand("~/.vimrc.local"))

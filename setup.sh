@@ -3,8 +3,10 @@
 REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
-VIM_CONF_FROM="$REPO_DIR/dot.vimconf"
-VIM_CONF_TO="$HOME/.vimconf"
+VIM_CONF_FROM="$REPO_DIR/dot.vim.d"
+VIM_CONF_TO="$HOME/.vim.d"
+TMUX_CONF_FROM="$REPO_DIR/dot.tmux.d"
+TMUX_CONF_TO="$HOME/.tmux.d"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
 
@@ -33,6 +35,27 @@ function _linkpath {
   echo "$HOME/$NO_DOT"
 }
 
+# Wrapper to link configuration directories
+function _link_directory {
+  FROM=$1
+  TO=$2
+
+  echo -n "Linking $FROM directory : "
+
+  if [ -d $TO ]; then
+    _echo_error "directory $TO already exists, consider to back it up!"
+    return 1
+  fi
+
+  ln -s $FROM $TO && _echo_success "done"
+}
+
+# Wrapper to unlink configuration directory
+function _unlink_directory {
+  echo -n "Removing $1 directory : "
+  rm $1 && _echo_success "done"
+}
+
 # Installs vim-plug package manager, if it's not installed yet
 function _install_vim_plug {
   if [ ! -f $VIM_PLUG ]; then
@@ -40,43 +63,6 @@ function _install_vim_plug {
     # https://github.com/junegunn/vim-plug
     curl -fLo $VIM_PLUG --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
-}
-
-# Links ~/.vimconf directory
-function _link_vim_conf {
-  echo -n "Linking $VIM_CONF_FROM directory : "
-
-  if [ -d $VIM_CONF_TO ]; then
-    _echo_error "directory $VIM_CONF_TO already exists, consider to back it up!"
-    return 1
-  fi
-
-  ln -s $VIM_CONF_FROM $VIM_CONF_TO && _echo_success "done"
-}
-
-# Unlinks ~/.vimconf directory
-function _unlink_vim_conf {
-  echo -n "Removing $VIM_CONF_TO directory : "
-  rm $VIM_CONF_TO && _echo_success "done"
-}
-
-# Links ~/.config/fish/conf.d directory
-function _link_fish_conf {
-  echo -n "Linking $FISH_CONF_FROM directory : "
-
-  if [ -d $FISH_CONF_TO ]; then
-    _echo_error "directory $FISH_CONF_TO already exists, consider to back it up!"
-    return 1
-  fi
-
-  NO_CONF_D="${FISH_CONF_TO/conf.d/}"
-  mkdir -p $NO_CONF_D && ln -s $FISH_CONF_FROM $FISH_CONF_TO && _echo_success "done"
-}
-
-# Unlinks ~/config.d/fish/conf.d directory
-function _unlink_fish_conf {
-  echo -n "Removing $FISH_CONF_FROM directory : "
-  rm $FISH_CONF_TO && _echo_success "done"
 }
 
 # 1. Links regular dot.* files from the repository to their counterparts
@@ -97,9 +83,14 @@ function _create_links {
     fi
   done
 
+  # ensure that parent directory exists before linking configuration
+  mkdir -p ~/.config/fish
+
+  _link_directory $VIM_CONF_FROM $VIM_CONF_TO
+  _link_directory $TMUX_CONF_FROM $TMUX_CONF_TO
+  _link_directory $FISH_CONF_FROM $FISH_CONF_TO
+
   _install_vim_plug
-  _link_vim_conf
-  _link_fish_conf
 
   echo && _echo_warning "NOTE: Consider to run brew_fre.sh if it's a fresh macOS installation!"
 }
@@ -115,8 +106,9 @@ function _remove_links {
     fi
   done
 
-  _unlink_vim_conf
-  _unlink_fish_conf
+  _unlink_directory $FISH_CONF_TO
+  _unlink_directory $TMUX_CONF_TO
+  _unlink_directory $VIM_CONF_TO
 }
 
 ###
