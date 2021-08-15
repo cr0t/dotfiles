@@ -20,3 +20,6 @@ Plug 'bling/vim-bufferline'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
+
+" disable old vim version warning for coc.nvim
+let g:coc_disable_startup_warning = 1
