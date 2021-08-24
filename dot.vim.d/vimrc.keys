@@ -1,20 +1,24 @@
-" traverse through available buffers
-" exclamation mark (!) allows us to switch between buffers without saving them
-" first
-"
-" iTerm2 key bindings and corresponding hex codes:
+" https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
+" See also (for future improvements):
+" - https://github.com/qpkorr/vim-bufkill/blob/master/plugin/bufkill.vim
+" - https://vim.fandom.com/wiki/Deleting_a_buffer_without_closing_the_window
+function! CloseBufferWithoutWindow()
+  bp | sp | bn | bd
+endfunction
+
+" traverse through available buffers; iTerm2 key bindings and corresponding hex codes:
 " - CMD+[ -> 0x5b 0x62
 " - CMD+] -> 0x5d 0x62
 nnoremap <silent> [b :bprevious!<CR>
 nnoremap <silent> ]b :bnext!<CR>
 
 " closes current buffer; tmux sends `CTRL-w q` sequence, when we press CMD+w (actually, CTRL-A w)
-nnoremap <C-w>q :bd<CR>
+nnoremap <C-w>q :call CloseBufferWithoutWindow()<CR>
 
 " 'Same-same, but different!' (shortcuts with leader)
 nnoremap <silent> <leader>[ :bprevious!<CR>
 nnoremap <silent> <leader>] :bnext!<CR>
-nnoremap <silent> <leader>q :bd<CR>
+nnoremap <silent> <leader>q :call CloseBufferWithoutWindow()<CR>
 
 " switch between windows via `CTRL+hjkl` (see tmux.conf settings!)
 nnoremap <C-h> <C-w>h
