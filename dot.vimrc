@@ -9,7 +9,7 @@ set encoding=utf-8
 
 " post-modernism
 set nocompatible    " do not pretend that vim is vi
-set colorcolumn=120 " something modern again
+"set colorcolumn=120 " something modern again
 
 " highlighting
 syntax on                                       " switch syntax highlighting on
