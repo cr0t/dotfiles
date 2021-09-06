@@ -13,7 +13,11 @@ nnoremap <silent> [b :bprevious!<CR>
 nnoremap <silent> ]b :bnext!<CR>
 
 " closes current buffer; tmux sends `CTRL-w q` sequence, when we press CMD+w (actually, CTRL-A w)
-nnoremap <C-w>q :call CloseBufferWithoutWindow()<CR>
+nnoremap <silent> <C-w>q :call CloseBufferWithoutWindow()<CR>
+
+" split windows similar to tmux combinations
+nnoremap <silent> <C-w>- :split<CR>
+nnoremap <silent> <C-w>\ :vsplit<CR>
 
 " 'Same-same, but different!' (shortcuts with leader)
 nnoremap <silent> <leader>[ :bprevious!<CR>
