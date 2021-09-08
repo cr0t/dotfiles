@@ -6,29 +6,22 @@ function! CloseBufferWithoutWindow()
   bp | sp | bn | bd
 endfunction
 
-" traverse through available buffers; iTerm2 key bindings and corresponding hex codes:
-" - CMD+[ -> 0x5b 0x62
-" - CMD+] -> 0x5d 0x62
-nnoremap <silent> [b :bprevious!<CR>
-nnoremap <silent> ]b :bnext!<CR>
+" close currently opened buffer
+nnoremap <silent> <leader>q :call CloseBufferWithoutWindow()<CR>
 
-" closes current buffer; tmux sends `CTRL-w q` sequence, when we press CMD+w (actually, CTRL-A w)
-nnoremap <silent> <C-w>q :call CloseBufferWithoutWindow()<CR>
+" traverse through available buffers
+nnoremap <silent> <leader>[ :bprevious!<CR>
+nnoremap <silent> <leader>] :bnext!<CR>
 
 " split windows similar to tmux combinations
 nnoremap <silent> <C-w>- :split<CR>
 nnoremap <silent> <C-w>\ :vsplit<CR>
 
-" 'Same-same, but different!' (shortcuts with leader)
-nnoremap <silent> <leader>[ :bprevious!<CR>
-nnoremap <silent> <leader>] :bnext!<CR>
-nnoremap <silent> <leader>q :call CloseBufferWithoutWindow()<CR>
-
 " switch between windows via `CTRL+hjkl` (see tmux.conf settings!)
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 
 " show/hide invisible characters (TAB, new line, etc.)
-nnoremap <leader>l :set list!<CR>
+nnoremap <silent> <leader>l :set list!<CR>
