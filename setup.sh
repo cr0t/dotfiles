@@ -9,6 +9,8 @@ TMUX_CONF_FROM="$REPO_DIR/dot.tmux.d"
 TMUX_CONF_TO="$HOME/.tmux.d"
 FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
+KITTY_CONF_FROM="$REPO_DIR/dot.config/kitty"
+KITTY_CONF_TO="$HOME/.config/kitty"
 
 # Colors
 RED='\033[0;31m'
@@ -89,6 +91,7 @@ function _create_links {
   _link_directory $VIM_CONF_FROM $VIM_CONF_TO
   _link_directory $TMUX_CONF_FROM $TMUX_CONF_TO
   _link_directory $FISH_CONF_FROM $FISH_CONF_TO
+  _link_directory $KITTY_CONF_FROM $KITTY_CONF_TO
 
   _install_vim_plug
 
@@ -106,6 +109,7 @@ function _remove_links {
     fi
   done
 
+  _unlink_directory $KITTY_CONF_TO
   _unlink_directory $FISH_CONF_TO
   _unlink_directory $TMUX_CONF_TO
   _unlink_directory $VIM_CONF_TO
