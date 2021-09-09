@@ -119,6 +119,10 @@ if filereadable(expand("~/.config/vim.d/vimrc.airline"))
   source ~/.config/vim.d/vimrc.airline
 endif
 
+if filereadable(expand("~/.config/vim.d/vimrc.coc"))
+  source ~/.config/vim.d/vimrc.coc
+endif
+
 if filereadable(expand("~/.config/vim.d/vimrc.keys"))
   source ~/.config/vim.d/vimrc.keys
 endif

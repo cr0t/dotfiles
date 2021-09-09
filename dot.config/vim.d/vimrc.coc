@@ -1,0 +1,20 @@
+" settings for coc.nvim plugin, most of the tips can be found here:
+" https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+
+" disable old vim version warning
+let g:coc_disable_startup_warning = 1
+
+" auto-install and use TypeScript
+let g:coc_global_extensions = ['coc-tsserver']
+
+" show diagnostics if exists, or documentation on 'hover'
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+" navigating
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" jump between errors
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
