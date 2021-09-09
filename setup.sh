@@ -3,14 +3,20 @@
 REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
-VIM_CONF_FROM="$REPO_DIR/dot.vim.d"
-VIM_CONF_TO="$HOME/.vim.d"
-TMUX_CONF_FROM="$REPO_DIR/dot.tmux.d"
-TMUX_CONF_TO="$HOME/.tmux.d"
-FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
-FISH_CONF_TO="$HOME/.config/fish/conf.d"
-KITTY_CONF_FROM="$REPO_DIR/dot.config/kitty"
-KITTY_CONF_TO="$HOME/.config/kitty"
+
+# ~/.config directory might contain other applications configuration file while
+# we use the system and install more utilities; and this is why we want to be
+# precise in what and where we want to link
+VIM_FROM="$REPO_DIR/dot.config/vim.d"
+VIM_TO="$HOME/.config/vim.d"
+VIM_COC_FROM="$REPO_DIR/dot.config/vim.d/coc-settings.json"
+VIM_COC_TO="$HOME/.vim/coc-settings.json"
+TMUX_FROM="$REPO_DIR/dot.config/tmux.d"
+TMUX_TO="$HOME/.config/tmux.d"
+FISH_FROM="$REPO_DIR/dot.config/fish/conf.d"
+FISH_TO="$HOME/.config/fish/conf.d"
+KITTY_FROM="$REPO_DIR/dot.config/kitty"
+KITTY_TO="$HOME/.config/kitty"
 
 # Colors
 RED='\033[0;31m'
@@ -37,24 +43,24 @@ function _linkpath {
   echo "$HOME/$NO_DOT"
 }
 
-# Wrapper to link configuration directories
-function _link_directory {
+# Wrapper to make a soft link
+function _link {
   FROM=$1
   TO=$2
 
-  echo -n "Linking $FROM directory : "
+  echo -n "Linking $FROM : "
 
   if [ -d $TO ]; then
-    _echo_error "directory $TO already exists, consider to back it up!"
+    _echo_error "$TO already exists, consider to back it up!"
     return 1
   fi
 
   ln -s $FROM $TO && _echo_success "done"
 }
 
-# Wrapper to unlink configuration directory
-function _unlink_directory {
-  echo -n "Removing $1 directory : "
+# Wrapper to unlink configuration directory or file
+function _unlink {
+  echo -n "Removing $1 : "
   rm $1 && _echo_success "done"
 }
 
@@ -78,20 +84,22 @@ function _create_links {
       LN_OUTPUT=$(ln -s $f $LINKPATH 2>&1)
 
       if [ $? -eq 0 ]; then
-	      _echo_success "done"
+        _echo_success "done"
       else
-	      _echo_error "already exists"
+        _echo_error "already exists"
       fi
     fi
   done
 
-  # ensure that parent directory exists before linking configuration
+  # ensure that parent directories exist before linking configuration
   mkdir -p ~/.config/fish
+  mkdir -p ~/.vim
 
-  _link_directory $VIM_CONF_FROM $VIM_CONF_TO
-  _link_directory $TMUX_CONF_FROM $TMUX_CONF_TO
-  _link_directory $FISH_CONF_FROM $FISH_CONF_TO
-  _link_directory $KITTY_CONF_FROM $KITTY_CONF_TO
+  _link $VIM_FROM $VIM_TO
+  _link $VIM_COC_FROM $VIM_COC_TO
+  _link $TMUX_FROM $TMUX_TO
+  _link $FISH_FROM $FISH_TO
+  _link $KITTY_FROM $KITTY_TO
 
   _install_vim_plug
 
@@ -109,10 +117,11 @@ function _remove_links {
     fi
   done
 
-  _unlink_directory $KITTY_CONF_TO
-  _unlink_directory $FISH_CONF_TO
-  _unlink_directory $TMUX_CONF_TO
-  _unlink_directory $VIM_CONF_TO
+  _unlink $KITTY_TO
+  _unlink $FISH_TO
+  _unlink $TMUX_TO
+  _unlink $VIM_COC_TO
+  _unlink $VIM_TO
 }
 
 ###

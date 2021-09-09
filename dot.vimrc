@@ -99,32 +99,32 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-if filereadable(expand("~/.vim.d/vimrc.bundles"))
-  source ~/.vim.d/vimrc.bundles
+if filereadable(expand("~/.config/vim.d/vimrc.bundles"))
+  source ~/.config/vim.d/vimrc.bundles
 endif
 
-if filereadable(expand("~/.vim.d/vimrc.snippets"))
-  source ~/.vim.d/vimrc.snippets
+if filereadable(expand("~/.config/vim.d/vimrc.snippets"))
+  source ~/.config/vim.d/vimrc.snippets
 endif
 
-if filereadable(expand("~/.vim.d/vimrc.fzf"))
-  source ~/.vim.d/vimrc.fzf
+if filereadable(expand("~/.config/vim.d/vimrc.fzf"))
+  source ~/.config/vim.d/vimrc.fzf
 endif
 
-if filereadable(expand("~/.vim.d/vimrc.nerdtree"))
-  source ~/.vim.d/vimrc.nerdtree
+if filereadable(expand("~/.config/vim.d/vimrc.nerdtree"))
+  source ~/.config/vim.d/vimrc.nerdtree
 endif
 
-if filereadable(expand("~/.vim.d/vimrc.airline"))
-  source ~/.vim.d/vimrc.airline
+if filereadable(expand("~/.config/vim.d/vimrc.airline"))
+  source ~/.config/vim.d/vimrc.airline
 endif
 
-if filereadable(expand("~/.vim.d/vimrc.keys"))
-  source ~/.vim.d/vimrc.keys
+if filereadable(expand("~/.config/vim.d/vimrc.keys"))
+  source ~/.config/vim.d/vimrc.keys
 endif
 
-"if filereadable(expand("~/.vim.d/vimrc.noarrowkeys"))
-"  source ~/.vim.d/vimrc.noarrowkeys
+"if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
+"  source ~/.config/vim.d/vimrc.noarrowkeys
 "endif
 
 if filereadable(expand("~/.vimrc.local"))
