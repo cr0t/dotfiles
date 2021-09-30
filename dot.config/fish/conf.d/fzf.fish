@@ -7,8 +7,8 @@ set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
 # a bit of styling
 #set -g fzf_preview_command 'file {}' # prints name and type of selected file
-set -g fzf_preview_command 'bat --style numbers --color always --line-range :256 {}'
-set -gx FZF_DEFAULT_OPTS "--height 50% --layout reverse --border --inline-info --preview '$fzf_preview_command'"
+set -g fzf_preview_command 'bat --style numbers,changes --color always --line-range :256 {}'
+set -gx FZF_DEFAULT_OPTS "--height 70% --layout reverse --border --inline-info --preview '$fzf_preview_command'"
 
 function fzfpreview --description='Shortcut to run fzf with --preview option params'
     fzf --preview "$fzf_preview_command"

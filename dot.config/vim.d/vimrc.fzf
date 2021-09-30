@@ -1,3 +1,7 @@
 " fzf: switch by `\ p`, search (grep) by `\ f`
 nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>f :Rg<CR>
+
+" exclude filenames from searchable content (delimiter and nth options that we
+" pass to `fzf` command to filter `rg` output)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
