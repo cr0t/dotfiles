@@ -26,6 +26,9 @@ nnoremap <silent> <C-l> <C-w>l
 " show/hide invisible characters (TAB, new line, etc.)
 nnoremap <silent> <leader>l :set list!<CR>
 
+" hide search highlight
+nnoremap <silent> <leader>n :nohlsearch<CR>
+
 " copy current filename into clipboard
 " relative path  (src/foo.txt)
 nnoremap <leader>cf :let @+ = expand("%")<CR>
