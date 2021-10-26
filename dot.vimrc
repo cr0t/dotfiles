@@ -99,6 +99,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+if filereadable(expand("~/.config/vim.d/vimrc.ftdetect"))
+  source ~/.config/vim.d/vimrc.ftdetect
+endif
+
 if filereadable(expand("~/.config/vim.d/vimrc.bundles"))
   source ~/.config/vim.d/vimrc.bundles
 endif

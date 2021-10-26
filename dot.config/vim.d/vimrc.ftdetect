@@ -1,0 +1,3 @@
+" For more documentation see http://vimdoc.sourceforge.net/htmldoc/filetype.html
+" or simply run `:h ftdetect` in your Vim
+au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
