@@ -41,7 +41,7 @@ set splitright
 
 " support mouse and macOS system clipboard
 set mouse=a
-set ttymouse=xterm2 " works better than default, at least in iTerm2
+"set ttymouse=xterm2 " works better than default, at least in iTerm2
 set clipboard=unnamed
 
 " improve ESC waiting time (open/close plugins or change modes blazing fast!)
