@@ -7,7 +7,7 @@ if ! command -v brew &> /dev/null; then
 fi
 
 UTILITIES=(ack asdf bat dust fd fzf gping htop mtr ripgrep tree)
-PACKAGES=(ansible exiftool fish ffmpeg git git-lfs imagemagick rbenv-gemset tmux)
+PACKAGES=(ansible exiftool fish ffmpeg git git-lfs imagemagick rbenv-gemset tmux neovim)
 
 _brew_install() {
   while (($#)); do

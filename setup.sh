@@ -11,6 +11,8 @@ VIM_FROM="$REPO_DIR/dot.config/vim.d"
 VIM_TO="$HOME/.config/vim.d"
 VIM_COC_FROM="$REPO_DIR/dot.config/vim.d/coc-settings.json"
 VIM_COC_TO="$HOME/.vim/coc-settings.json"
+NEOVIM_FROM="$REPO_DIR/dot.config/nvim"
+NEOVIM_TO="$HOME/.config/nvim"
 TMUX_FROM="$REPO_DIR/dot.config/tmux.d"
 TMUX_TO="$HOME/.config/tmux.d"
 FISH_FROM="$REPO_DIR/dot.config/fish/conf.d"
@@ -95,6 +97,7 @@ function _create_links {
   mkdir -p ~/.config/fish
   mkdir -p ~/.vim
 
+  _link $NEOVIM_FROM $NEOVIM_TO
   _link $VIM_FROM $VIM_TO
   _link $VIM_COC_FROM $VIM_COC_TO
   _link $TMUX_FROM $TMUX_TO
@@ -122,6 +125,7 @@ function _remove_links {
   _unlink $TMUX_TO
   _unlink $VIM_COC_TO
   _unlink $VIM_TO
+  _unlink $NEOVIM_TO
 }
 
 ###
