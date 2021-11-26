@@ -30,12 +30,24 @@ $ brew install asdf
 
 ## Setup `.ssh`
 
-Don't forget to set up the `~/.ssh` folder. Here is an example of `~/.ssh/config` file:
+Don't forget to create the `~/.ssh` folder and set proper permissions:
+
+```console
+$ chmod 700 ~/.ssh
+$ chmod -R go= ~/.ssh
+$ chmod -w ~/.ssh/id_rsa*
+```
+
+Here is an example of `~/.ssh/config` file:
 
 ```
+Host *
+  ForwardAgent Yes # Be careful! It will forward to all the hosts, you maybe want to avoid this
+  AddKeysToAgent Yes
+  IdentityFile ~/.ssh/id_rsa
+
 Host example.com
-  User hoster
-  ForwardAgent yes
+  User admin
   ServerAliveInterval 300
   ServerAliveCountMax 2
 
