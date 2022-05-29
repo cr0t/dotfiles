@@ -99,17 +99,37 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" filetype detection rules
 if filereadable(expand("~/.config/vim.d/vimrc.ftdetect"))
   source ~/.config/vim.d/vimrc.ftdetect
 endif
 
+" list of plugins to be installed
 if filereadable(expand("~/.config/vim.d/vimrc.bundles"))
   source ~/.config/vim.d/vimrc.bundles
 endif
 
+" list of various snippets
 if filereadable(expand("~/.config/vim.d/vimrc.snippets"))
   source ~/.config/vim.d/vimrc.snippets
 endif
+
+" keyboard shortcuts and settings
+if filereadable(expand("~/.config/vim.d/vimrc.keys"))
+  source ~/.config/vim.d/vimrc.keys
+endif
+
+" hardcore mode (without arrow keys available – to learn hjkl)
+"if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
+"  source ~/.config/vim.d/vimrc.noarrowkeys
+"endif
+
+" any overrides specific to the machine
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+" below are configuration file for the plugins
 
 if filereadable(expand("~/.config/vim.d/vimrc.fzf"))
   source ~/.config/vim.d/vimrc.fzf
@@ -125,16 +145,4 @@ endif
 
 if filereadable(expand("~/.config/vim.d/vimrc.coc"))
   source ~/.config/vim.d/vimrc.coc
-endif
-
-if filereadable(expand("~/.config/vim.d/vimrc.keys"))
-  source ~/.config/vim.d/vimrc.keys
-endif
-
-"if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
-"  source ~/.config/vim.d/vimrc.noarrowkeys
-"endif
-
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
 endif
