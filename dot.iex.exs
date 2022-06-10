@@ -9,7 +9,7 @@
 # # ...
 # end
 
-defmodule IExHelpers do
+defmodule H do
   @tips_n_tricks [
     ":observer.start() - a graphical tool for observing the characteristics of Erlang systems",
     "runtime_info <:memory|:applications|...> - prints VM/runtime information",
@@ -20,9 +20,7 @@ defmodule IExHelpers do
     print_bright("--- Tips & Tricks:")
 
     @tips_n_tricks
-    |> Enum.map(&print_bright/1)
-
-    IO.puts("---")
+    |> Enum.map(&IO.puts/1)
   end
 
   def print_bright(text) do
@@ -38,6 +36,11 @@ defmodule IExHelpers do
     |> Process.info()
     |> Keyword.get(:message_queue_len)
   end
+
+  def is_app_started?(app) do
+    Application.started_applications()
+    |> Enum.any?(&(elem(&1, 0) == app))
+  end
 end
 
 # First time I've learned about custom .iex.exs here
@@ -51,15 +54,14 @@ end
 Application.put_env(:elixir, :ansi_enabled, true)
 
 # Letting people know what iex.exs they are using
-IExHelpers.print_tips_n_tricks()
-IExHelpers.print_bright("Using global .iex.exs (located in ~/.iex.exs)")
+H.print_tips_n_tricks()
 
 inspect_limit = 5_000
 history_size = 100
 
 prefix = IO.ANSI.green() <> "%prefix" <> IO.ANSI.reset()
 counter = IO.ANSI.green() <> "-%node-(%counter)" <> IO.ANSI.reset()
-info = IO.ANSI.light_blue() <> "✉ #{IExHelpers.queue_length()}" <> IO.ANSI.reset()
+info = IO.ANSI.light_blue() <> "✉ #{H.queue_length()}" <> IO.ANSI.reset()
 last = IO.ANSI.yellow() <> "➤" <> IO.ANSI.reset()
 
 alive =
@@ -72,78 +74,62 @@ alive =
 default_prompt = prefix <> counter <> " | " <> info <> " | " <> last
 alive_prompt = prefix <> counter <> " | " <> info <> " | " <> alive <> last
 
-eval_result = [:green, :bright]
-eval_error = [:red, :bright]
-eval_info = [:blue, :bright]
+###
+## IEx Settings
+###
 
-# Configuring IEx
 IEx.configure(
   inspect: [limit: inspect_limit],
   history_size: history_size,
   colors: [
-    eval_result: eval_result,
-    eval_error: eval_error,
-    eval_info: eval_info
+    eval_result: [:green, :bright],
+    eval_error: [:red, :bright],
+    eval_info: [:blue, :bright]
   ],
   default_prompt: default_prompt,
   alive_prompt: alive_prompt
 )
 
-# Phoenix Support
-import_if_available(Plug.Conn)
-import_if_available(Phoenix.HTML)
+###
+## Phoenix & Ecto Helpers
+###
 
-phoenix_app =
-  :application.info()
-  |> Keyword.get(:running)
-  |> Enum.reject(fn {_x, y} ->
-    y == :undefined
-  end)
-  |> Enum.find(fn {x, _y} ->
-    x |> Atom.to_string() |> String.match?(~r{_web})
-  end)
+H.print_bright("--- Phoenix & Ecto:")
 
-# Check if Phoenix app is found
-case phoenix_app do
-  nil ->
-    IExHelpers.print_bright("No Phoenix app found")
+phoenix_started? = H.is_app_started?(:phoenix)
+ecto_started? = H.is_app_started?(:ecto)
 
-  {app, _pid} ->
-    IExHelpers.print_bright("Phoenix app found: #{app}")
+phoenix_info =
+  if phoenix_started? do
+    IO.ANSI.green() <> "running" <> IO.ANSI.reset()
+  else
+    IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
+  end
 
-    ecto_app =
-      app
-      |> Atom.to_string()
-      |> (&Regex.split(~r{_web}, &1)).()
+IO.puts("Phoenix app: #{phoenix_info}")
+
+ecto_info =
+  if ecto_started? do
+    IO.ANSI.green() <> "running" <> IO.ANSI.reset()
+  else
+    IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
+  end
+
+repo_info =
+  if ecto_started? do
+    repo =
+      Mix.Project.get().project()[:app]
+      |> Application.get_env(:ecto_repos)
       |> Enum.at(0)
-      |> String.to_atom()
 
-    ecto_exists =
-      :application.info()
-      |> Keyword.get(:running)
-      |> Enum.reject(fn {_x, y} ->
-        y == :undefined
-      end)
-      |> Enum.map(fn {x, _y} -> x end)
-      |> Enum.member?(ecto_app)
+    IO.ANSI.faint() <> "(`alias #{repo}, as: Repo`)" <> IO.ANSI.reset()
+  else
+    ""
+  end
 
-    # Check if Ecto app exists or running
-    case ecto_exists do
-      false ->
-        IExHelpers.print_bright("Ecto app #{ecto_app} doesn't exist or isn't running")
-
-      true ->
-        IExHelpers.print_bright("Ecto app found: #{ecto_app}")
-
-        # Ecto Support
-        import_if_available(Ecto.Query)
-        import_if_available(Ecto.Changeset)
-
-        # Alias Repo
-        repo = ecto_app |> Application.get_env(:ecto_repos) |> Enum.at(0)
-
-        quote do
-          alias unquote(repo), as: Repo
-        end
-    end
+if ecto_started? do
+  import_if_available(Ecto.Query)
+  import_if_available(Ecto.Changeset)
 end
+
+IO.puts("Ecto app: #{ecto_info} #{repo_info}")
