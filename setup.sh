@@ -19,6 +19,8 @@ FISH_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_TO="$HOME/.config/fish/conf.d"
 KITTY_FROM="$REPO_DIR/dot.config/kitty"
 KITTY_TO="$HOME/.config/kitty"
+ALACRITTY_FROM="$REPO_DIR/dot.config/alacritty"
+ALACRITTY_TO="$HOME/.config/alacritty"
 
 # Colors
 RED='\033[0;31m'
@@ -103,6 +105,7 @@ function _create_links {
   _link $TMUX_FROM $TMUX_TO
   _link $FISH_FROM $FISH_TO
   _link $KITTY_FROM $KITTY_TO
+  _link $ALACRITTY_FROM $ALACRITTY_TO
 
   _install_vim_plug
 
@@ -120,6 +123,7 @@ function _remove_links {
     fi
   done
 
+  _unlink $ALACRITTY_TO
   _unlink $KITTY_TO
   _unlink $FISH_TO
   _unlink $TMUX_TO
