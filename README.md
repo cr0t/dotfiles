@@ -92,7 +92,17 @@ For example, for Elixir we need to do next. Inside `vim` session we need to run
 `:CocInstall coc-elixir` command. As well, as we might need to download and unpack
 latest ElixirLS binaries.
 
-Read more here: https://github.com/elixir-lsp/coc-elixir#vim-plug.
+Read more here: https://github.com/elixir-lsp/coc-elixir#vim-plug. Or follow
+these instructions:
+
+1. Find latest release here https://github.com/elixir-lsp/elixir-ls/releases
+2. Download zip-file with the Elixir version you want to use (1.13, for example)
+3. If you alread ran `:CocInstall coc-elixir` command, then it created needed
+   folder, and we can run something like this:
+
+   ```console
+   unzip elixir-ls-1.13.zip -d ~/.config/coc/extensions/node_modules/coc-elixir/els-release
+   ```
 
 ## How to use [tmux plugins](https://github.com/tmux-plugins)
 
