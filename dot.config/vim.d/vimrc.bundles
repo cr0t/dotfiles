@@ -6,7 +6,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "" Languages
-Plug 'elixir-lang/vim-elixir', {'for': ['elixir', 'eelixir']}
+Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'ts', 'typescriptreact', 'tsx']}
 Plug 'peitalin/vim-jsx-typescript', {'for': ['typescriptreact', 'tsx']}
