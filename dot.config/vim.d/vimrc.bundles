@@ -23,4 +23,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 
+"" Colorshemes
+Plug 'rebelot/kanagawa.nvim'
+
 call plug#end()
