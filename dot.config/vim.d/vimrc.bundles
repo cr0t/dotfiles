@@ -26,4 +26,7 @@ Plug 'tpope/vim-surround'
 "" Colorshemes
 Plug 'rebelot/kanagawa.nvim'
 
+"" Icons (always leave it as the very last one)
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
