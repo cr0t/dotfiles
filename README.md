@@ -124,7 +124,13 @@ Please install `tpm` before you can use tmux plugins:
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-## Copy and update `.gitconfig.local`
+## Extra
+
+### Vale spellchecker
+
+Download and install `vale`'s configured styles with `vale sync` command. Run it from home directory after linking all the configuration files.
+
+### Copy and update `.gitconfig.local`
 
 After setting up these files, you'll see `.gitconfig.local.example` one that is
 created in the home directory. You need to check what it contains and update if
