@@ -7,6 +7,17 @@ let g:coc_disable_startup_warning = 1
 " auto-install and use TypeScript
 let g:coc_global_extensions = ['coc-elixir', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css']
 
+" use ENTER (CR) to confirm completion
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+
 " show diagnostics if exists, or documentation on 'hover'
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
