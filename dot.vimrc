@@ -8,8 +8,8 @@
 set encoding=utf-8
 
 " post-modernism
-set nocompatible    " do not pretend that vim is vi
-"set colorcolumn=120 " something modern again
+set nocompatible " do not pretend that vim is vi
+""set colorcolumn=120 " something modern again
 
 " highlighting
 syntax on " switch syntax highlighting on
@@ -83,8 +83,8 @@ set expandtab     " replace TAB with spaces
 set nojoinspaces
 
 " highlight current line and current column
-"set cursorline
-"set cursorcolumn
+""set cursorline
+""set cursorcolumn
 
 " invisible characters (TAB, new line, etc.)
 set listchars=tab:▸\ ,eol:¬ " use the same symbols as TextMate for tabstops and EOLs
@@ -125,9 +125,9 @@ if filereadable(expand("~/.config/vim.d/vimrc.keys"))
 endif
 
 " hardcore mode (without arrow keys available – to learn hjkl)
-"if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
-"  source ~/.config/vim.d/vimrc.noarrowkeys
-"endif
+""if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
+""  source ~/.config/vim.d/vimrc.noarrowkeys
+""endif
 
 " any overrides specific to the machine
 if filereadable(expand("~/.vimrc.local"))

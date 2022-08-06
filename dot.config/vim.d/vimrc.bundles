@@ -1,11 +1,11 @@
 call plug#begin('~/.vim/bundle')
 
-"" File tree and fuzzy search
+" File tree and fuzzy search
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"" Languages
+" Languages
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'ts', 'typescriptreact', 'tsx']}
@@ -13,8 +13,7 @@ Plug 'peitalin/vim-jsx-typescript', {'for': ['typescriptreact', 'tsx']}
 Plug 'dag/vim-fish'
 Plug 'vim-ruby/vim-ruby'
 
-"" Other
-Plug 'junegunn/vim-peekaboo'                    " simplifies work with :registers
+" Other
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -27,10 +26,10 @@ Plug 'junegunn/vim-peekaboo'
 " adds :TrailerTrim command (+some extra)
 Plug 'csexton/trailertrash.vim'
 
-"" Colorshemes
+" Colorshemes
 Plug 'rebelot/kanagawa.nvim'
 
-"" Icons (always leave it as the very last one)
+" Icons (always leave it as the very last one)
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
