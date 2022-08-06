@@ -12,10 +12,15 @@ set nocompatible    " do not pretend that vim is vi
 "set colorcolumn=120 " something modern again
 
 " highlighting
-syntax on                                       " switch syntax highlighting on
-set hlsearch                                    " search highlighting on
-highlight ExtraWhitespace ctermbg=red guibg=red " trailing whitespace highlighting
-match ExtraWhitespace /\s\+$/                   " (https://vim.fandom.com/wiki/Highlight_unwanted_spaces)
+syntax on " switch syntax highlighting on
+set hlsearch " search highlighting on
+
+" traling whitespace (non-plugin approach)
+""highlight ExtraWhitespace ctermbg=red guibg=red " trailing whitespace highlighting
+""match ExtraWhitespace /\s\+$/                   " (https://vim.fandom.com/wiki/Highlight_unwanted_spaces)
+
+" csexton/trailertrash.vim plugin settings (it needs to be installed!)
+highlight UnwantedTrailerTrash guibg=gray ctermbg=gray
 
 " autoread file modifications
 set autoread

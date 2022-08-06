@@ -22,6 +22,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+" simplifies work with :registers (type " to see the sidebar)
+Plug 'junegunn/vim-peekaboo'
+" adds :TrailerTrim command (+some extra)
+Plug 'csexton/trailertrash.vim'
 
 "" Colorshemes
 Plug 'rebelot/kanagawa.nvim'
