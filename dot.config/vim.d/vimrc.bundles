@@ -21,6 +21,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+" 'auto-mksession' (use :Obsess command to start recording session file)
+Plug 'tpope/vim-obsession'
 " simplifies work with :registers (type " to see the sidebar)
 Plug 'junegunn/vim-peekaboo'
 " adds :TrailerTrim command (+some extra)
