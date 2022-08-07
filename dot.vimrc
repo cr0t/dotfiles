@@ -8,7 +8,7 @@
 set encoding=utf-8
 
 " post-modernism
-set nocompatible " do not pretend that vim is vi
+""set nocompatible " do not pretend that vim is vi, default since Vim 8
 ""set colorcolumn=120 " something modern again
 
 " highlighting
@@ -26,7 +26,7 @@ highlight UnwantedTrailerTrash guibg=gray ctermbg=gray
 set autoread
 
 " enable file type detection and do language-dependent indenting.
-filetype plugin indent on
+""filetype plugin indent on " default since Vim 8
 
 " search down into folders (for `:find` ex command, for example)
 set path+=**
