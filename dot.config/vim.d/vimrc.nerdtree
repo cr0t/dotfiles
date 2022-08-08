@@ -9,5 +9,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " see more about iTerm CMD mappings in dot.tmux.iterm comments
 nnoremap <C-b> :NERDTreeToggle<CR>
 
-" reveal or show current file in NERDTree window
+" reveal or show current file in NERDTree window (plus, disable C-f when focus
+" in NERDTree window itself)
 nnoremap <C-f> :NERDTreeFind<CR>
+autocmd FileType nerdtree nnoremap <buffer> <C-f> <nop>
