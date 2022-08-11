@@ -38,3 +38,7 @@ nnoremap <leader>cF :let @+ = expand("%:p")<CR>
 nnoremap <leader>ct :let @+ = expand("%:t")<CR>
 " directory name (/something/src)
 nnoremap <leader>ch :let @+ = expand("%:p:h")<CR>
+
+" useful for moving between long wrapped lines
+:nnoremap k gk
+:nnoremap j gj
