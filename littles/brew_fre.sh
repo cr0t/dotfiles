@@ -6,7 +6,7 @@ if ! command -v brew &> /dev/null; then
   exit 1
 fi
 
-UTILITIES=(ack asdf bat dust fd fzf gping htop mtr ripgrep tree)
+UTILITIES=(ack asdf bat dust fd fzf gping htop mtr ripgrep tree wordnet)
 PACKAGES=(ansible exiftool fish ffmpeg git git-lfs imagemagick rbenv-gemset tmux neovim)
 
 _brew_install() {

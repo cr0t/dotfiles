@@ -27,6 +27,8 @@ Plug 'tpope/vim-obsession'
 Plug 'junegunn/vim-peekaboo'
 " adds :TrailerTrim command (+some extra)
 Plug 'csexton/trailertrash.vim'
+" dictionary completion powered by fzf and Wordnet (Princeton University)
+Plug 'Avi-D-coder/fzf-wordnet.vim'
 
 " Colorshemes
 Plug 'rebelot/kanagawa.nvim'

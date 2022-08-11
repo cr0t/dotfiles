@@ -110,8 +110,8 @@ if filereadable(expand("~/.config/vim.d/vimrc.ftdetect"))
 endif
 
 " list of plugins to be installed
-if filereadable(expand("~/.config/vim.d/vimrc.bundles"))
-  source ~/.config/vim.d/vimrc.bundles
+if filereadable(expand("~/.config/vim.d/vimrc.plugins"))
+  source ~/.config/vim.d/vimrc.plugins
 endif
 
 " list of various snippets
