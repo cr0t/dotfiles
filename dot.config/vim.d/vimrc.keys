@@ -40,5 +40,5 @@ nnoremap <leader>ct :let @+ = expand("%:t")<CR>
 nnoremap <leader>ch :let @+ = expand("%:p:h")<CR>
 
 " useful for moving between long wrapped lines
-:nnoremap k gk
-:nnoremap j gj
+nnoremap k gk
+nnoremap j gj
