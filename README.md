@@ -15,10 +15,10 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
-### Brew in apps and utilities
+### Brew in Apps and Utilities
 
-In case of fresh machine installation, consider to run `brew bundle` command in
-the ~/.dotfiles directory to install utilities and command line apps.
+In case of fresh machine installation, consider to run `brew bundle --no-lock`
+command in the ~/.dotfiles directory to install utilities and command line apps.
 
 See [`Brewfile`](Brewfile) for the list of apps to install.
 
@@ -32,7 +32,7 @@ In order to leverage full power of file type icons in Vim/Neovim, we need to ins
 2. At the bottom of the page (in the 'Assets' section) find and download archives with the fonts you're interested. In my case, I use Meslo and rarely JetBrains Mono.
 3. Unpack and install the fonts you need (I prefer MesloLGS from the all Meslo variety of the fonts).
 
-### How to use [vim-plug](https://github.com/junegunn/vim-plug)
+### How to Use [vim-plug](https://github.com/junegunn/vim-plug)
 
 Please, remember to run `:PlugInstall` command when you open your vim–to ensure
 that all plugins are installed and up to date.
@@ -40,12 +40,12 @@ that all plugins are installed and up to date.
 Alternatively, you can run this command from the shell directly:
 
 ```console
-vim -c PlugInstall -c qall
+vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall
 ```
 
 > To update plugins, you can run `vim -c PlugUpgrade -c PlugUpdate -c qall` from time to time.
 
-### `coc.nvim` notes
+### `coc.nvim` Notes
 
 After we install vim plugins, we might need to install coc-engines we need.
 
@@ -110,7 +110,7 @@ By default we set up `$PATH` to look into `~/.local/bin` directory too. If you n
 some scripts available only on some particular machine (like temp scripts for your current
 projects) which you do not want to commit to this repo, put these scripts there.
 
-## How to use [tmux plugins](https://github.com/tmux-plugins)
+## How to Use [tmux plugins](https://github.com/tmux-plugins)
 
 Please install `tpm` before you can use tmux plugins:
 
@@ -120,11 +120,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Extra
 
-### Vale spellchecker
+### Vale Spellchecker
 
 Download and install `vale`'s configured styles with `vale sync` command. Run it from home directory after linking all the configuration files.
 
-### Copy and update `.gitconfig.local`
+### Copy and Update `.gitconfig.local`
 
 After setting up these files, you'll see `.gitconfig.local.example` one that is
 created in the home directory. You need to check what it contains and update if
