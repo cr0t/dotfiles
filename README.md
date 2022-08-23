@@ -17,16 +17,10 @@ Enjoy!
 
 ### Brew in apps and utilities
 
-In case of fresh machine installation, consider to run `brew_fre.sh` little script that
-will install some of basic apps.
+In case of fresh machine installation, consider to run `brew bundle` command in
+the ~/.dotfiles directory to install utilities and command line apps.
 
-### Install `asdf` runtime versions control utility
-
-For macOS only:
-
-```console
-brew install asdf
-```
+See [`Brewfile`](Brewfile) for the list of apps to install.
 
 ## Neovim/Vim
 

@@ -109,7 +109,7 @@ function _create_links {
 
   _install_vim_plug
 
-  echo && _echo_warning "NOTE: Consider to run brew_fre.sh if it's a fresh macOS installation!"
+  echo && _echo_warning "NOTE: Consider to run `brew bundle` if it's a fresh macOS installation!"
 }
 
 # 1. Removes links from regular dot.* files
