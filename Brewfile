@@ -14,6 +14,7 @@ brew "wordnet"
 
 # Bigger applications
 brew "ansible"
+brew "exercism"
 brew "exiftool"
 brew "fish"
 brew "ffmpeg"
