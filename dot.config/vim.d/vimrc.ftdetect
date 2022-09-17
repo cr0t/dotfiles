@@ -7,4 +7,5 @@ au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 
 " Enable support for syntax highlighting inside Markdown code blocks, see more
 " https://vimtricks.com/p/highlight-syntax-inside-markdown/
-let g:markdown_fenced_languages = ['html', 'css', 'javascript', 'elixir', 'ruby']
+let g:markdown_fenced_languages = ['xml', 'html', 'css', 'sass', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'yaml', 'elixir', 'ruby', 'python', 'bash']
+let g:markdown_minlines = 100
