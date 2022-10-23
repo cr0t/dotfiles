@@ -1,1 +1,5 @@
 Brewfile.lock.json
+
+# Newsboat log/cache files
+/dot.config/newsboat/cache.db
+/dot.config/newsboat/history.cmdline

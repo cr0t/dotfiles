@@ -21,6 +21,8 @@ KITTY_FROM="$REPO_DIR/dot.config/kitty"
 KITTY_TO="$HOME/.config/kitty"
 ALACRITTY_FROM="$REPO_DIR/dot.config/alacritty"
 ALACRITTY_TO="$HOME/.config/alacritty"
+NEWSBOAT_FROM="$REPO_DIR/dot.config/newsboat"
+NEWSBOAT_TO="$HOME/.config/newsboat"
 
 # Colors
 RED='\033[0;31m'
@@ -106,6 +108,7 @@ function _create_links {
   _link $FISH_FROM $FISH_TO
   _link $KITTY_FROM $KITTY_TO
   _link $ALACRITTY_FROM $ALACRITTY_TO
+  _link $NEWSBOAT_FROM $NEWSBOAT_TO
 
   _install_vim_plug
 
@@ -123,6 +126,7 @@ function _remove_links {
     fi
   done
 
+  _unlink $NEWSBOAT_TO
   _unlink $ALACRITTY_TO
   _unlink $KITTY_TO
   _unlink $FISH_TO
