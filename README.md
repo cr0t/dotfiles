@@ -62,8 +62,37 @@ these instructions:
    folder, and we can run something like this:
 
    ```console
-   unzip elixir-ls-1.13.zip -d ~/.config/coc/extensions/node_modules/coc-elixir/els-release
+   unzip elixir-ls-1.13-25.0.zip -d ~/.config/coc/extensions/node_modules/coc-elixir/els-release
    ```
+
+## Configure `asdf`
+
+Create `~/.tool-versions` file with the global languages versions we will use, for example:
+
+```text
+elixir 1.14.1-otp-25
+erlang 25.1.2
+nodejs 16.18.0
+ruby 3.1.2
+```
+
+Then install all the plugins we need:
+
+```console
+asdf plugin add nodejs
+asdf plugin add erlang
+asdf plugin add elixir
+asdf plugin add ruby
+```
+
+...and the languages themselves:
+
+```console
+env KERL_BUILD_DOCS=yes asdf install erlang 25.1.2 # Erlang docs will be available in IEx
+asdf install elixir 1.14.1-otp-25
+asdf install nodejs 16.18.0
+asdf install ruby 3.1.2
+```
 
 ## Setup `.ssh`
 
