@@ -9,7 +9,9 @@ brew "gping"
 brew "htop"
 brew "mtr"
 brew "ripgrep"
+brew "tldr"
 brew "tree"
+brew "vale"
 brew "wordnet"
 
 # Bigger applications
