@@ -133,19 +133,12 @@ install them manually to the bin directory; or make them available in your
 export PATH="$PATH:~/.dotfiles/littles"
 ```
 
-### Local `littles`
-
-By default we set up `$PATH` to look into `~/.local/bin` directory too. If you need to have
-some scripts available only on some particular machine (like temp scripts for your current
-projects) which you do not want to commit to this repo, put these scripts there.
-
-## How to Use [tmux plugins](https://github.com/tmux-plugins)
-
-Please install `tpm` before you can use tmux plugins:
-
-```console
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
+> **Local `littles`**
+>
+> By default we set up `$PATH` to look into `~/.local/bin` directory too. If
+> you need to have some scripts available only on some particular machine (like
+> temp scripts for your current projects) which you do not want to commit to
+> this repo, put these scripts there.
 
 ## Extra
 
@@ -161,4 +154,12 @@ needed.
 
 ```console
 cp ~/.gitconfig.local.example ~/.gitconfig.local
+```
+
+### How to Use [tmux plugins](https://github.com/tmux-plugins)
+
+Please install `tpm` before you can use tmux plugins:
+
+```console
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
