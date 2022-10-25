@@ -1,4 +1,6 @@
-[user]
-  signingkey = F58B770675C6EB55
+[gpg]
+  format = ssh
 [commit]
   gpgsign = true
+[user]
+  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8tVQtsSX0Y8EyqQuzjW8WYHHWCBzZeS7d6HoW93B21RfTqRXmMKaDrWa1SdgUmbUAcm4PqaZ91BxbKmCQOpHVN8Ybm5EPWGCM9osbuKpg15DLdBKU2/dq2PjRbYGpdsPgCH+aLgUD9uULparwRF6ZcKfuUCYkn877dMrz4t4IRhDuDsB+uPnw7uxOkFplun0RAxkUlvJbe9i1bJVNKTgcbdJWCOIPAP5qC1pnVrZM6L062PxpOldCHGykSqa62BuF0h27A6DKKOR9P7jcOzV2mM/58kq9oj7YmLuDtocSLAi6Tn15kcIF/njzcesuk/FgodpeUTSwCdUybev85zgZ
