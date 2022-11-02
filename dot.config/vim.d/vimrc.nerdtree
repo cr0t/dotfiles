@@ -14,5 +14,10 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 autocmd FileType nerdtree nnoremap <buffer> <C-f> <nop>
 
+" configuration
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeWinSize=32
+
 " workaround for the issue https://github.com/preservim/nerdtree/issues/1321
-let g:NERDTreeMinimalMenu=1
+let NERDTreeMinimalMenu=1
