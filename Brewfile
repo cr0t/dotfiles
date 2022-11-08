@@ -27,3 +27,10 @@ brew "neovim"
 brew "newsboat"
 brew "rbenv-gemset"
 brew "tmux"
+
+# Nerves (https://www.nerves-project.org/) utilities
+brew "coreutils"
+brew "fwup"
+brew "pkg-config"
+brew "squashfs"
+brew "xz"
