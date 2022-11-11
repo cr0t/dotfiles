@@ -13,6 +13,7 @@ brew "ripgrep"
 brew "tldr"
 brew "tree"
 brew "vale"
+brew "wakeonlan"
 brew "wordnet"
 
 # Bigger applications
