@@ -12,6 +12,7 @@ Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'ts', 'typescriptreact
 Plug 'peitalin/vim-jsx-typescript', {'for': ['typescriptreact', 'tsx']}
 Plug 'dag/vim-fish'
 Plug 'vim-ruby/vim-ruby'
+Plug 'hashivim/vim-terraform'
 
 " Other
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
