@@ -13,6 +13,7 @@ Plug 'peitalin/vim-jsx-typescript', {'for': ['typescriptreact', 'tsx']}
 Plug 'dag/vim-fish'
 Plug 'vim-ruby/vim-ruby'
 Plug 'hashivim/vim-terraform'
+Plug 'neovimhaskell/haskell-vim'
 
 " Other
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
