@@ -42,3 +42,8 @@ nnoremap <leader>ch :let @+ = expand("%:p:h")<CR>
 " useful for moving between long wrapped lines
 nnoremap k gk
 nnoremap j gj
+
+" https://vimtricks.com/p/reselect-pasted-text/
+" https://vim.fandom.com/wiki/Using_marks
+" reselect pasted text (pairs with gv that reselects last visual sel.)
+nnoremap gp `[v`]
