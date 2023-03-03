@@ -47,3 +47,9 @@ nnoremap j gj
 " https://vim.fandom.com/wiki/Using_marks
 " reselect pasted text (pairs with gv that reselects last visual sel.)
 nnoremap gp `[v`]
+
+" disable annoying SHIFT+arrow keys screen height selection (and jumps)
+" need this because I often too fast in moving up or down when selecting
+" lines of text
+vnoremap <S-Down> j
+vnoremap <S-Up> k
