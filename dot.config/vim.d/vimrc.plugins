@@ -34,6 +34,7 @@ Plug 'Avi-D-coder/fzf-wordnet.vim'
 
 " Colorshemes
 Plug 'rebelot/kanagawa.nvim'
+Plug 'EdenEast/nightfox.nvim'
 
 " Icons (always leave it as the very last one)
 Plug 'ryanoasis/vim-devicons'
