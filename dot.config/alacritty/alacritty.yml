@@ -15,5 +15,24 @@ font:
   offset:
     x: 1
 
+# See the similar section in kitty.conf
+#
+# To make our shortcuts tmux-compatible, we have to send Prefix first.
+# Prefix in our tmux configuration is CTRL+a; after that we send the
+# actual keycode we need.
+#
+# For example, \x01\x31 means that terminal will send CTRL+A and then 1:
+#
+# \x01 — CTRL+a
+# \x31 — character "1" in ASCII
+#
+# tmux: switch between first five windows via CTRL+1..CTRL+5
+key_bindings:
+  - { key: Key1, mods: Control, chars: "\x01\x31" }
+  - { key: Key2, mods: Control, chars: "\x01\x32" }
+  - { key: Key3, mods: Control, chars: "\x01\x33" }
+  - { key: Key4, mods: Control, chars: "\x01\x34" }
+  - { key: Key5, mods: Control, chars: "\x01\x35" }
+
 import:
   - ~/.config/alacritty/themes/nightfox.yml
