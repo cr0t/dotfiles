@@ -12,6 +12,8 @@ font:
     #family: JetBrainsMono Nerd Font
     family: MesloLGS Nerd Font
   size: 13
+  offset:
+    x: 1
 
 import:
   - ~/.config/alacritty/themes/nightfox.yml
