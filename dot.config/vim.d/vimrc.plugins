@@ -15,6 +15,10 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'hashivim/vim-terraform'
 Plug 'neovimhaskell/haskell-vim'
 
+" https://github.com/nvim-treesitter/nvim-treesitter
+" (also, https://www.jmaguire.tech/posts/treesitter_folding/)
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Other
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
