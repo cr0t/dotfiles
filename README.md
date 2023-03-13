@@ -97,6 +97,19 @@ asdf install nodejs 16.19.0
 asdf install ruby 3.1.2
 ```
 
+### Extra: Neovim as `asdf`'s plugin
+
+Consider to install Neovim via `asdf` plugin.
+
+In Ubuntu, for example, it will allow to install stable version 0.8+ (apt
+version is up to 0.7 at the moment of writing).
+
+```console
+asdf plugin add neovim
+asdf install neovim 0.8.3
+asdf global neovim stable
+```
+
 ## Setup `.ssh`
 
 Don't forget to create the `~/.ssh` folder and set proper permissions:
@@ -105,6 +118,7 @@ Don't forget to create the `~/.ssh` folder and set proper permissions:
 chmod 700 ~/.ssh
 chmod -R go= ~/.ssh
 chmod -w ~/.ssh/id_rsa*
+chmod -w ~/.ssh/id_ed*
 ```
 
 Here is an example of `~/.ssh/config` file:
