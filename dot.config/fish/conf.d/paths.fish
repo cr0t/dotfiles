@@ -9,7 +9,6 @@ set --local paths $lo_sbin $littles $vs_code $escripts $lo_bin
 
 for path in $paths
     if test -d $path
-        # Docs: https://fishshell.com/docs/current/cmds/fish_add_path.html
-        fish_add_path --path $path
+        contains -- $path $PATH; or set -gx PATH $path $PATH
     end
 end
