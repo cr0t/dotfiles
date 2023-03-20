@@ -53,3 +53,11 @@ nnoremap gp `[v`]
 " lines of text
 vnoremap <S-Down> j
 vnoremap <S-Up> k
+
+" map annoying Q/Wq/QA/etc. commands that I often type in too fast
+command! Q q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
