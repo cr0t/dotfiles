@@ -141,10 +141,6 @@ endif
 
 " below are configuration file for the plugins
 
-if filereadable(expand("~/.config/vim.d/vimrc.fzf"))
-  source ~/.config/vim.d/vimrc.fzf
-endif
-
 if filereadable(expand("~/.config/vim.d/vimrc.nerdtree"))
   source ~/.config/vim.d/vimrc.nerdtree
 endif
