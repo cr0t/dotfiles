@@ -16,19 +16,15 @@ Plug 'hashivim/vim-terraform'
 Plug 'neovimhaskell/haskell-vim'
 
 " Other
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'       " 'Git' (:G ...)
+Plug 'tpope/vim-rhubarb'        " 'GitHub' (:GBrowse ...)
+Plug 'tpope/vim-obsession'      " 'Auto :mksession' (:Obsess - start recording, :Obsess! - throw it away)
+Plug 'junegunn/vim-peekaboo'    " 'Easier :registers' (type \" to see the sidebar)
+Plug 'csexton/trailertrash.vim' " 'No to Trailing Spaces!' (:TrailerTrim, plus some extra)
+
+" UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
-" 'auto-mksession' (use :Obsess command to start recording session file)
-Plug 'tpope/vim-obsession'
-" simplifies work with :registers (type " to see the sidebar)
-Plug 'junegunn/vim-peekaboo'
-" adds :TrailerTrim command (+some extra)
-Plug 'csexton/trailertrash.vim'
 
 " Colorshemes
 Plug 'rebelot/kanagawa.nvim'
