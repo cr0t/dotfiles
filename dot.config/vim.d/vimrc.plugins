@@ -1,9 +1,15 @@
 call plug#begin('~/.vim/bundle')
 
+" ...full; complete; entire; absolute; unqualified
+Plug 'nvim-lua/plenary.nvim'
+
 " File tree and fuzzy search
 Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
+
+" IDE-ish
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Languages
 Plug 'elixir-editors/vim-elixir'
