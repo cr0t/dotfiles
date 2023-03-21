@@ -15,10 +15,9 @@ set encoding=utf-8
 syntax on " switch syntax highlighting on
 set hlsearch " search highlighting on
 
-" folding (zc, zo, zf)
-set foldmethod=syntax
-set foldlevelstart=10
-set nofoldenable
+" folding (zc, zo)
+set foldmethod=indent
+set foldlevelstart=12
 
 " traling whitespace (non-plugin approach)
 ""highlight ExtraWhitespace ctermbg=red guibg=red " trailing whitespace highlighting
