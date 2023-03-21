@@ -45,6 +45,18 @@ vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall
 
 > To update plugins, you can run `vim -c PlugUpgrade -c PlugUpdate -c qall` from time to time.
 
+### `nvim-treesitter` Notes
+
+The goal of nvim-treesitter is both to provide a simple and easy way to use the
+interface for tree-sitter in Neovim and to provide some basic functionality such
+as highlighting based on it.
+
+The installation of the languages and configuration is mostly automated, but it
+is important to watch it carefully, as it's not stable yet. Read more information
+[here](https://github.com/nvim-treesitter/nvim-treesitter).
+
+Check [`dot.config/nvim/treesitter.lua`)[dot.config/nvim/treesitter.lua] for details.
+
 ### `coc.nvim` Notes
 
 After we install vim plugins, we might need to install coc-engines we need.
