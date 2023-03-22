@@ -108,46 +108,18 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" filetype detection rules
-if filereadable(expand("~/.config/vim.d/vimrc.ftdetect"))
-  source ~/.config/vim.d/vimrc.ftdetect
-endif
+source ~/.config/vim.d/vimrc.ftdetect    " filetype detection rules
+source ~/.config/vim.d/vimrc.plugins     " list of plugins to be installed
+source ~/.config/vim.d/vimrc.snippets    " list of various snippets
+source ~/.config/vim.d/vimrc.keys        " keyboard shortcuts and settings
+"source ~/.config/vim.d/vimrc.noarrowkeys " hardcore mode (without arrow keys available – to learn hjkl)
 
-" list of plugins to be installed
-if filereadable(expand("~/.config/vim.d/vimrc.plugins"))
-  source ~/.config/vim.d/vimrc.plugins
-endif
-
-" list of various snippets
-if filereadable(expand("~/.config/vim.d/vimrc.snippets"))
-  source ~/.config/vim.d/vimrc.snippets
-endif
-
-" keyboard shortcuts and settings
-if filereadable(expand("~/.config/vim.d/vimrc.keys"))
-  source ~/.config/vim.d/vimrc.keys
-endif
-
-" hardcore mode (without arrow keys available – to learn hjkl)
-""if filereadable(expand("~/.config/vim.d/vimrc.noarrowkeys"))
-""  source ~/.config/vim.d/vimrc.noarrowkeys
-""endif
+" various plugins' configurations
+source ~/.config/vim.d/vimrc.airline
+source ~/.config/vim.d/vimrc.obsession
+source ~/.config/vim.d/vimrc.coc
 
 " any overrides specific to the machine
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
-endif
-
-" below are configuration file for the plugins
-
-if filereadable(expand("~/.config/vim.d/vimrc.airline"))
-  source ~/.config/vim.d/vimrc.airline
-endif
-
-if filereadable(expand("~/.config/vim.d/vimrc.obsession"))
-  source ~/.config/vim.d/vimrc.obsession
-endif
-
-if filereadable(expand("~/.config/vim.d/vimrc.coc"))
-  source ~/.config/vim.d/vimrc.coc
 endif
