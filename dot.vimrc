@@ -140,10 +140,6 @@ endif
 
 " below are configuration file for the plugins
 
-if filereadable(expand("~/.config/vim.d/vimrc.nerdtree"))
-  source ~/.config/vim.d/vimrc.nerdtree
-endif
-
 if filereadable(expand("~/.config/vim.d/vimrc.airline"))
   source ~/.config/vim.d/vimrc.airline
 endif
