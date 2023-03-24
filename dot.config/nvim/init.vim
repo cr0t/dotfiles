@@ -7,6 +7,7 @@ source ~/.config/nvim/nvim-tree.lua
 source ~/.config/nvim/telescope.lua
 source ~/.config/nvim/treesitter.lua
 source ~/.config/nvim/nvim-lspconfig.lua
+source ~/.config/nvim/nvim-cmp.lua
 
 " colorscheme kanagawa
 colorscheme nightfox
