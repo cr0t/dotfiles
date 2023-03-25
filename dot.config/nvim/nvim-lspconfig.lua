@@ -1,6 +1,15 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Show diagnostics warnings automatically in hover window;
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-line-diagnostics-automatically-in-hover-window
+vim.diagnostic.config({ virtual_text = false })
+vim.o.updatetime = 200
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+
+-- Language Servers Specifics
+-- --------------------------
+
 -- See more information about Elixir LS itself (capabilities, settings, etc.) here:
 -- https://github.com/elixir-lsp/elixir-ls/blob/master/apps/language_server/lib/language_server/server.ex
 lspconfig.elixirls.setup {
