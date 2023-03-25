@@ -57,25 +57,26 @@ is important to watch it carefully, as it's not stable yet. Read more informatio
 
 Check [`dot.config/nvim/treesitter.lua`)[dot.config/nvim/treesitter.lua] for details.
 
-### `coc.nvim` Notes
+### `nvim-lsp` Notes
 
-After we install vim plugins, we might need to install coc-engines we need.
+After we have installed Vim's plugins, we need to do some more manual actions
+(I'm too lazy to automate this) to install Language Server Protocols servers of
+the languages we want to have write comfortably in.
 
-For example, for Elixir we need to do next. Inside `vim` session we need to run
-`:CocInstall coc-elixir` command. As well, as we might need to download and unpack
-latest ElixirLS binaries.
+For example, for Elixir we need to download and unpack latest ElixirLS binaries.
+Follow these instructions:
 
-Read more here: https://github.com/elixir-lsp/coc-elixir#vim-plug. Or follow
-these instructions:
-
-1. Find latest release here https://github.com/elixir-lsp/elixir-ls/releases
-2. Download zip-file with the Elixir version you want to use (1.13, for example)
-3. If you already ran `:CocInstall coc-elixir` command, then it created needed
-   folder, and we can run something like this:
+1. Find latest release here https://github.com/elixir-lsp/elixir-ls/releases.
+2. Download zip-file with the Elixir version you want to use (Elixir 1.14 and
+   OTP 25.1, for example).
+3. Create directory and unarchive into it:
 
    ```console
-   unzip elixir-ls-1.14-25.1.zip -d ~/.config/coc/extensions/node_modules/coc-elixir/els-release
+   mkdir -p ~/.local/lsp/elixir-ls
+   unzip elixir-ls-1.14-25.1.zip -d ~/.local/lsp/elixir-ls
    ```
+
+> NOTE: Check the actual path in the `~/.config/nvim/nvim-lspconfig.lua` file.
 
 ## Configure `asdf`
 
@@ -191,4 +192,49 @@ Please install `tpm` before you can use tmux plugins:
 
 ```console
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+### `nvim-lspconfig` ElixirLS Options
+
+As far as I understood (and tested in my setup), we do not have to provide all
+(or even some) the settings to `lspconfig.elixirls.setup`, it only needs a `cmd`
+path, the rest can be used as default. Same about `capabilities` thingy – auto-
+completion plugins work fine without it (as well as diagnostic messages).
+
+Though I want to leave the notes about the settings options I found for ElixirLS
+here, as well as it might be useful in future.
+
+> I noticed that at least `dialyzerEnabled = false` affects if we get warnings
+> or errors about unused variabls or wrong specs in the Vim. By default, this
+> option is set to `true` (which is fine by me).
+
+```lua
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- See more information about Elixir LS itself (capabilities, settings, etc.) here:
+-- https://github.com/elixir-lsp/elixir-ls/blob/master/apps/language_server/lib/language_server/server.ex
+lspconfig.elixirls.setup({
+  cmd = { vim.fn.expand('~/.local/lsp/elixir-ls/language_server.sh') },
+  capabilities = capabilities,
+  settings = {
+    elixirLS = {
+      -- Below is the list of available options (as on 2023.03.25) and their
+      -- default values; they are searchable by the link above:
+      --
+      -- additionalWatchedExtensions = []
+      -- autoBuild = true
+      -- dialyzerEnabled = true,
+      -- dialyzerFormat = 'dialyxir_long'
+      -- dialyzerWarnOpts = []
+      -- enableTestLenses = false
+      -- envVariables = <undefined>
+      -- fetchDeps = false
+      -- mixEnv = 'test'
+      -- mixTarget = <undefined>
+      -- projectDir = <undefined>
+      -- signatureAfterComplete = true
+      -- suggestSpecs = <undefined>
+    }
+  }
+})
 ```
