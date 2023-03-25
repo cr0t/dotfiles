@@ -13,16 +13,24 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true })
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'vsnip' },
-    { name = 'path' },
+    { name = 'nvim_lsp', priority = 8 },
+    { name = 'nvim_lsp_signature_help', priority = 7 },
+    { name = 'vsnip', priority = 6, keyword_length = 4 },
+    { name = 'buffer', priority = 5, keyword_length = 4 },
+    { name = 'path', priority = 4, keyword_length = 4 },
   }),
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol',
+      mode = 'symbol_text',
       maxwidth = 50,
-      ellipsis_char = '…'
+      ellipsis_char = '…',
+      menu = ({
+        nvim_lsp = '[LSP]',
+        nvim_lsp_signature_help = '[LSP]',
+        vsnip = '[VSnip]',
+        buffer = '[Buffer]',
+        path = '[Path]'
+      })
     })
-  }
+  },
 })
