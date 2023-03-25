@@ -117,7 +117,6 @@ source ~/.config/vim.d/vimrc.keys        " keyboard shortcuts and settings
 " various plugins' configurations
 source ~/.config/vim.d/vimrc.airline
 source ~/.config/vim.d/vimrc.obsession
-source ~/.config/vim.d/vimrc.coc
 
 " any overrides specific to the machine
 if filereadable(expand("~/.vimrc.local"))
