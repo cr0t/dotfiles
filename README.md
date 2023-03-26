@@ -172,4 +172,4 @@ export PATH="$PATH:~/.dotfiles/littles"
 
 ## Extra
 
-Check [docs/EXTRA.md] for more notes about these dotfiles.
+Check [`docs/EXTRA.md`](docs/EXTRA.md) for more notes about these dotfiles.
