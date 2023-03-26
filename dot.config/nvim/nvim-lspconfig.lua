@@ -55,5 +55,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --
 -- See docs via `:help lspconfig-all` command
 
+local default_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local elixirls_cmd = vim.fn.expand('~/.local/lsp/elixir-ls/language_server.sh')
-lspconfig.elixirls.setup { cmd = { elixirls_cmd } }
+lspconfig.elixirls.setup {
+  cmd = { elixirls_cmd },
+  capabilities = default_capabilities,
+}
