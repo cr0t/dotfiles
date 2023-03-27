@@ -22,7 +22,7 @@ Please install `tpm` before you can use tmux plugins:
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-### `nvim-lspconfig` ElixirLS Options
+## `nvim-lspconfig` ElixirLS Options
 
 As far as I understood (and tested in my setup), we do not have to provide all
 (or even some) the settings to `lspconfig.elixirls.setup`, it only needs a `cmd`
