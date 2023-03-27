@@ -24,13 +24,20 @@ See [`Brewfile`](Brewfile) for the list of apps to install.
 
 ## Neovim/Vim
 
+Check [Neovim as asdf's plugin](#extra-neovim-as-asdfs-plugin) notes on how to
+install up-to-date version of Neovim in Ubuntu, for example.
+
 ### Nerd Fonts
 
-In order to leverage full power of file type icons in Vim/Neovim, we need to install [specially patched fonts (Nerd Fonts)](https://github.com/ryanoasis/nerd-fonts) into the system. Below are quick instructions for macOS.
+In order to leverage full power of file type icons in Vim/Neovim, we need to
+install [specially patched fonts (Nerd Fonts)](https://github.com/ryanoasis/nerd-fonts)
+into the system. Below are quick instructions for macOS.
 
 1. Go to https://github.com/ryanoasis/nerd-fonts/releases page, find latest one.
-2. At the bottom of the page (in the 'Assets' section) find and download archives with the fonts you're interested. In my case, I use Meslo and rarely JetBrains Mono.
-3. Unpack and install the fonts you need (I prefer MesloLGS from the all Meslo variety of the fonts).
+2. At the bottom of the page (in the 'Assets' section) find and download archives
+   with the fonts you're interested. In my case, I use Meslo and rarely JetBrains Mono.
+3. Unpack and install the fonts you need (I prefer MesloLGS from the all Meslo
+   variety of the fonts).
 
 ### How to Use [vim-plug](https://github.com/junegunn/vim-plug)
 
@@ -43,7 +50,8 @@ Alternatively, you can run this command from the shell directly:
 vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall
 ```
 
-> To update plugins, you can run `vim -c PlugUpgrade -c PlugUpdate -c qall` from time to time.
+> To update plugins, you can run `vim -c PlugUpgrade -c PlugUpdate -c qall` from
+> time to time.
 
 ### `nvim-treesitter` Notes
 
@@ -55,7 +63,7 @@ The installation of the languages and configuration is mostly automated, but it
 is important to watch it carefully, as it's not stable yet. Read more information
 [here](https://github.com/nvim-treesitter/nvim-treesitter).
 
-Check [`dot.config/nvim/treesitter.lua`)[dot.config/nvim/treesitter.lua] for details.
+Check [`dot.config/nvim/treesitter.lua`](dot.config/nvim/treesitter.lua) for details.
 
 ### `nvim-lsp` Notes
 
@@ -80,7 +88,8 @@ Follow these instructions:
 
 ## Configure `asdf`
 
-Create `~/.tool-versions` file with the global languages versions we will use, for example:
+Create `~/.tool-versions` file with the global languages versions we will use,
+for example:
 
 ```text
 elixir 1.14.3-otp-25
@@ -136,11 +145,12 @@ chmod -w ~/.ssh/id_ed*
 
 Here is an example of `~/.ssh/config` file:
 
-```console
+```text
 Host *
-  ForwardAgent Yes # Be careful! It will forward to all the hosts, you maybe want to avoid this
+  UseKeychain yes
+  # ForwardAgent Yes # WARNING: this will forward keys to all the hosts you connect!
   AddKeysToAgent Yes
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
 
 Host example.com
   User admin
