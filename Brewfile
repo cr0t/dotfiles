@@ -10,12 +10,14 @@ brew "gping"
 brew "htop"
 brew "mtr"
 brew "ripgrep"
+brew "socat"
 brew "tldr"
 brew "tree"
 brew "tree-sitter"
 brew "vale"
 brew "wakeonlan"
 brew "wordnet"
+brew "wxwidgets" # for Erlang's :observer.start()
 
 # Bigger applications
 brew "ansible"
@@ -38,3 +40,6 @@ brew "fwup"
 brew "pkg-config"
 brew "squashfs"
 brew "xz"
+
+# Casks
+#cask "xquartz" # for :observer.start() running in Docker
