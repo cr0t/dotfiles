@@ -88,18 +88,7 @@ Follow these instructions:
 
 ## Configure `asdf`
 
-Create `~/.tool-versions` file with the global languages versions we will use,
-for example:
-
-```text
-elixir 1.14.3-otp-25
-erlang 25.2.3
-haskell 9.0.2
-nodejs 16.19.0
-ruby 3.1.2
-```
-
-Then install all the plugins we need:
+Install all the plugins we will need:
 
 ```console
 asdf plugin add erlang
@@ -112,12 +101,25 @@ asdf plugin add ruby
 ...and the languages themselves:
 
 ```console
-env KERL_BUILD_DOCS=yes asdf install erlang 25.2.3 # Erlang docs will be available in IEx
+env KERL_BUILD_DOCS=yes asdf install erlang 25.3 # Erlang docs will be available in IEx
 asdf install elixir 1.14.3-otp-25
 asdf install haskell 9.0.2
-asdf install nodejs 16.19.0
+asdf install nodejs 18.15.0
 asdf install ruby 3.1.2
 ```
+
+Now we can set globally available (for the user, of course) languages versions:
+
+```console
+asdf global erlang 25.3
+asdf global elixir 1.14.3-otp-25
+asdf global haskell 9.0.2
+asdf global nodejs 18.15.0
+asdf global ruby 3.1.2
+```
+
+> `asdf global ...` command adds settings to `~/.tool-versions` file; we can create
+> and update this file manually if we want.
 
 ### Extra: Neovim as `asdf`'s plugin
 
