@@ -15,6 +15,7 @@ if vim.fn.executable("gcc") == 1 then
     },
     auto_install = false, -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     highlight = {
+      additional_vim_regex_highlighting = true,
       enable = true,
       disable = function(lang, buf)
         local max_filesize = 100 * 1024 -- 100 KB
