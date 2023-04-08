@@ -70,11 +70,11 @@ set relativenumber
 " show the cursor position all the time
 set ruler
 
+" don't show the current mode (INSERT/VISUAL/etc.) in the statusline
+set noshowmode
+
 " display incomplete commands
 set showcmd
-
-" always display the status line
-set laststatus=2
 
 " indentation
 set tabstop=2     " set tab width to 2 columns (spaces)
