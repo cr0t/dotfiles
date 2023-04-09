@@ -29,11 +29,14 @@ font:
 #
 # tmux: switch between first five windows via CTRL+1..CTRL+5
 key_bindings:
+  # tmux-ish
   - { key: Key1, mods: Control, chars: "\x01\x31" }
   - { key: Key2, mods: Control, chars: "\x01\x32" }
   - { key: Key3, mods: Control, chars: "\x01\x33" }
   - { key: Key4, mods: Control, chars: "\x01\x34" }
   - { key: Key5, mods: Control, chars: "\x01\x35" }
+  # other-ish
+  - { key: Return, mods: Command, action: ToggleFullscreen }
 
 import:
   - ~/.config/alacritty/themes/nightfox.yml
