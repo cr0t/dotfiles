@@ -4,8 +4,13 @@
 "
 " - https://github.com/evuez/home/blob/master/.vimrc
 " - https://github.com/thoughtbot/dotfiles
+"
+" Great source of options is AstroNvim's options.lua file:
+"
+" - https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/options.lua
 
 set encoding=utf-8
+set fileencoding=utf-8
 
 " post-modernism
 ""set nocompatible " do not pretend that vim is vi, default since Vim 8
@@ -47,11 +52,11 @@ set wildmode=list:longest,list:full
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 set splitbelow
 set splitright
+set splitkeep=screen " (nvim 0.9+ only!) maintain code view when splitting
 
 " support mouse and macOS system clipboard
 set mouse=a
-"set ttymouse=xterm2 " works better than default, at least in iTerm2
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus " cross-platform system-wide clipboard
 
 set timeoutlen=500 ttimeoutlen=0 " improve ESC waiting time (open/close plugins or change modes blazing fast!)
 set updatetime=200 " length of time to wait before triggering the plugin
@@ -82,6 +87,9 @@ set shiftwidth=2  " use 2 columns (spaces) for indentation
 set softtabstop=2 " fine-tuning for inserting/deletion of whitespace (equal it to shiftwidth)
 set shiftround    " round indent to multiple of 'shiftwidth'; applies to > and < commands
 set expandtab     " replace TAB with spaces
+set breakindent   " wrap indent to match line start
+set smartindent   " smarter autoindentation
+set preserveindent " preserve indent structure as much as possible
 
 " one space, not two after '.', '?', and '!' for join command
 set nojoinspaces
