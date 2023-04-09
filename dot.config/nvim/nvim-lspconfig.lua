@@ -6,7 +6,7 @@ local lspconfig = require('lspconfig')
 -- Show diagnostics warnings automatically by hover in a floating window;
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-line-diagnostics-automatically-in-hover-window
 vim.diagnostic.config({ virtual_text = false })
-vim.o.updatetime = 200
+-- vim.o.updatetime = 200 -- moved this to usual ~/.vimrc, but leaving here to remember
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
 -- Mappings

@@ -53,8 +53,8 @@ set mouse=a
 "set ttymouse=xterm2 " works better than default, at least in iTerm2
 set clipboard=unnamed
 
-" improve ESC waiting time (open/close plugins or change modes blazing fast!)
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0 " improve ESC waiting time (open/close plugins or change modes blazing fast!)
+set updatetime=200 " length of time to wait before triggering the plugin
 
 " make backspace behave in a sane manner:
 "
