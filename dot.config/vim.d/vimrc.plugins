@@ -36,6 +36,7 @@ Plug 'tpope/vim-rhubarb'        " 'GitHub' (:GBrowse ...)
 Plug 'tpope/vim-obsession'      " 'Auto :mksession' (:Obsess - start recording, :Obsess! - throw it away)
 Plug 'junegunn/vim-peekaboo'    " 'Easier :registers' (type \" to see the sidebar)
 Plug 'csexton/trailertrash.vim' " 'No to Trailing Spaces!' (:TrailerTrim, plus some extra)
+Plug 'Wansmer/langmapper.nvim'  " Makes Neovim more friendly to non-English input methods
 
 " UI
 Plug 'vim-airline/vim-airline'
