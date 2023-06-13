@@ -10,7 +10,7 @@
 if vim.fn.executable("gcc") == 1 then
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
-      "bash", "elixir", "erlang", "fish", "haskell", "help", "javascript", "lua",
+      "bash", "elixir", "erlang", "fish", "haskell", "javascript", "lua",
       "markdown", "markdown_inline", "ruby", "typescript", "vim",
     },
     auto_install = false, -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
