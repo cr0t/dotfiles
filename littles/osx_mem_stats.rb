@@ -12,33 +12,33 @@ when /-h|--help/
   puts "      -h, --help       Prints this help"
   exit
 when /-p|--purge/
-  if RUBY_PLATFORM =~ /darwin/ # macOS
+  if RUBY_PLATFORM.match?(/darwin/) # macOS
     `sudo purge`
   end
 end
 
-PRC_NAME_CROP_AT=160
+PRC_NAME_CROP_AT = 160
 TOP_COUNT = 20
 MULTI_PROCESS_APPS = [
-  'Google Chrome.app',
-  'Google Chrome Dev.app',
-  'Slack.app',
-  'Visual Studio Code.app',
-  'Dropbox.app',
-  'iTerm.app'
+  "Google Chrome.app",
+  "Google Chrome Dev.app",
+  "Slack.app",
+  "Visual Studio Code.app",
+  "Dropbox.app",
+  "iTerm.app"
 ].freeze
 
 memory_by_process = Hash.new(0)
 processes = `ps aux`
 
 m_bytes = processes.split("\n").reduce(0) { |memo, prc|
-  fields    = prc.split(/\s+/)
+  fields = prc.split(/\s+/)
 
   mem_bytes = fields[5].to_i
-  prc_name  = fields[10...fields.length].join(' ')
+  prc_name = fields[10...fields.length].join(" ")
 
   MULTI_PROCESS_APPS.each do |app_name|
-    prc_name = app_name.gsub('.app', '') if prc_name.include? app_name
+    prc_name = app_name.gsub(".app", "") if prc_name.include? app_name
   end
 
   memory_by_process[prc_name] += mem_bytes
@@ -57,10 +57,10 @@ puts "TOP-#{TOP_COUNT}:"
 top_n_bytes_sum = 0
 memory_by_process.sort_by { |k, value| value }.reverse[0...TOP_COUNT].each { |mem|
   prc_name = mem[0][0...PRC_NAME_CROP_AT]
-  prc_name += '...' if mem[0].length > PRC_NAME_CROP_AT
+  prc_name += "..." if mem[0].length > PRC_NAME_CROP_AT
   m_bytes = mem[1] / 1024.0
-  percent = sprintf('%.2f', (m_bytes / one_percent_from_total_memory))
-  mega_bytes = sprintf('%.1f', m_bytes)
+  percent = sprintf("%.2f", (m_bytes / one_percent_from_total_memory))
+  mega_bytes = sprintf("%.1f", m_bytes)
   puts "#{mega_bytes} #{percent}%\t#{prc_name}"
   top_n_bytes_sum += mem[1]
 }
