@@ -101,20 +101,23 @@ asdf plugin add ruby
 ...and the languages themselves:
 
 ```console
-env KERL_BUILD_DOCS=yes asdf install erlang 25.3 # Erlang docs will be available in IEx
-asdf install elixir 1.14.3-otp-25
-asdf install haskell 9.0.2
-asdf install nodejs 18.15.0
+env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 26.0.2
+asdf install elixir 1.15.2-otp-26
+asdf install haskell 9.6.2
+asdf install nodejs 18.16.1
 asdf install ruby 3.1.2
 ```
+
+> **Note on `env` for Erlang:** these options will build the docs so they will be come available in
+> the IEx sessions.
 
 Now we can set globally available (for the user, of course) languages versions:
 
 ```console
-asdf global erlang 25.3
-asdf global elixir 1.14.3-otp-25
-asdf global haskell 9.0.2
-asdf global nodejs 18.15.0
+asdf global erlang 26.0.2
+asdf global elixir 1.15.2-otp-26
+asdf global haskell 9.6.2
+asdf global nodejs 18.16.1
 asdf global ruby 3.1.2
 ```
 
