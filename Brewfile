@@ -17,6 +17,10 @@ brew "tree-sitter"
 brew "vale"
 brew "wakeonlan"
 brew "wordnet"
+
+# Erlang's stuff
+brew "fop"
+brew "libxslt"
 brew "wxwidgets" # for Erlang's :observer.start()
 
 # Bigger applications
@@ -31,6 +35,7 @@ brew "hashicorp/tap/terraform"
 brew "imagemagick"
 brew "neovim"
 brew "newsboat"
+brew "openssl"
 brew "rbenv-gemset"
 brew "tmux"
 
