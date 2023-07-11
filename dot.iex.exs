@@ -113,11 +113,12 @@ ecto_info =
     IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
   end
 
-repo_info =
-  if ecto_started? do
+ecto_repos = Mix.Project.get().project()[:app] |> Application.get_env(:ecto_repos)
+
+repo_module_name =
+  if ecto_started? and not is_nil(ecto_repos) do
     repo =
-      Mix.Project.get().project()[:app]
-      |> Application.get_env(:ecto_repos)
+      ecto_repos
       |> Enum.at(0)
       |> Atom.to_string()
       |> String.replace(~r/^Elixir\./, "")
@@ -132,7 +133,7 @@ if ecto_started? do
   import_if_available(Ecto.Changeset)
 end
 
-IO.puts("Ecto: #{ecto_info} #{repo_info}")
+IO.puts("Ecto: #{ecto_info} #{repo_module_name}")
 
 # One extra empty line before command line
 IO.puts("")
