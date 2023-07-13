@@ -28,6 +28,12 @@ require('telescope').setup {
     mappings = {
       i = { ["<esc>"] = actions.close } -- press ESC once to close the modal
     },
+    file_ignore_patterns = {
+      "deps",
+      "_build",
+      "heroicons",
+      "node_modules"
+    },
     winblend = 5, -- pseudo-transparency for the modal (0..100)
   },
 }
