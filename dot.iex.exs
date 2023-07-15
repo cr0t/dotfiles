@@ -113,17 +113,19 @@ ecto_info =
     IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
   end
 
-ecto_repos = Mix.Project.get().project()[:app] |> Application.get_env(:ecto_repos)
-
 repo_module_name =
-  if ecto_started? and not is_nil(ecto_repos) do
-    repo =
-      ecto_repos
-      |> Enum.at(0)
-      |> Atom.to_string()
-      |> String.replace(~r/^Elixir\./, "")
+  if ecto_started? do
+    Mix.Project.get().project()[:app]
+    |> Application.get_env(:ecto_repos)
+    |> then(fn
+      nil ->
+        ""
 
-    IO.ANSI.faint() <> "(`alias #{repo}, as: Repo`)" <> IO.ANSI.reset()
+      [repo_mod | _] ->
+        repo_alias = Atom.to_string(repo_mod) |> String.replace(~r/^Elixir\./, "")
+
+        IO.ANSI.faint() <> "(`alias #{repo_alias}, as: Repo`)" <> IO.ANSI.reset()
+    end)
   else
     ""
   end
