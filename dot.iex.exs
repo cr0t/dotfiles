@@ -44,14 +44,12 @@ defmodule H do
     |> Keyword.get(:message_queue_len)
   end
 
-  # Wrap given text in bright ANSI colors and print
-  def print_bright(text) do
-    (IO.ANSI.bright() <> text <> IO.ANSI.reset())
-    |> IO.puts()
-  end
+  # Wrap given text in the given ANSI color to prepare for output
+  def colorize(text, ansi_color),
+    do: ansi_color <> text <> IO.ANSI.reset()
 
   def print_tips_n_tricks() do
-    print_bright("\n--- Tips & Tricks:")
+    "\n--- Tips & Tricks:" |> colorize(IO.ANSI.bright) |> IO.puts()
 
     Enum.map(@tips_and_tricks, &IO.puts/1)
   end
@@ -67,11 +65,11 @@ H.print_tips_n_tricks()
 ## IEx Settings
 ###
 
-prefix = IO.ANSI.green() <> "%prefix" <> IO.ANSI.reset()
-counter = IO.ANSI.green() <> "-%node-(%counter)" <> IO.ANSI.reset()
-info = IO.ANSI.light_blue() <> "✉ #{H.queue_length()}" <> IO.ANSI.reset()
-last = IO.ANSI.yellow() <> "➤" <> IO.ANSI.reset()
-alive = IO.ANSI.bright() <> IO.ANSI.yellow() <> "⚡" <> IO.ANSI.reset()
+prefix = H.colorize("%prefix", IO.ANSI.green)
+counter = H.colorize("-%node-(%counter)", IO.ANSI.green)
+info = H.colorize("✉ #{H.queue_length()}", IO.ANSI.light_blue)
+last = H.colorize("➤", IO.ANSI.yellow)
+alive = H.colorize("⚡", IO.ANSI.bright <> IO.ANSI.yellow)
 
 default_prompt = prefix <> counter <> " " <> info <> " " <> last
 alive_prompt = prefix <> counter <> " " <> info <> " " <> alive <> last
@@ -92,25 +90,25 @@ IEx.configure(
 ## Phoenix & Ecto Helpers
 ###
 
-H.print_bright("\n--- Phoenix & Ecto:")
+"\n--- Phoenix & Ecto:" |> H.colorize(IO.ANSI.bright) |> IO.puts()
 
 phoenix_started? = H.is_app_started?(:phoenix)
 ecto_started? = H.is_app_started?(:ecto)
 
 phoenix_info =
   if phoenix_started? do
-    IO.ANSI.green() <> "running" <> IO.ANSI.reset()
+    H.colorize("running", IO.ANSI.green)
   else
-    IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
+    H.colorize("not detected", IO.ANSI.yellow)
   end
 
 IO.puts("Phoenix: #{phoenix_info}")
 
 ecto_info =
   if ecto_started? do
-    IO.ANSI.green() <> "running" <> IO.ANSI.reset()
+    H.colorize("running", IO.ANSI.green)
   else
-    IO.ANSI.yellow() <> "not detected" <> IO.ANSI.reset()
+    H.colorize("not detected", IO.ANSI.yellow)
   end
 
 repo_module_name =
@@ -124,7 +122,7 @@ repo_module_name =
       [repo_mod | _] ->
         repo_alias = Atom.to_string(repo_mod) |> String.replace(~r/^Elixir\./, "")
 
-        IO.ANSI.faint() <> "(`alias #{repo_alias}, as: Repo`)" <> IO.ANSI.reset()
+        H.colorize("(`alias #{repo_alias}, as: Repo`)", IO.ANSI.faint)
     end)
   else
     ""
