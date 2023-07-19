@@ -9,6 +9,7 @@ source ~/.config/nvim/telescope.lua
 source ~/.config/nvim/treesitter.lua " disable it if indent behaves crazy...
 source ~/.config/nvim/nvim-lspconfig.lua
 source ~/.config/nvim/nvim-cmp.lua
+source ~/.config/nvim/keys.lua
 
 " colorscheme kanagawa
 colorscheme nightfox

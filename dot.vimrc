@@ -119,7 +119,7 @@ set noswapfile
 source ~/.config/vim.d/vimrc.ftdetect    " filetype detection rules
 source ~/.config/vim.d/vimrc.plugins     " list of plugins to be installed
 source ~/.config/vim.d/vimrc.snippets    " list of various snippets
-source ~/.config/vim.d/vimrc.keys        " keyboard shortcuts and settings
+source ~/.config/vim.d/vimrc.howtoquit   " disturbing quit commands aliases
 "source ~/.config/vim.d/vimrc.noarrowkeys " hardcore mode (without arrow keys available – to learn hjkl)
 
 " various plugins' configurations

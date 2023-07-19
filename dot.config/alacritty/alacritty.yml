@@ -25,7 +25,11 @@ font:
 # For example, \x01\x31 means that terminal will send CTRL+A and then 1:
 #
 # \x01 — CTRL+a
-# \x31 — character "1" in ASCII
+# \x31 — character "1" in ASCII (we can use actual ASCII-char, not its code)
+#
+# In some cases, we use escape sequences:
+#
+# \x1b - ESC (we can use just an escaped 'e' – `\e`)
 #
 # tmux: switch between first five windows via CTRL+1..CTRL+5
 key_bindings:
@@ -35,6 +39,12 @@ key_bindings:
   - { key: Key3, mods: Control, chars: "\x01\x33" }
   - { key: Key4, mods: Control, chars: "\x01\x34" }
   - { key: Key5, mods: Control, chars: "\x01\x35" }
+  # vim-ish
+  # - { key: RBracket, mods: Command, chars: "\e]" }
+  # - { key: LBracket, mods: Command, chars: "\e[" }
+  # - { key: N, mods: Command, chars: "\en" }
+  # - { key: P, mods: Command, chars: "\ep" }
+  # - { key: W, mods: Command, chars: "\ew" }
   # other-ish
   - { key: Return, mods: Command, action: ToggleFullscreen }
 
