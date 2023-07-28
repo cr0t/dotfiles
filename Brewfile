@@ -36,6 +36,7 @@ brew "imagemagick"
 brew "neovim"
 brew "newsboat"
 brew "openssl"
+brew "poedit" # translation editor (gettext)
 brew "rbenv-gemset"
 brew "tmux"
 
