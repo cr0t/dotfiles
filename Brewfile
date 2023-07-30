@@ -38,6 +38,7 @@ brew "newsboat"
 brew "openssl"
 brew "poedit" # translation editor (gettext)
 brew "rbenv-gemset"
+brew "tmate"
 brew "tmux"
 
 # Nerves (https://www.nerves-project.org/) utilities
