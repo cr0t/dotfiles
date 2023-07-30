@@ -36,7 +36,6 @@ brew "imagemagick"
 brew "neovim"
 brew "newsboat"
 brew "openssl"
-brew "poedit" # translation editor (gettext)
 brew "rbenv-gemset"
 brew "tmate"
 brew "tmux"
@@ -50,3 +49,4 @@ brew "xz"
 
 # Casks
 #cask "xquartz" # for :observer.start() running in Docker
+cask "poedit" # translation editor (gettext)
