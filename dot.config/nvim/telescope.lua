@@ -31,5 +31,8 @@ require('telescope').setup {
       "node_modules"
     },
     winblend = 5, -- pseudo-transparency for the modal (0..100)
+    preview = {
+      treesitter = false
+    }
   },
 }
