@@ -38,6 +38,7 @@ map('n', 'j', 'gj') -- useful move in a long wrapped line
 map('n', '<leader>i', '<cmd>set list!<cr>', { desc = 'Show/hide invisible chars' })
 map('n', '<leader>l', '<cmd>nohlsearch<cr>', { desc = 'Hide search highlights' })
 map('n', 'gp', '`[v`]', { desc = 'Reselect pasted text' }) -- (https://vimtricks.com/p/reselect-pasted-text/)
+map('n', '<leader>s', '<cmd>setlocal spell! spelllang=en_us<cr>', { desc = 'Toggle spellchecking' })
 
 -- disable annoying SHIFT+arrow keys screen height selection (and jumps); I need this because
 -- I am often moving too fast up or down when selecting lines of text
