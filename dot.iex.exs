@@ -67,8 +67,8 @@ H.print_tips_n_tricks()
 
 prefix = H.colorize("%prefix", IO.ANSI.green)
 counter = H.colorize("-%node-(%counter)", IO.ANSI.green)
-info = H.colorize("✉ #{H.queue_length()}", IO.ANSI.light_blue)
-last = H.colorize("➤", IO.ANSI.yellow)
+info = H.colorize("#{H.queue_length()}", IO.ANSI.light_blue)
+last = H.colorize(">", IO.ANSI.yellow)
 alive = H.colorize("⚡", IO.ANSI.bright <> IO.ANSI.yellow)
 
 default_prompt = prefix <> counter <> " " <> info <> " " <> last
@@ -77,7 +77,7 @@ alive_prompt = prefix <> counter <> " " <> info <> " " <> alive <> last
 IEx.configure(
   default_prompt: default_prompt,
   alive_prompt: alive_prompt,
-  inspect: [limit: 5_000],
+  inspect: [limit: 5_000, pretty: true],
   history_size: 100,
   colors: [
     eval_result: [:green, :bright],
