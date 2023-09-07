@@ -3,6 +3,8 @@
   email = kuznecov.sg@gmail.com
 [core]
   excludesfile = ~/.gitignore
+[init]
+  defaultBranch = master
 [color]
   branch = auto
   diff = auto
@@ -12,7 +14,9 @@
   st = status
   co = checkout
   aa = add . --all
-  pf = push --force-with-lease # https://thoughtbot.com/blog/git-push-force-with-lease
+  # safe 'force push' (https://thoughtbot.com/blog/git-push-force-with-lease)
+  pf = push --force-with-lease
+  # sorts branches by "last activity" (https://twitter.com/tenderlove/status/1392957802163802112)
   recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
 [fetch]
   prune = true
@@ -20,12 +24,10 @@
   ff = only
 [push]
   default = simple
-[init]
-  defaultBranch = master
-[include]
-  path = ~/.gitconfig.local
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[include]
+  path = ~/.gitconfig.local
