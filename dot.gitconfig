@@ -2,7 +2,7 @@
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [color]
   branch = auto
   diff = auto
