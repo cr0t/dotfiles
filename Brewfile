@@ -49,8 +49,8 @@ brew "openssl"
 brew "rbenv-gemset"
 brew "tmate"
 brew "tmux"
-brew "wireshark"
 
 # Casks
 cask "xquartz" # for :observer.start() running in Docker
 cask "poedit" # translation editor (gettext)
+cask "wireshark"
