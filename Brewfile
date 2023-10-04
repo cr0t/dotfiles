@@ -51,6 +51,7 @@ brew "tmate"
 brew "tmux"
 
 # Casks
-cask "xquartz" # for :observer.start() running in Docker
+cask "bruno" # like a Postman, but local
 cask "poedit" # translation editor (gettext)
+cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
