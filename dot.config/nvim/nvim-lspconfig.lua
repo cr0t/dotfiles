@@ -62,3 +62,11 @@ lspconfig.elixirls.setup {
   cmd = { elixirls_cmd },
   capabilities = default_capabilities,
 }
+
+lspconfig.solargraph.setup {
+  settings = {
+    solargraph = {
+      diagnostics = true
+    }
+  }
+}
