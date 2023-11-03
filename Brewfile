@@ -52,6 +52,7 @@ brew "tmux"
 
 # Casks
 cask "bruno" # like a Postman, but local
+cask "docker"
 cask "poedit" # translation editor (gettext)
 cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
