@@ -51,6 +51,7 @@ brew "tmate"
 brew "tmux"
 
 # Casks
+cask "alacritty"
 cask "bruno" # like a Postman, but local
 cask "docker"
 cask "poedit" # translation editor (gettext)
