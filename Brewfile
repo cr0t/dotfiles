@@ -51,11 +51,35 @@ brew "tmate"
 brew "tmux"
 
 # Casks
+cask "adobe-creative-cloud"
 cask "alacritty"
 cask "bruno" # like a Postman, but local
+cask "charles" # proxy, middle man, debug
 cask "docker"
+cask "dropbox"
+cask "elgato-control-center"
+cask "elgato-stream-deck"
 cask "firefox"
+cask "gnucash"
+cask "hex-fiend" # fast hex editor
+cask "hugin" # panorama photo stitcher
+cask "imageoptim"
+cask "istat-menus"
+cask "key-codes" # display key code, unicode value and modifier keys state for any key combination
+cask "logi-options-plus"
+cask "obs"
+cask "obsidian"
+cask "paragon-ntfs"
 cask "poedit" # translation editor (gettext)
+cask "postico" # gui client for Postgres
 cask "rectangle" # keyboard shortcuts window manager
+cask "slack"
+cask "telegram"
+cask "transmission"
+cask "unshaky" # fix for double key presses on Apple's butterfly keyboard
+cask "valentina-studio" # visual editors for data
+cask "visual-studio-code"
+cask "vlc"
+cask "vmware-fusion"
 cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
