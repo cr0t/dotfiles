@@ -49,7 +49,7 @@ defmodule H do
     do: ansi_color <> text <> IO.ANSI.reset()
 
   def print_tips_n_tricks() do
-    "\n--- Tips & Tricks:" |> colorize(IO.ANSI.bright) |> IO.puts()
+    "\n--- Tips & Tricks:" |> colorize(IO.ANSI.bright()) |> IO.puts()
 
     Enum.map(@tips_and_tricks, &IO.puts/1)
   end
@@ -65,11 +65,11 @@ H.print_tips_n_tricks()
 ## IEx Settings
 ###
 
-prefix = H.colorize("%prefix", IO.ANSI.green)
-counter = H.colorize("-%node-(%counter)", IO.ANSI.green)
-info = H.colorize("#{H.queue_length()}", IO.ANSI.light_blue)
-last = H.colorize(">", IO.ANSI.yellow)
-alive = H.colorize("⚡", IO.ANSI.bright <> IO.ANSI.yellow)
+prefix = H.colorize("%prefix", IO.ANSI.green())
+counter = H.colorize("-%node-(%counter)", IO.ANSI.green())
+info = H.colorize("#{H.queue_length()}", IO.ANSI.light_blue())
+last = H.colorize(">", IO.ANSI.yellow())
+alive = H.colorize("⚡", IO.ANSI.bright() <> IO.ANSI.yellow())
 
 default_prompt = prefix <> counter <> " " <> info <> " " <> last
 alive_prompt = prefix <> counter <> " " <> info <> " " <> alive <> last
@@ -90,25 +90,25 @@ IEx.configure(
 ## Phoenix & Ecto Helpers
 ###
 
-"\n--- Phoenix & Ecto:" |> H.colorize(IO.ANSI.bright) |> IO.puts()
+"\n--- Phoenix & Ecto:" |> H.colorize(IO.ANSI.bright()) |> IO.puts()
 
 phoenix_started? = H.is_app_started?(:phoenix)
 ecto_started? = H.is_app_started?(:ecto)
 
 phoenix_info =
   if phoenix_started? do
-    H.colorize("running", IO.ANSI.green)
+    H.colorize("running", IO.ANSI.green())
   else
-    H.colorize("not detected", IO.ANSI.yellow)
+    H.colorize("not detected", IO.ANSI.yellow())
   end
 
 IO.puts("Phoenix: #{phoenix_info}")
 
 ecto_info =
   if ecto_started? do
-    H.colorize("running", IO.ANSI.green)
+    H.colorize("running", IO.ANSI.green())
   else
-    H.colorize("not detected", IO.ANSI.yellow)
+    H.colorize("not detected", IO.ANSI.yellow())
   end
 
 repo_module_name =
@@ -122,7 +122,7 @@ repo_module_name =
       [repo_mod | _] ->
         repo_alias = Atom.to_string(repo_mod) |> String.replace(~r/^Elixir\./, "")
 
-        H.colorize("(`alias #{repo_alias}, as: Repo`)", IO.ANSI.faint)
+        H.colorize("(`alias #{repo_alias}, as: Repo`)", IO.ANSI.faint())
     end)
   else
     ""
