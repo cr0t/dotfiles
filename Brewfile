@@ -55,5 +55,6 @@ cask "alacritty"
 cask "bruno" # like a Postman, but local
 cask "docker"
 cask "poedit" # translation editor (gettext)
+cask "rectangle" # keyboard shortcuts window manager
 cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
