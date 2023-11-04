@@ -93,19 +93,19 @@ Install all the plugins we will need:
 ```console
 asdf plugin add erlang
 asdf plugin add elixir
-asdf plugin add haskell
 asdf plugin add nodejs
 asdf plugin add ruby
+asdf plugin add haskell
 ```
 
 ...and the languages themselves:
 
 ```console
-env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 26.0.2
+env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 26.1.2
 asdf install elixir 1.15.2-otp-26
+asdf install nodejs 20.9.0
+asdf install ruby 3.2.2
 asdf install haskell 9.6.2
-asdf install nodejs 18.16.1
-asdf install ruby 3.1.2
 ```
 
 > **Note on `env` for Erlang:** these options will build the docs so they will be come available in
@@ -114,11 +114,11 @@ asdf install ruby 3.1.2
 Now we can set globally available (for the user, of course) languages versions:
 
 ```console
-asdf global erlang 26.0.2
+asdf global erlang 26.1.2
 asdf global elixir 1.15.2-otp-26
+asdf global nodejs 20.9.0
+asdf global ruby 3.2.2
 asdf global haskell 9.6.2
-asdf global nodejs 18.16.1
-asdf global ruby 3.1.2
 ```
 
 > `asdf global ...` command adds settings to `~/.tool-versions` file; we can create
@@ -133,7 +133,7 @@ version is up to 0.7 at the moment of writing).
 
 ```console
 asdf plugin add neovim
-asdf install neovim 0.8.3
+asdf install neovim 0.9.4
 asdf global neovim stable
 ```
 
