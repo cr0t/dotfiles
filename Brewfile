@@ -55,6 +55,7 @@ cask "adobe-creative-cloud"
 cask "alacritty"
 cask "bruno" # like a Postman, but local
 cask "charles" # proxy, middle man, debug
+cask "google-chrome"
 cask "docker"
 cask "dropbox"
 cask "elgato-control-center"
