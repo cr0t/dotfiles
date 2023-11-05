@@ -2,6 +2,9 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+" set termguicolors (also needed by nvim-tree to highlight groups)
+set termguicolors
+
 " Plugins' settings (when in Lua)
 source ~/.config/nvim/langmapper.lua
 source ~/.config/nvim/nvim-tree.lua
