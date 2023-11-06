@@ -75,6 +75,7 @@ cask "poedit" # translation editor (gettext)
 cask "postico" # gui client for Postgres
 cask "rectangle" # keyboard shortcuts window manager
 cask "slack"
+cask "spotify"
 cask "telegram"
 cask "transmission"
 cask "unshaky" # fix for double key presses on Apple's butterfly keyboard
