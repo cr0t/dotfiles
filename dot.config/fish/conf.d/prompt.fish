@@ -61,6 +61,10 @@ function fish_prompt
     set_color normal
 end
 
+function fish_right_prompt
+  # intentionally left blank (disable default timestamp on the right side)
+ end
+
 ### helpers
 
 # https://github.com/rafaelrinaldi/pure/blob/master/functions/_pure_string_width.fish
