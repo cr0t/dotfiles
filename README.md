@@ -156,6 +156,7 @@ Host *
   # ForwardAgent Yes # WARNING: this will forward keys to all the hosts you connect!
   AddKeysToAgent Yes
   IdentityFile ~/.ssh/id_ed25519
+  PreferredAuthentications publickey
 
 Host example.com
   User admin
@@ -165,7 +166,17 @@ Host example.com
 Host under-tv
   Hostname 192.168.0.2
   User media
+
+Host gitlab.company
+  Hostname gitlab.example.com
+  IdentityFile ~/.ssh/id_ed25519_company
 ```
+
+> [!note]
+>
+> To generate SSH keys for we can use `ssh-keygen` like this:
+>
+> `ssh-keygen -t ed25519 -C "sergey.kuznetsov@example.com" -f ~/.ssh/id_ed25519_company_name`
 
 ## Directory `littles`
 
