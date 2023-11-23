@@ -33,6 +33,7 @@ brew "xz"
 
 # Bigger applications
 brew "ansible"
+brew "awscli"
 brew "exercism"
 brew "exiftool"
 brew "ffmpeg"
