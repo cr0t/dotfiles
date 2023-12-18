@@ -29,4 +29,8 @@ vim.api.nvim_create_autocmd({'QuitPre'}, {
   end,
 })
 
-require('nvim-tree').setup({})
+require('nvim-tree').setup({
+  view = {
+    width = 48
+  }
+})
