@@ -1,0 +1,105 @@
+import = ["~/.config/alacritty/themes/nightfox.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14
+
+[font.normal]
+# family = "JetBrainsMono Nerd Font"
+family = "MesloLGS Nerd Font"
+
+[font.offset]
+x = 1
+
+# See the similar section in kitty.conf
+#
+# > [WARN]
+# > After automatic migration from YAML to TOML, escape sequences also have
+# > changed from \x01\x31 to \u00011, for example. We have preserved old
+# > sequences in the comments next to the new ones for searchability.
+#
+# To make our shortcuts tmux-compatible, we have to send Prefix first.
+# Prefix in our tmux configuration is CTRL+a; after that we send the
+# actual keycode we need.
+#
+# For example, \x01\x31 means that terminal will send CTRL+A and then 1:
+#
+# \x01 — CTRL+a
+# \x31 — character "1" in ASCII (we can use actual ASCII-char, not its code)
+#
+# In some cases, we use escape sequences:
+#
+# \x1b - ESC (we can use just an escaped 'e' – `\e`)
+#
+# tmux: switch between first five windows via CTRL+1..CTRL+5
+[[keyboard.bindings]]
+chars = "\u00011" # \x01\x31
+key = "Key1"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u00012" # \x01\x32
+key = "Key2"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u00013" # \x01\x33
+key = "Key3"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u00014" # \x01\x34
+key = "Key4"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u00015" # \x01\x35
+key = "Key5"
+mods = "Control"
+
+# Vim-related
+#
+# [[keyboard.bindings]]
+# chars = "\u001B]" # \e]
+# key = "RBracket"
+# mods = "Command"
+#
+# [[keyboard.bindings]]
+# chars = "\u001B[" # \e[
+# key = "LBracket"
+# mods = "Command"
+#
+# [[keyboard.bindings]]
+# chars = "\u001Bn" # \en
+# key = "N"
+# mods = "Command"
+#
+# [[keyboard.bindings]]
+# chars = "\u001Bp" # \ep
+# key = "P"
+# mods = "Command"
+#
+# [[keyboard.bindings]]
+# chars = "\u001Bw" # \ew
+# key = "W"
+# mods = "Command"
+
+# Other...
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "Return"
+mods = "Command"
+
+[window]
+decorations = "buttonless"
+decorations_theme_variant = "Dark"
+
+[window.dimensions]
+columns = 160
+lines = 50
+
+[window.padding]
+x = 8
+y = 8
