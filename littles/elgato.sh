@@ -5,9 +5,13 @@ set -euo pipefail
 # This (macOS-only!) script supposed to run in background all the time: it automatically switches
 # on and off configured Elgato lights.
 #
-# The original idea is picked up here: https://github.com/adamesch/elgato-key-light-api
+# We can configure to run it in background after macOS starts using crontab, e.g.:
 #
-# To make it work we have to provide a few settings:
+# @reboot /Users/cr0t/.dotfiles/littles/elgato.sh &
+#
+# P.S. The original idea was picked up here: https://github.com/adamesch/elgato-key-light-api
+
+# To let the lights work, we have to provide a few settings:
 
 TEMPERATURE=4250 # 2900–6950K
 BRIGHTNESS=33 # 1–100
