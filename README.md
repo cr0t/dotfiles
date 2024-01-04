@@ -198,10 +198,25 @@ export PATH="$PATH:~/.dotfiles/littles"
 
 ### Adding `elgato.sh` to Crontab
 
-Consider to add this little automatization helper to run after each boot by adding this to crontab:
+Consider to add this little automatization helper to run after each boot by
+adding this to crontab:
 
 ```text
 @reboot /Users/cr0t/.dotfiles/littles/elgato.sh &
+```
+
+## Set Local Environment Variables
+
+`fish`'s alternative to `.bashrc` is located at `~/.config/fish/config.fish`.
+We do not overwrite this file by this dotfiles, so it's totally local to machine.
+
+To define a new variable we do something like that in this file:
+
+```fish
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    set -x GITLAB_TOKEN 'glpat-***'
+end
 ```
 
 ## Extra
