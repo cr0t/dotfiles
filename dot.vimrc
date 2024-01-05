@@ -22,7 +22,7 @@ set hlsearch " search highlighting on
 
 " folding (zc, zo)
 set foldmethod=indent
-set foldlevelstart=12
+""set foldlevelstart=12
 
 " traling whitespace (non-plugin approach)
 ""highlight ExtraWhitespace ctermbg=red guibg=red " trailing whitespace highlighting
