@@ -2,6 +2,7 @@
 brew "ack"
 brew "asdf"
 brew "bat"
+brew "direnv"
 brew "dust"
 brew "fd"
 brew "fswatch"
