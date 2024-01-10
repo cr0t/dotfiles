@@ -72,6 +72,7 @@ cask "istat-menus"
 cask "karabiner-elements" # keyboard customizer (remap any key to another)
 cask "key-codes" # display key code, unicode value and modifier keys state for any key combination
 cask "logi-options-plus"
+cask "monitorcontrol"
 cask "obs"
 cask "obsidian"
 cask "paragon-ntfs"
