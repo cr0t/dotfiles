@@ -10,6 +10,8 @@
   diff = auto
   interactive = auto
   status = auto
+[commit]
+  verbose = true # include a diff when writing a commit message
 [alias]
   st = status
   co = checkout
