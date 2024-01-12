@@ -214,8 +214,8 @@ To define a new variable we do something like that in this file:
 
 ```fish
 if status is-interactive
-    # Commands to run in interactive sessions can go here
     set -x GITLAB_TOKEN 'glpat-***'
+    set -x KUBECONFIG "$HOME/.kube/config-company:$HOME/.kube/config-homelab"
 end
 ```
 
