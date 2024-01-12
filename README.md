@@ -221,4 +221,4 @@ end
 
 ## Extra
 
-Check [`docs/EXTRA.md`](docs/EXTRA.md) for more notes about these dotfiles.
+Check [`docs/EXTRA.md`](docs/EXTRA.md) for more notes about these dotfiles, or [`docs/KUBERNETES.md`](docs/KUBERNETES.md) for my personal k8s cheat sheet.
