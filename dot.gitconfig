@@ -1,12 +1,6 @@
 [user]
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
-[core]
-  excludesfile = ~/.gitignore
-[init]
-  defaultBranch = master
-[commit]
-  verbose = true # include a diff when writing a commit message
 [alias]
   st = status
   co = checkout
@@ -15,6 +9,12 @@
   pf = push --force-with-lease
   # sorts branches by "last activity" (https://twitter.com/tenderlove/status/1392957802163802112)
   recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
+[core]
+  excludesfile = ~/.gitignore
+[init]
+  defaultBranch = master
+[commit]
+  verbose = true # include a diff when writing a commit message
 [fetch]
   prune = true
 [pull]
