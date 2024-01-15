@@ -1,20 +1,21 @@
 [user]
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO04XojxNytNXJ5pBJPsbwreDevoGe6BuAgWfu1gkimQ kuznecov.sg@gmail.com
 [alias]
   st = status
   co = checkout
   aa = add . --all
-  # safe 'force push' (https://thoughtbot.com/blog/git-push-force-with-lease)
-  pf = push --force-with-lease
-  # sorts branches by "last activity" (https://twitter.com/tenderlove/status/1392957802163802112)
-  recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
+  pf = push --force-with-lease # safe 'force push' (https://thoughtbot.com/blog/git-push-force-with-lease)
 [core]
   excludesfile = ~/.gitignore
 [init]
   defaultBranch = master
 [commit]
+  gpgsign = true
   verbose = true # include a diff when writing a commit message
+[gpg]
+  format = ssh
 [fetch]
   prune = true
 [pull]

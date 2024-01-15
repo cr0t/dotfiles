@@ -1,6 +1,3 @@
-[gpg]
-  format = ssh
-[commit]
-  gpgsign = true
-[user]
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO04XojxNytNXJ5pBJPsbwreDevoGe6BuAgWfu1gkimQ kuznecov.sg@gmail.com
+[alias]
+  # sorts branches by "last activity" (https://twitter.com/tenderlove/status/1392957802163802112)
+  recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
