@@ -22,6 +22,8 @@
   ff = only
 [push]
   default = simple
+[rebase]
+  autosquash = true # https://thoughtbot.com/blog/autosquashing-git-commits
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
