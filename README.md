@@ -151,7 +151,7 @@ chmod -w ~/.ssh/id_ed*
 Here is an example of `~/.ssh/config` file:
 
 ```text
-Host *
+Host * !gitlab.company.org
   UseKeychain yes
   # ForwardAgent Yes # WARNING: this will forward keys to all the hosts you connect!
   AddKeysToAgent Yes
@@ -167,8 +167,9 @@ Host under-tv
   Hostname 192.168.0.2
   User media
 
-Host gitlab.company
-  Hostname gitlab.example.com
+# specify a key for a specific host, see `Host * ...` section too
+Host gitlab.company.org
+  Hostname gitlab.company.org
   IdentityFile ~/.ssh/id_ed25519_company
 ```
 
