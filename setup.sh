@@ -3,6 +3,7 @@
 REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
 FILES=$(ls -d $REPO_DIR/dot.*)
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
+TMUX_TPM="$HOME/.tmux/plugins/tpm"
 
 # ~/.config directory might contain other applications configuration file while
 # we use the system and install more utilities; and this is why we want to be
@@ -77,6 +78,15 @@ function _install_vim_plug {
   fi
 }
 
+# Installs tmux plugin manager, if it's not installed yet
+function _install_tmux_tpm {
+  if [ ! -d $TMUX_TPM ]; then
+    echo "Install tmux tpm..."
+    # https://github.com/tmux-plugins/tpm
+    git clone --quiet https://github.com/tmux-plugins/tpm $TMUX_TPM
+  fi
+}
+
 # 1. Links regular dot.* files from the repository to their counterparts
 # 2. Runs vim-plug installation
 # 3. Runs fish configuration linking process
@@ -107,9 +117,15 @@ function _create_links {
   _link $ALACRITTY_FROM $ALACRITTY_TO
   _link $NEWSBOAT_FROM $NEWSBOAT_TO
 
+  # extra setup – steps below will not be reverted on 'unlink' command
   _install_vim_plug
+  _install_tmux_tpm
 
-  echo && _echo_warning "NOTE: Consider to run 'brew bundle --no-lock' if it's a fresh macOS installation!"
+  echo "---"
+
+  _echo_warning "BREW: Consider to run 'brew bundle --no-lock' if it's a fresh macOS installation!"
+  _echo_warning "NVIM: Install or update plugins via 'vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall'"
+  _echo_warning "TMUX: Install plugins via <prefix + I> if you're inside a tmux session"
 }
 
 # 1. Removes links from regular dot.* files
