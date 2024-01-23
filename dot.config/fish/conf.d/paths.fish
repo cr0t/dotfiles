@@ -1,14 +1,24 @@
-set --local lo_sbin "/usr/local/sbin"
-set --local littles "$HOME/.dotfiles/littles/"
-set --local vs_code "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-set --local escripts "$HOME/.mix/escripts"
-set --local lo_bin "$HOME/.local/bin"
+# set -x # useful for debugging
 
-# Check if path exist and add it to the $PATH
-set --local paths $lo_sbin $littles $vs_code $escripts $lo_bin
+# We want to set our PATH variable only when fish is being loaded in the login
+# mode, so it won't mess up when we enter tmux session. Check this for info:
+#
+# - https://fishshell.com/docs/current/#default-shell
+# - https://fishshell.com/docs/current/#configuration
 
-for path in $paths
-    if test -d $path
-        contains -- $path $PATH; or set -gx PATH $path $PATH
+if status is-login
+    # --path option allows us to manipulate PATH directly, see more:
+    # https://fishshell.com/docs/current/cmds/fish_add_path.html
+    fish_add_path --path $HOME/.dotfiles/littles/
+    fish_add_path --path $HOME/.mix/escripts
+    fish_add_path --path $HOME/.local/bin
+
+    if not command -s brew >/dev/null
+        and test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+    end
+
+    if not set -q ASDF_DIR
+        source (brew --prefix asdf)"/libexec/asdf.fish"
     end
 end

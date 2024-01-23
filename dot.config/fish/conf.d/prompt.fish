@@ -7,10 +7,10 @@ set blue (set_color -o blue)
 set red (set_color -o red)
 
 # https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_git_prompt.fish
-set __fish_git_prompt_show_informative_status 'yes'
+set __fish_git_prompt_show_informative_status yes
 set __fish_git_prompt_char_stateseparator ' '
 set __fish_git_prompt_char_dirtystate '+' # default plus symbol is too bold in Monaco typeface
-set __fish_git_prompt_showcolorhints 'yes'
+set __fish_git_prompt_showcolorhints yes
 set __fish_git_prompt_color_branch red
 set __fish_git_prompt_color_cleanstate green
 
@@ -62,8 +62,8 @@ function fish_prompt
 end
 
 function fish_right_prompt
-  # intentionally left blank (disable default timestamp on the right side)
- end
+    # intentionally left blank (disable default timestamp on the right side)
+end
 
 ### helpers
 
