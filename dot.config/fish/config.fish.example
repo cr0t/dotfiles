@@ -1,0 +1,9 @@
+if status is-interactive
+    # We can use this file to set environment variabels or update PATH when needed.
+    # See more here: https://fishshell.com/docs/current/tutorial.html#path-example
+    #
+    # INFO: it will affect only your particular local system!
+
+    set -x GITLAB_TOKEN 'glpat-******'
+    set -x KUBECONFIG "$HOME/.kube/config-work:$HOME/.kube/config-homelab"
+end

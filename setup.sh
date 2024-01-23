@@ -127,6 +127,7 @@ function _create_links {
   echo "---"
 
   _echo_warning "BREW: Consider to run 'brew bundle --no-lock' if it's a fresh macOS installation!"
+  _echo_warning "FISH: Consider to run 'cp ~/.config/fish/config.fish.example ~/.config/fish/config.fish'"
   _echo_warning "NVIM: Install or update plugins via 'vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall'"
   _echo_warning "TMUX: Install plugins via <prefix + I> if you're inside a tmux session"
 }
