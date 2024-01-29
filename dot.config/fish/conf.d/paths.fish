@@ -13,9 +13,16 @@ if status is-login
     fish_add_path --path $HOME/.mix/escripts
     fish_add_path --path $HOME/.local/bin
 
-    if not command -s brew >/dev/null
-        and test -x /opt/homebrew/bin/brew
-        eval (/opt/homebrew/bin/brew shellenv)
+    if not set -q HOMEBREW_PREFIX
+        # M-based macOS
+        if test -x /opt/homebrew/bin/brew
+            eval (/opt/homebrew/bin/brew shellenv)
+        end
+
+        # Intel-based macOS
+        if test -x /usr/local/bin/brew
+            eval (/usr/local/bin/brew shellenv)
+        end
     end
 
     if not set -q ASDF_DIR
