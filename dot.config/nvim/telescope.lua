@@ -1,6 +1,7 @@
-local actions = require('telescope.actions')
+local telescope = require('telescope')
+local telescope_actions = require('telescope.actions')
 
--- Keymap configuration is in the keys.lua
+-- Looking for a keymap configuration? Check it in the `keys.lua` nearby.
 
 -- The following Telescope settings configures it to layout similar to this:
 --
@@ -15,21 +16,26 @@ local actions = require('telescope.actions')
 -- │   │                   ││                   │   │
 -- │   └───────────────────┘└───────────────────┘   │
 -- └────────────────────────────────────────────────┘
-require('telescope').setup {
+
+telescope.setup {
   defaults = {
     dynamic_preview_title = true,
     layout_strategy = 'flex',
-    layout_config = { prompt_position = "top" },
-    sorting_strategy = "ascending",
+    layout_config = { prompt_position = 'top' },
+    sorting_strategy = 'ascending',
     mappings = {
-      i = { ["<esc>"] = actions.close } -- press ESC once to close the modal
+      i = { ['<esc>'] = telescope_actions.close } -- press ESC once to close the modal
     },
-    file_ignore_patterns = {
-      "deps",
-      "_build",
-      "heroicons",
-      "node_modules"
-    },
+    -- See :h telescope.defaults.file_ignore_patterns for more information,
+    -- but likely leave it empty...
+    -- (^ leaving this comment and example below just for future me, as a reminder
+    -- becase the old config hid files saved in a .../trip_builder/... directory)
+    -- file_ignore_patterns = {
+    --   'deps',
+    --   '_build',
+    --   'heroicons',
+    --   '^node_modules/'
+    -- },
     winblend = 5, -- pseudo-transparency for the modal (0..100)
     preview = {
       treesitter = false
