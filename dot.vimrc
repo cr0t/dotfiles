@@ -70,7 +70,7 @@ set backspace=indent,eol,start
 
 " show line numbers
 set number
-set relativenumber
+"set relativenumber
 
 " show the cursor position all the time
 set ruler
@@ -110,6 +110,8 @@ set smartcase  " make searches case sensitive if search starts with a capital
 "set autowrite    " automatically :write before running commands
 set hidden       " vim won't complain opening a new file, even if current buffer has unsaved changes
 set history=1000 " store more items in the command/search history
+set ttyfast
+set lazyredraw
 
 " let's make less garbage files on the disk
 set nobackup
