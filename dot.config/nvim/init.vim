@@ -5,6 +5,9 @@ source ~/.vimrc
 " set termguicolors (also needed by nvim-tree to highlight groups)
 set termguicolors
 
+" Neovide-specific settings
+source ~/.config/nvim/neovide.lua
+
 " Plugins' settings (when in Lua)
 source ~/.config/nvim/langmapper.lua
 source ~/.config/nvim/nvim-tree.lua
