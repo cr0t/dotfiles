@@ -228,6 +228,8 @@ To define a new variable we do something like that in this file:
 if status is-interactive
     set -x GITLAB_TOKEN 'glpat-***'
     set -x KUBECONFIG "$HOME/.kube/config-company:$HOME/.kube/config-homelab"
+    set -x HOMEBREW_NO_ENV_HINTS 1
+    set -x EDITOR nvim
 end
 ```
 
