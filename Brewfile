@@ -14,6 +14,7 @@ brew "mtr"
 brew "ripgrep"
 brew "smartmontools"
 brew "socat"
+brew "ssh-vault" # encrypt/decrypt messages with SSH keys
 brew "tldr"
 brew "tree"
 brew "tree-sitter"
