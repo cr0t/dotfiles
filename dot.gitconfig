@@ -1,3 +1,10 @@
+# inspired by:
+# - https://thoughtbot.com/blog/git-push-force-with-lease
+# - https://thoughtbot.com/blog/autosquashing-git-commits
+# - https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+# - https://ductile.systems/zdiff3/
+# - https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+# - and many other places/talks/people/etc.
 [user]
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
@@ -6,24 +13,31 @@
   st = status
   co = checkout
   aa = add . --all
-  pf = push --force-with-lease # safe 'force push' (https://thoughtbot.com/blog/git-push-force-with-lease)
+  pf = push --force-with-lease # safe 'force push'
+  staash = stash --include-untracked
 [core]
   excludesfile = ~/.gitignore
 [init]
   defaultBranch = master
+[branch]
+  sort = -committerdate
 [commit]
   gpgsign = true
   verbose = true # include a diff when writing a commit message
 [gpg]
   format = ssh
+[merge]
+  conflictstyle = zdiff3 # show original code in the middle
+[diff]
+  algorithm = histogram
 [fetch]
-  prune = true
+  prune = true # removes any remote-tracking references that no longer exist on the remote
 [pull]
   ff = only
 [push]
-  default = simple
+  default = current # push the local branch to a remote branch with the same name
 [rebase]
-  autosquash = true # https://thoughtbot.com/blog/autosquashing-git-commits
+  autosquash = true # cleans "fixup! ..." commits
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
