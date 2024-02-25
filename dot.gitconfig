@@ -15,6 +15,7 @@
   aa = add . --all
   pf = push --force-with-lease # safe 'force push'
   staash = stash --include-untracked
+  blaame = blame -w -C -C -C # ignore whitespaces and moved lines of code
 [core]
   excludesfile = ~/.gitignore
 [init]
@@ -38,6 +39,8 @@
   default = current # push the local branch to a remote branch with the same name
 [rebase]
   autosquash = true # cleans "fixup! ..." commits
+[rerere]
+  enabled = true # REuse REcorded REsolution (auto-fix repetative merge conflicts)
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
