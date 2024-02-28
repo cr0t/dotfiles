@@ -35,6 +35,6 @@ cmp.setup({
   },
   performance = {
     debounce = 5, -- default 60
-    max_view_entries = 8, -- default 200
+    max_view_entries = 128, -- default 200
   },
 })
