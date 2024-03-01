@@ -10,6 +10,8 @@ Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.5'}
 
 " IDE-ish
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind.nvim' " nice symbolic icons in the suggestions box
 Plug 'hrsh7th/vim-vsnip'    " VSCode(LSP)'s snippet feature in vim/nvim
