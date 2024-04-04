@@ -115,36 +115,7 @@ chmod -w ~/.ssh/id_rsa*
 chmod -w ~/.ssh/id_ed*
 ```
 
-Here is an example of `~/.ssh/config` file:
-
-```text
-Host * !gitlab.company.org
-  UseKeychain yes
-  # ForwardAgent Yes # WARNING: this will forward keys to all the hosts you connect!
-  AddKeysToAgent Yes
-  IdentityFile ~/.ssh/id_ed25519
-  PreferredAuthentications publickey
-
-Host example.com
-  User admin
-  ServerAliveInterval 300
-  ServerAliveCountMax 2
-
-Host under-tv
-  Hostname 192.168.0.2
-  User media
-
-# specify a key for a specific host, see `Host * ...` section too
-Host gitlab.company.org
-  Hostname gitlab.company.org
-  IdentityFile ~/.ssh/id_ed25519_company
-```
-
-> [!note]
->
-> To generate SSH keys for we can use `ssh-keygen` like this:
->
-> `ssh-keygen -t ed25519 -C "sergey.kuznetsov@example.com" -f ~/.ssh/id_ed25519_company_name`
+See examples and more information in the [`docs/SSH.md`](docs/SSH.md) file.
 
 ## Directory `littles`
 
