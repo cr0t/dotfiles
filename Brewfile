@@ -37,6 +37,11 @@ brew "xz"
 # Bigger applications
 brew "ansible"
 brew "awscli"
+brew "colima" # needed for the 'headless' Docker installation
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
+brew "docker-credential-helper"
 brew "exercism"
 brew "exiftool"
 brew "ffmpeg"
@@ -61,7 +66,6 @@ cask "bruno" # like a Postman, but local
 cask "charles" # proxy, middle man, debug
 cask "chromedriver" # for headless testing via Chrome
 cask "google-chrome"
-cask "docker"
 cask "dropbox"
 cask "elgato-control-center"
 cask "elgato-stream-deck"

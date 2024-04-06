@@ -38,6 +38,40 @@ and desktop applications.
 
 See [`Brewfile`](Brewfile) for the apps.
 
+### Docker CLI and Colima
+
+As we do not really need to use Docker Desktop (especially, because its license
+might cost money in some cases), we use free CLI version. However, it cannot
+work out-of-box and needs some _love_, or actually, **runtime**, for which we
+use [Colima](https://github.com/abiosoft/colima). All of the packages we need
+are in the [`Brewfile`](Brewfile), but we need a manual touch to do the magic.
+
+Save this as `~/.docker/config.json`:
+
+```json
+{
+  "auths": {},
+  "cliPluginsExtraDirs": [
+    "/opt/homebrew/lib/docker/cli-plugins"
+  ],
+  "credsStore": "osxkeychain",
+  "currentContext": "colima"
+}
+```
+
+Before running Docker-commands, run `colima start` and wait for VM to set up.
+
+> [!tip]
+>
+> Don't forget to sign in to GitHub Registry (to push images there) by running:
+>
+> `docker login --username cr0t ghcr.io`
+>
+> Use a token with 'write:packages' scope as a password. You can generate one
+> [here](https://github.com/settings/tokens).
+
+This setup is based on this [blog post](https://dev.to/elliotalexander/how-to-use-docker-without-docker-desktop-on-macos-217m).
+
 ## Neovim/Vim
 
 Check [Neovim as asdf's plugin](#extra-neovim-as-asdfs-plugin) notes on how to
