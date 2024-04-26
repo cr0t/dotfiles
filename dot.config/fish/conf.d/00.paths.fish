@@ -24,8 +24,4 @@ if status is-login
             eval (/usr/local/bin/brew shellenv)
         end
     end
-
-    if not set -q ASDF_DIR
-        source (brew --prefix asdf)"/libexec/asdf.fish"
-    end
 end
