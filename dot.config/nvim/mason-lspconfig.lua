@@ -68,20 +68,59 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Language Servers
 -- ----------------
 --
--- See docs via `:help lspconfig-all` command
+-- Mason's Automatic Server Setup
+--
+-- See `:help mason-lspconfig-automatic-server-setup` for more details
 
-local lspconfig = require("lspconfig")
-
-lspconfig.lua_ls.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" }
+require("mason-lspconfig").setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function(server_name)  -- default handler (optional)
+    require("lspconfig")[server_name].setup {
+      capabilities = require("cmp_nvim_lsp").default_capabilities()
+    }
+  end,
+  -- Next, you can provide a dedicated handler for specific servers.
+  -- For example, a handler override for the `rust_analyzer`:
+  -- ["rust_analyzer"] = function ()
+  --   require("rust-tools").setup {}
+  -- end,
+  ["lua_ls"] = function ()
+    require("lspconfig").lua_ls.setup {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" }
+          }
+        }
       }
     }
-  }
+  end,
 }
 
-lspconfig.elixirls.setup {}
-lspconfig.solargraph.setup {}
-lspconfig.tsserver.setup {}
+-- (DEPRECATED) Manual Configuration of LSPConfig
+-- ---------------------------------
+--
+-- See docs via `:help lspconfig-all` command
+--
+-- ...leaving it here for a while to check is Mason's automatic setup covers
+-- our needs
+
+-- local lspconfig = require("lspconfig")
+--
+-- lspconfig.lua_ls.setup {
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { "vim" }
+--       }
+--     }
+--   }
+-- }
+--
+-- lspconfig.elixirls.setup {
+--   capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- }
+-- lspconfig.solargraph.setup {}
+-- lspconfig.tsserver.setup {}
