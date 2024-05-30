@@ -71,6 +71,7 @@ cask "elgato-control-center"
 cask "elgato-stream-deck"
 cask "firefox"
 cask "gnucash"
+cask "handbrake"
 cask "hex-fiend" # fast hex editor
 cask "hugin" # panorama photo stitcher
 cask "imageoptim"
