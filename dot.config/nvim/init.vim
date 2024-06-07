@@ -18,4 +18,5 @@ source ~/.config/nvim/nvim-cmp.lua
 source ~/.config/nvim/keys.lua
 
 " colorscheme kanagawa
-colorscheme nightfox
+" colorscheme nightfox
+colorscheme terafox

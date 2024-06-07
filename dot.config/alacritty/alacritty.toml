@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/nightfox.toml"]
+import = ["~/.config/alacritty/themes/terafox.toml"]
 
 # The path to program might not work properly for non-macOS installations
 # [shell]
