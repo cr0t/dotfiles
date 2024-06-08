@@ -26,16 +26,18 @@ telescope.setup {
     mappings = {
       i = { ['<esc>'] = telescope_actions.close } -- press ESC once to close the modal
     },
-    -- See :h telescope.defaults.file_ignore_patterns for more information and be very careful about what we put inside
-    -- the file; prefer to use regex as precise as possible to avoid false positives (like with the _build below):
-    -- (^ leaving this comment and example below just for future me, as a reminder becase the old config hid files
-    -- saved in a .../trip_builder/... directory)
-    file_ignore_patterns = {
-      -- 'deps/',
-      -- '_build/',
-      '^assets/vendor/heroicons',
-      '^node_modules/'
-    },
+    -- See :h telescope.defaults.file_ignore_patterns for more information and be very careful about
+    -- what we put inside the file; prefer to use regex as precise as possible to avoid false
+    -- positives (like with the _build below):
+    -- (^ leaving this comment and example below just for future me, as a reminder becase the old
+    -- config hid files saved in a .../trip_builder/... directory)
+    --
+    -- file_ignore_patterns = {
+    --   'deps/',
+    --   '_build/',
+    --   '^assets/vendor/heroicons',
+    --   '^node_modules/'
+    -- },
     winblend = 5, -- pseudo-transparency for the modal (0..100)
     preview = {
       treesitter = false
