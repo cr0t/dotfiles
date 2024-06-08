@@ -10,8 +10,8 @@
 if vim.fn.executable("gcc") == 1 then
   require("nvim-treesitter.configs").setup {
     ensure_installed = {
-      "bash", "elixir", "erlang", "fish", "javascript", "lua", "markdown",
-      "markdown_inline", "ruby", "typescript", "vim",
+      "bash", "elixir", "erlang", "fish", "javascript", "lua", "markdown", "markdown_inline", "ruby", "svelte",
+      "typescript", "vim",
     },
     auto_install = false, -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     highlight = {

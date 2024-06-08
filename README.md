@@ -83,6 +83,7 @@ Follow this checklist:
 - `vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall`
 - `:TSInstall`
 - `:LspInstall`
+- `:Mason` – `elixir-ls`, `lua-language-server`, `solargraph`, `svelte-language-server`, `typescript-language-server`
 
 > [!note]
 >

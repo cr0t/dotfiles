@@ -38,9 +38,6 @@ The installation of the languages and configuration is mostly automated, but it
 is important to watch it carefully, as it's not stable yet. Read more
 information [here](https://github.com/nvim-treesitter/nvim-treesitter).
 
-Check [`dot.config/nvim/treesitter.lua`](dot.config/nvim/treesitter.lua) for
-details.
-
 ## `nvim-lsp` Notes
 
 > [!warn]
