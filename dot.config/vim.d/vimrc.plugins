@@ -48,6 +48,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Colorshemes
 Plug 'rebelot/kanagawa.nvim'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'folke/tokyonight.nvim'
 
 " Icons (always leave it as the very last one)
 Plug 'ryanoasis/vim-devicons'

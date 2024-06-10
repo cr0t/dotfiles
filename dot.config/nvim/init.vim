@@ -19,4 +19,5 @@ source ~/.config/nvim/keys.lua
 
 " colorscheme kanagawa
 " colorscheme nightfox
-colorscheme terafox
+" colorscheme terafox
+colorscheme tokyonight-moon
