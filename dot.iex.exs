@@ -53,6 +53,29 @@ defmodule H do
 
     Enum.map(@tips_and_tricks, &IO.puts/1)
   end
+
+  @doc """
+  Copy from the IEx session into macOS clipboard (using pbcopy). Original idea:
+  https://shyr.io/blog/iex-copy-to-clipboard.
+
+  ## Usage
+
+  iex> User |> Repo.get!(user_id) |> H.copy
+  """
+  def copy(term) do
+    text =
+      if is_binary(term) do
+        term
+      else
+        inspect(term, limit: :infinity, pretty: true)
+      end
+
+    port = Port.open({:spawn, "pbcopy"}, [])
+    true = Port.command(port, text)
+    true = Port.close(port)
+
+    :ok
+  end
 end
 
 # We will be using `ANSI`
