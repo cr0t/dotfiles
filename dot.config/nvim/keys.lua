@@ -24,6 +24,7 @@ map('n', '<leader>ch', '<cmd>let @+ = expand("%:p:h")<cr>', { desc = 'Copy direc
 -- windows
 map('n', '<C-w>-', '<cmd>split<cr>', { desc = 'Split horizontally' })
 map('n', '<C-w>\\', '<cmd>vsplit<cr>', { desc = 'Split vertically' })
+map('n', '<C-w>m', '<cmd>MaximizerToggle<cr>', { desc = 'Maximize current window' })
 map('n', '<leader>q', '<C-w>c', { desc = 'Delete window' })
 
 -- switch between windows via `CTRL+hjkl` (see tmux.conf settings!)

@@ -40,6 +40,7 @@ Plug 'tpope/vim-commentary'     " Comment stuff out. (gcc, gc, :7.17Commentary, 
 Plug 'junegunn/vim-peekaboo'    " 'Easier :registers' (type \" to see the sidebar)
 Plug 'csexton/trailertrash.vim' " 'No to Trailing Spaces!' (:TrailerTrim, plus some extra)
 Plug 'Wansmer/langmapper.nvim'  " Makes Neovim more friendly to non-English input methods
+Plug 'szw/vim-maximizer'        " Maximizes and restores the current window in Vim (<C-w>m)
 
 " UI
 Plug 'vim-airline/vim-airline'
