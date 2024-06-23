@@ -17,7 +17,7 @@ family = "MesloLGS Nerd Font"
 
 [font.offset]
 x = 1
-y = 2
+y = 1 # control this if you need more taller "line-height"
 
 # See the similar section in kitty.conf
 #
