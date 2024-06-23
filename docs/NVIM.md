@@ -2,6 +2,11 @@
 
 ## Nerd Fonts
 
+> [!important]
+>
+> For macOS, we install Meslo LG Nerd font via Homebrew cask, find
+> `font-meslo-lg-nerd-font` in the [Brewfile](../Brewfile).
+
 In order to leverage full power of file type icons in Vim/Neovim, we need to
 install [specially patched fonts (Nerd Fonts)](https://github.com/ryanoasis/nerd-fonts)
 into the system. Below are quick instructions for macOS.

@@ -70,6 +70,7 @@ cask "dropbox"
 cask "elgato-control-center"
 cask "elgato-stream-deck"
 cask "firefox"
+cask "font-meslo-lg-nerd-font"
 cask "gnucash"
 cask "handbrake"
 cask "hex-fiend" # fast hex editor
