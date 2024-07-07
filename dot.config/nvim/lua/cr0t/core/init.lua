@@ -39,12 +39,23 @@ local function initialize_leader_keys()
     vim.g.maplocalleader = ","
 end
 
+-- These settings aimed to improve ESC waiting time (open/close plugins or
+-- change modes faster, for example).
+local function configure_timeouts()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 200
+    vim.o.ttimeoutlen = 0
+    vim.o.updatetime = 200
+end
+
 -- Let make it roll!
 local function init()
     disable_standard_plugins()
     initialize_leader_keys()
+    configure_timeouts()
 
     require("cr0t.core.lazy")
+    require("cr0t.core.keys")
 
     vim.cmd("colorscheme nightfox")
 end
