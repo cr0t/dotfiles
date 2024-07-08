@@ -18,9 +18,6 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("cr0t.plugins", {
     root = lazyroot,
-    checker = {
-        enabled = true
-    },
     performance = {
         rtp = {
             disabled_plugins = {
