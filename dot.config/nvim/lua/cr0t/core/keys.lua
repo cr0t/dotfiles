@@ -1,13 +1,23 @@
 local wk = require("which-key")
-local trail = require('mini.trailspace')
+local trail = require("mini.trailspace")
+local tree_api = require("nvim-tree.api")
 
 -- Trim trailing whitespace and extra empty lines at the EOF
-local function trim()
+local function trimWhitespace()
     trail.trim()
     trail.trim_last_lines()
 end
 
--- Global {{{
+-- show/hide the tree panel
+local function treeToggle()
+    tree_api.tree.toggle({ focus = true })
+end
+
+-- my preference is to always open (or leave it opened) when run "find file"
+local function treeFindFile()
+    tree_api.tree.open({ focus = true, find_file = true })
+end
+
 wk.register({
     -- ["K"] = {"<cmd>lua vim.lsp.buf.hover()<cr>", "Hover information"},
     -- ["gd"] = {"<cmd>lua vim.lsp.buf.definition()<cr>", "Go to declaration" },
@@ -45,9 +55,7 @@ wk.register({
     },
 
     -- Misc.
-    i = { function() trim() end, "Trim whitespace" },
-}, { prefix = "<leader>" })
--- }}}
+    i = { trimWhitespace, "Trim whitespace" },
 
     -- Telescope
     T = {

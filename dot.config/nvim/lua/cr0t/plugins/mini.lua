@@ -17,9 +17,15 @@ return {
             require("mini.starter").setup({
                 header = logo
             })
-            require("mini.statusline").setup()
             require("mini.pairs").setup()
-            require("mini.tabline").setup()
+            require("mini.sessions").setup({
+                autoread = true,
+                hooks = {
+                    pre = {
+                        write = function() vim.api.nvim_exec_autocmds("User", { pattern = "SessionSavePre" }) end,
+                    },
+                },
+            })
             require("mini.trailspace").setup({
                 only_in_normal_buffers = true
             })

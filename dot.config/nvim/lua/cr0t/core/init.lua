@@ -48,11 +48,32 @@ local function configure_timeouts()
     vim.o.updatetime = 200
 end
 
+local function how_to_quit()
+    -- Close on quit
+    vim.api.nvim_create_autocmd({ "QuitPre" }, {
+        callback = function()
+            vim.cmd("NvimTreeClose")
+        end,
+    })
+
+    -- Map annoying Q/Wq/QA/etc. stuff that I often type too fast when quit
+    vim.cmd("command! Q q")
+    vim.cmd("command! Qall qall")
+    vim.cmd("command! QA qall")
+    vim.cmd("command! E e")
+    vim.cmd("command! W w")
+    vim.cmd("command! Wq wq")
+end
+
 -- Let make it roll!
 local function init()
     disable_standard_plugins()
     initialize_leader_keys()
     configure_timeouts()
+    how_to_quit()
+
+    vim.o.termguicolors = true
+    vim.opt.sessionoptions:append 'globals' -- need this for barbar+mini.sessions and buffers order restoration
 
     require("cr0t.core.lazy")
     require("cr0t.core.keys")
