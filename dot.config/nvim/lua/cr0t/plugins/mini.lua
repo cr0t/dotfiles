@@ -1,7 +1,7 @@
 return {
     {
         "echasnovski/mini.nvim",
-        version = false,
+        version = "*",
         config = function()
             -- Check out these resources to make something cool:
             -- https://texteditor.com/ascii-art/ or https://texteditor.com/multiline-text-art/

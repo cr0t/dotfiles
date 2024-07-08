@@ -12,6 +12,10 @@ wk.register({
     -- ["K"] = {"<cmd>lua vim.lsp.buf.hover()<cr>", "Hover information"},
     -- ["gd"] = {"<cmd>lua vim.lsp.buf.definition()<cr>", "Go to declaration" },
     -- ["gr"] = {"<cmd>Telescope lsp_references<cr>", "Go to references"},
+
+    -- Buffers, windows
+    ["<A-,>"] = { "<cmd>bprevious!<cr>", "Previous buffer" },
+    ["<A-.>"] = { "<cmd>bnext!<cr>", "Next buffer" },
     ["<C-w>"] = {
         ["-"] = { "<cmd>split<cr>", "Split horizontally" },
         ["\\"] = { "<cmd>vsplit<cr>", "Split vertically" },
@@ -32,7 +36,7 @@ wk.register({
 
     -- Files, currently opened file data into clipboard
     n = { "<cmd>enew<cr>", "Create new file" },
-    c = {
+    C = {
         name = "Copy file's",
         F = { "<cmd>let @+ = expand('%:p')<cr>", "Absolute path" },
         f = { "<cmd>let @+ = expand('%')<cr>", "Relative path" },
@@ -45,9 +49,8 @@ wk.register({
 }, { prefix = "<leader>" })
 -- }}}
 
--- Telescope {{{
-wk.register({
-    t = {
+    -- Telescope
+    T = {
         name = "Telescope",
         b = { "<cmd>Telescope buffers<cr>", "Buffers" },
         f = { "<cmd>Telescope live_grep<cr>", "Live grep" },
@@ -65,9 +68,7 @@ wk.register({
         }
     }
 }, { prefix = "<leader>" })
--- }}}
 
--- Annoying SHIFT-arrow keys {{{
 -- disable SHIFT+arrow keys screen movement (jumps) in visual mode: need this
 -- because I often move too fast up or down when selecting lines
 wk.register({
@@ -76,4 +77,3 @@ wk.register({
     ["J"] = { "j", "" },
     ["K"] = { "k", "" }
 }, { mode = "v" })
--- }}}
