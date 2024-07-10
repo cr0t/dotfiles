@@ -1,0 +1,45 @@
+" Shortcuts that are nice to have both in Vim and Neovim (muscle memory)
+
+let mapleader = "\\"
+let maplocalleader = ","
+
+" https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
+function! CloseBufferWithoutWindow()
+  bp | sp | bn | bd
+endfunction
+
+" basic buffers/windows stuff
+nnoremap <silent> <leader>] :bnext!<cr>
+nnoremap <silent> <leader>[ :bprevious!<cr>
+nnoremap <silent> <leader>w :call CloseBufferWithoutWindow()<cr> " close current buffer
+nnoremap <silent> <leader>q <C-w>c                               " close current window
+
+" split windows similar to my tmux combinations
+nnoremap <silent> <C-w>- :split<cr>
+nnoremap <silent> <C-w>\ :vsplit<cr>
+
+" switch between windows via `CTRL+hjkl` (see tmux.conf settings!)
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
+
+" miscellaneous
+nnoremap <silent> <leader>l :set list!<cr>  " show/hide invisible characters (TAB, new line, etc.)
+nnoremap <silent> <leader>n :nohlsearch<cr> " hide search highlight
+
+" useful for moving through veeeeery looong (and wrapped) lines of text
+nnoremap k gk
+nnoremap j gj
+
+" https://vimtricks.com/p/reselect-pasted-text/
+" https://vim.fandom.com/wiki/Using_marks
+" reselect just pasted text (pairs with gv that reselects last visual selection)
+nnoremap gp `[v`]
+
+" disable annoying SHIFT+arrow keys screen height movements while in visual mode (that leads to jumps instead
+" of selection of content); I am often too fast in moving up or down when selecting lines of text...
+vnoremap <S-Down> j
+vnoremap <S-Up> k
+vnoremap J j
+vnoremap K k
