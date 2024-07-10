@@ -3,3 +3,6 @@ Brewfile.lock.json
 # Newsboat log/cache files
 /dot.config/newsboat/cache.db
 /dot.config/newsboat/history.cmdline
+
+# Neovim's plugin manager artifact
+lazy-lock.json
