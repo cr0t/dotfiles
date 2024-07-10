@@ -1,6 +1,0 @@
-" Automatically restores Vim's session (panes, opened files, etc.) when it
-" finds Session.vim file. See more: https://github.com/tpope/vim-obsession/pull/2
-autocmd VimEnter * nested
-      \ if !argc() && empty(v:this_session) && filereadable('Session.vim') |
-      \   source Session.vim |
-      \ endif
