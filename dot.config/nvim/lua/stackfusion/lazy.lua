@@ -1,4 +1,4 @@
-local path = require("cr0t.helpers.path")
+local path = require("stackfusion.helpers.path")
 
 local lazyroot = path.join(path.dataroot, "lazy")
 local lazypath = path.join(lazyroot, "lazy.nvim")
@@ -16,7 +16,7 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup("cr0t.plugins", {
+require("lazy").setup("stackfusion.plugins", {
     root = lazyroot,
     performance = {
         rtp = {
