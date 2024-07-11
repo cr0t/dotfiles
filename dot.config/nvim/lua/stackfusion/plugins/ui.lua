@@ -1,4 +1,7 @@
 return {
+    -- Color themes
+    { "EdenEast/nightfox.nvim" },
+
     -- Better `vim.notify()`
     {
         "rcarriga/nvim-notify",
