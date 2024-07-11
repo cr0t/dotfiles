@@ -64,9 +64,27 @@ return {
                         statusline = { "ministarter" }
                     },
                 },
+                extensions = { 'nvim-tree' }
             }
 
             return opts
         end
+    },
+
+    -- File Explorer
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        dependencies = "nvim-tree/nvim-web-devicons",
+        event = "VeryLazy",
+        keys = {
+            { "<C-b>", "<cmd>NvimTreeToggle<cr>",   desc = "Open Explorer" },
+            { "<C-f>", "<cmd>NvimTreeFindFile<cr>", desc = "Reveal in Explorer" }
+        },
+        opts = {
+            view = {
+                width = 40
+            }
+        }
     }
 }
