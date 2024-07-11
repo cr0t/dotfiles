@@ -41,7 +41,7 @@ local function bootstrap()
 
     disable_standard_plugins()
 
-    require("cr0t.lazy")
+    require("stackfusion.lazy")
 end
 
 bootstrap()
