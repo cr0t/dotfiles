@@ -25,11 +25,10 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-nvim-lsp",                -- suggests modules/functions
+            "hrsh7th/cmp-buffer",                  -- suggests stuff from other opened buffers
+            "hrsh7th/cmp-path",                    -- suggests filenames and paths from the current project
+            "hrsh7th/cmp-nvim-lsp-signature-help", -- shows function signature while typing arguments
             "onsails/lspkind.nvim",
         },
         config = function(_, _opts)
