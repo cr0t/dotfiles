@@ -45,7 +45,7 @@ return {
                     theme = "auto",
                     globalstatus = vim.o.laststatus == 3,
                     disabled_filetypes = {
-                        statusline = { "ministarter" }
+                        statusline = { "starter" }
                     },
                 },
                 extensions = { "nvim-tree" }
@@ -56,11 +56,8 @@ return {
     },
 
     -- Inline help for available shortcuts
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("stackfusion.config.keymaps")
-        end
-    },
+    { "folke/which-key.nvim",  version = "*", event = "VeryLazy" },
+
+    -- Extra mini-stuff
+    { "echasnovski/mini.nvim", version = "*", event = "VeryLazy" },
 }

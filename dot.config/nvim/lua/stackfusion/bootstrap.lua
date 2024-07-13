@@ -42,6 +42,8 @@ local function bootstrap()
     disable_standard_plugins()
 
     require("stackfusion.lazy")
+    require("stackfusion.config.keymaps")
+    require("stackfusion.config.extras")
 
     vim.cmd("colorscheme nightfox")
 end
