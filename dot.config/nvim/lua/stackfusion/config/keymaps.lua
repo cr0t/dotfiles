@@ -21,4 +21,5 @@ wk.add({
     { "<leader>M", "<cmd>Mason<cr>",              desc = "Mason.nvim" },
     { "<leader>m", miniMap.toggle,                desc = "Toggle mini-map" },
     { "<leader>t", trim,                          desc = "Trim whitespace" },
+    { "<C-w>z",    "<cmd>MaximizerToggle<cr>",    desc = "Maximize window" },
 })

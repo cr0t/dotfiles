@@ -55,9 +55,8 @@ return {
         end
     },
 
-    -- Inline help for available shortcuts
+    -- Extra UI/UX stuff
     { "folke/which-key.nvim",  version = "*", event = "VeryLazy" },
-
-    -- Extra mini-stuff
     { "echasnovski/mini.nvim", version = "*", event = "VeryLazy" },
+    { "szw/vim-maximizer",     version = "*", event = "VeryLazy" }
 }
