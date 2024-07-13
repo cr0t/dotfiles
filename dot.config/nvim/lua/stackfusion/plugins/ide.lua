@@ -42,5 +42,16 @@ return {
         config = function()
             require("stackfusion.config.outline")
         end
+    },
+
+    -- Git-stuff
+    { "tpope/vim-fugitive", version = "*", event = "VeryLazy" },
+    {
+        "lewis6991/gitsigns.nvim",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("gitsigns").setup()
+        end
     }
 }
