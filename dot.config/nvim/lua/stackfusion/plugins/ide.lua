@@ -26,7 +26,8 @@ return {
             "onsails/lspkind.nvim",
         },
         config = function()
-            require("stackfusion.config.mason-lspconfig")
+            require("stackfusion.config.lspconfig")
+            require("stackfusion.config.diagnostics")
             require("stackfusion.config.autocompletion")
         end
     },
