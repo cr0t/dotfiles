@@ -11,12 +11,6 @@ return {
         end
     },
 
-    -- Elixir support for Vim/Neovim (e.g., provides syntax/elixir.vim)
-    {
-        "elixir-editors/vim-elixir",
-        version = "*"
-    },
-
     -- LSP servers + Autocompletion
     {
         "williamboman/mason.nvim",
