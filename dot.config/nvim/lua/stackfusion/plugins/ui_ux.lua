@@ -54,4 +54,13 @@ return {
             return opts
         end
     },
+
+    -- Inline help for available shortcuts
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("stackfusion.config.keymaps")
+        end
+    },
 }
