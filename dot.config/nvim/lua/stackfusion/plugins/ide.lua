@@ -6,7 +6,7 @@ return {
         event = "VeryLazy",
         lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
         build = ":TSUpdate",
-        config = function(_, opts)
+        config = function()
             require("stackfusion.config.highlighting")
         end
     },
@@ -25,9 +25,30 @@ return {
             "hrsh7th/cmp-nvim-lsp-signature-help", -- shows function signature while typing arguments
             "onsails/lspkind.nvim",
         },
-        config = function(_, _opts)
+        config = function()
             require("stackfusion.config.mason-lspconfig")
             require("stackfusion.config.autocompletion")
+        end
+    },
+
+    -- Code outline
+    {
+        "stevearc/aerial.nvim",
+        version = "*",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+        opts = {},
+        config = function()
+            require("aerial").setup({
+                on_attach = function(bufnr)
+                    vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr })
+                    vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr })
+                end,
+            })
+
+            vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<cr>")
         end
     }
 }
