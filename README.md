@@ -80,10 +80,8 @@ install up-to-date version of Neovim in Ubuntu, for example.
 Follow this checklist:
 
 - Nerd Fonts (MesloLGS)
-- `vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall`
-- `:TSInstall`
-- `:LspInstall`
-- `:Mason` – `elixir-ls`, `lua-language-server`, `solargraph`, `svelte-language-server`, `typescript-language-server`
+- Install ASDF plugins and Elixir, Erlang, Node.js, and Ruby _(to allow setting
+up all the LSPs defined in Mason)_
 
 > [!note]
 >
@@ -103,10 +101,10 @@ asdf plugin add ruby
 …and the languages themselves:
 
 ```console
-env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 26.2.2
-asdf install elixir 1.16.1-otp-26
-asdf install nodejs 20.11.1
-asdf install ruby 3.2.2
+env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 27.0.1
+asdf install elixir 1.17.2-otp-27
+asdf install nodejs 22.4.1
+asdf install ruby 3.3.4
 ```
 
 > [!note]
@@ -117,10 +115,10 @@ asdf install ruby 3.2.2
 Now we can set globally available (for the user, of course) languages versions:
 
 ```console
-asdf global erlang 26.2.2
-asdf global elixir 1.16.1-otp-26
-asdf global nodejs 20.11.1
-asdf global ruby 3.2.2
+asdf global erlang 27.0.1
+asdf global elixir 1.17.2-otp-27
+asdf global nodejs 22.4.1
+asdf global ruby 3.4.1
 ```
 
 > `asdf global ...` command adds settings to `~/.tool-versions` file; we can
@@ -135,7 +133,7 @@ is only ~0.7 at the moment of writing).
 
 ```console
 asdf plugin add neovim
-asdf install neovim 0.9.4
+asdf install neovim 0.10.0
 asdf global neovim stable
 ```
 

@@ -19,7 +19,12 @@ into the system. Below are quick instructions for macOS.
 3. Unpack and install the fonts you need (I prefer MesloLGS from the all Meslo
    variety of the fonts).
 
-## How to Use [vim-plug](https://github.com/junegunn/vim-plug)
+## _(Deprecated)_ How to Use [vim-plug](https://github.com/junegunn/vim-plug)
+
+> [!warn]
+>
+> We use Lazy.nvim since July 2024 and do not install any plugins to Vim itself.
+> _However, we still share some configs between Vim and Neovim._
 
 Please, remember to run `:PlugInstall` command when you open your vim–to ensure
 that all plugins are installed and up to date.
