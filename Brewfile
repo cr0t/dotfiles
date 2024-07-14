@@ -2,6 +2,7 @@
 brew "ack"
 brew "asdf"
 brew "bat"
+brew "btop" # resource monitor for processor, memory, disks, network and processes
 brew "direnv"
 brew "dust"
 brew "fd"
