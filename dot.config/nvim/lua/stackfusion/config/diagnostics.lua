@@ -7,15 +7,15 @@
 vim.diagnostic.config({ virtual_text = false })
 vim.cmd([[ autocmd ColorScheme * highlight NormalFloat guibg=none ]])
 vim.api.nvim_create_autocmd("CursorHold", {
-    desc = "Shows diagnostics floating window in normal mode when cursor holds on a line with an issue",
-    callback = function()
-        local opts = {
-            focusable = false,
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            border = "single",
-            source = "if_many",
-        }
+  desc = "Shows diagnostics floating window in normal mode when cursor holds on a line with an issue",
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = "single",
+      source = "if_many",
+    }
 
-        vim.diagnostic.open_float(nil, opts)
-    end
+    vim.diagnostic.open_float(nil, opts)
+  end
 })
