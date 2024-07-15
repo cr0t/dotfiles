@@ -13,12 +13,16 @@ end
 
 wk.add({
     -- Foremost, provide descriptions to Vim's shortcuts (we set in vimrc.keymap)
-    { "<leader>]", desc = "Next buffer" },
-    { "<leader>[", desc = "Prev buffer" },
     { "<leader>q", desc = "Close buffer" },
     { "<leader>w", desc = "Close window" },
     { "<leader>l", desc = "Toggle invisibles" },
     { "<leader>n", desc = "Hide search highlight" },
+
+    -- Some special "bufferline.nvim" treatments
+    { "<leader>]", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+    { "<leader>[", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+    { "<C-]>", "<cmd>BufferLineMoveNext<cr>", desc = "Move next" },
+    { "<C-[>", "<cmd>BufferLineMovePrev<cr>", desc = "Move prev" },
 
     -- Now it's time to add some extra - Neovim-related only
     { "<leader>L", "<cmd>Lazy<cr>",               desc = "Open Lazy.nvim" },
