@@ -25,8 +25,6 @@ wk.add({
   { "<C-[>",     "<cmd>BufferLineMovePrev<cr>",  desc = "Move prev" },
 
   -- Now it's time to add some extra - Neovim-related only
-  { "<leader>L", "<cmd>Lazy<cr>",                desc = "Open Lazy.nvim" },
-  { "<leader>M", "<cmd>Mason<cr>",               desc = "Open Mason.nvim" },
   { "<leader>m", mini_map.toggle,                desc = "Toggle mini-map" },
   { "<leader>t", trim_whitespace,                desc = "Trim whitespace" },
   { "<C-w>z",    "<cmd>MaximizerToggle<cr>",     desc = "Maximize window" },
