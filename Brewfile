@@ -67,6 +67,7 @@ cask "bruno" # like a Postman, but local
 cask "charles" # proxy, middle man, debug
 cask "chromedriver" # for headless testing via Chrome
 cask "google-chrome"
+cask "db-browser-for-sqlite" # https://sqlitebrowser.org/
 cask "dropbox"
 cask "elgato-control-center"
 cask "elgato-stream-deck"
