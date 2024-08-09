@@ -13,6 +13,7 @@ return {
 
       local opts = {
         options = {
+          auto_toggle_bufferline = true,
           diagnostics = "nvim_lsp",
           color_icons = false,
           indicator = { style = "none" },
