@@ -8,9 +8,11 @@
 " Neovim has UTF-8 by default, but for Vim it's not always like that
 set encoding=utf-8
 
-" folding (zc, zo)
+" simple (enough) folding (zc, zo)
 set foldmethod=indent
+set foldlevel=24
 set foldlevelstart=24
+set nofoldenable " prevent autofold when opening a single file
 
 " search down into folders (for `:find` ex command, for example)
 set path+=**
