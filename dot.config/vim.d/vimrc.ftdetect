@@ -5,6 +5,13 @@ au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile *.livemd set filetype=markdown
 
+" For some reason, markdown_fenced_languages is in conflict with Lazy.nvim
+" (probably the way how it loads plugins; in particular the elixir syntax one)
+"
+" Commenting this out prevents error when Nvim opens a single markdown file,
+" though code highlight is preserved (maybe initialization happens at a later
+" phase of loading). Leaving configuration below only for historical reasons.
+"
 " Syntax highlighting inside Markdown code blocks, see more https://vimtricks.com/p/highlight-syntax-inside-markdown/
-let g:markdown_fenced_languages = ['xml', 'html', 'css', 'sass', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'yaml', 'elixir', 'ruby', 'python', 'bash']
-let g:markdown_minlines = 100
+" let g:markdown_fenced_languages = ['xml', 'html', 'css', 'sass', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'yaml', 'elixir', 'ruby', 'python', 'bash']
+" let g:markdown_minlines = 100
