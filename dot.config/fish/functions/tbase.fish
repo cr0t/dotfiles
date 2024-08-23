@@ -1,18 +1,45 @@
-set normal (set_color normal)
-set red (set_color -o red)
-
-function tbase --description="Initiates a base tmux session (or attaches it)"
-    # see if we are inside tmux session already
-    if set -q TMUX
-        printf "$red\e0Cannot make this happen: already in a tmux session\n$normal"
+# Usage examples:
+#
+# - tbase                   # opens (or switches to) default session
+# - tbase ls                # list existing tmux sessions
+# - tbase blog              # opens (or switches to) the 'blog' session
+# - tbase my pet project    # opens (...) the 'my-pet-project' session
+function tbase --description="Initiates a base tmux session (or attaches to it)"
+    if contains 'ls' $argv
+        tmux list-sessions
         return
     end
 
-    # tmux doesn't allow us to use dots in session name
-    set --local user (string replace --all '.' '-' $USER)
-    set --local host (hostname | string split '.')[1]
-    set --local session_name (string join '[at]' $user $host)
+    # TODO: add tbase rm <session>
+    # if test $argv[1] = "rm"
+    #     # ...
+    #     return
+    # end
 
-    # create or attach to a session
-    tmux new -A -s $session_name
+    set --local session_name
+
+    # lets build a session name (or use default '<name>[at]<os_type>' template)
+    if count $argv > /dev/null
+        set session_name (string join '-' $argv)
+    else
+        # unfortunately, hostname is not a reliable source when using OpenVPN
+        # set --local host (hostname | string split '.')[1]
+        set --local os_type (uname | string lower)
+        set session_name (string join '[at]' $USER $os_type)
+    end
+
+    # tmux doesn't allow us to use dots in a session name
+    set session_name (string replace --all '.' '-' $session_name)
+
+    # create new session (detached - in case we're inside another tmux session now)
+    if not tmux has-session -t $session_name
+        tmux new-session -d -s $session_name
+    end
+
+    # find a way how to connect to the session
+    if set -q TMUX
+        tmux switch-client -t $session_name
+    else
+        tmux attach-session -t $session_name
+    end
 end
