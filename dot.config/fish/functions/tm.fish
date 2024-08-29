@@ -1,10 +1,10 @@
 # Usage examples:
 #
-# - tbase                   # opens (or switches to) default session
-# - tbase ls                # list existing tmux sessions
-# - tbase blog              # opens (or switches to) the 'blog' session
-# - tbase my pet project    # opens (...) the 'my-pet-project' session
-function tbase --description="Initiates a base tmux session (or attaches to it)"
+# - tm                   # opens (or switches to) default session
+# - tm ls                # list existing tmux sessions
+# - tm blog              # opens (or switches to) the 'blog' session
+# - tm my pet project    # opens (...) the 'my-pet-project' session
+function tm --description="Simplified tmux session manager"
     if contains 'ls' $argv
         tmux list-sessions
         return
