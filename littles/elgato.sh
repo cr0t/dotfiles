@@ -14,7 +14,7 @@ set -euo pipefail
 # To let the lights work, we have to provide a few settings:
 
 TEMPERATURE=4250 # 2900–6950K
-BRIGHTNESS=33 # 1–100
+BRIGHTNESS=50 # 1–100
 DEVICES_IPS=(192.168.1.90 192.168.1.91 192.168.1.93)
 
 # TODO: Move devices IP-addresses list to some file.
