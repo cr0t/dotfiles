@@ -2,12 +2,13 @@
 
 set -euo pipefail
 
-# This (macOS-only!) script supposed to run in background all the time: it automatically switches
-# on and off configured Elgato lights.
+# Automatic switch (on/off) of configured Elgato light devices.
 #
-# We can configure to run it in background after macOS starts using crontab, e.g.:
+# This (macOS-only!) script supposed to run in background all the time. We can configure to run it
+# in background after macOS starts using launchctl like this:
 #
-# @reboot /Users/cr0t/.dotfiles/littles/elgato.sh &
+# cp ~/.dotfiles/littles/elgato-lights.plist ~/Library/LaunchAgents/
+# launchctl load ~/Library/LaunchAgents/elgato-lights.plist
 #
 # P.S. The original idea was picked up here: https://github.com/adamesch/elgato-key-light-api
 
@@ -15,9 +16,7 @@ set -euo pipefail
 
 TEMPERATURE=4250 # 2900–6950K
 BRIGHTNESS=50 # 1–100
-DEVICES_IPS=(192.168.1.90 192.168.1.91 192.168.1.93)
-
-# TODO: Move devices IP-addresses list to some file.
+DEVICES_IPS=(192.168.1.90 192.168.1.91 192.168.1.93) # TODO: move devices' IPs list somewhere...
 
 # Converts a color temperature (in K) to the format Elgato Lights like (e.g., integer from 143–344)
 #
