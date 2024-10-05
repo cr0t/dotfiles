@@ -13,6 +13,9 @@ A set of configuration files I prefer to have across my computers.
 >
 > [Source](https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x)
 
+See [https://macos-defaults.com/](https://macos-defaults.com/) for more options
+that we can control using the `default` command.
+
 ## Installation
 
 These files use "symlink" strategy, and it worked for many years on both macOS
