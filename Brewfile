@@ -39,6 +39,7 @@ brew "xz"
 # Bigger applications
 brew "ansible"
 brew "awscli"
+brew "bitwarden-cli"
 brew "colima" # needed for the 'headless' Docker installation
 brew "docker"
 brew "docker-buildx"
@@ -65,6 +66,7 @@ brew "tmux"
 cask "adobe-creative-cloud"
 cask "alacritty"
 cask "betterdisplay"
+cask "bitwarden"
 cask "bruno" # like a Postman, but local
 cask "charles" # proxy, middle man, debug
 cask "chromedriver" # for headless testing via Chrome
