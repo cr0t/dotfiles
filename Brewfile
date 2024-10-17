@@ -22,6 +22,7 @@ brew "tree-sitter"
 brew "vale"
 brew "wakeonlan"
 brew "wordnet"
+brew "zbar" # barcodes-reading tools (incl. QR ones)
 
 # Erlang's stuff
 brew "fop"
