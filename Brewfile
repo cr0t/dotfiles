@@ -80,6 +80,7 @@ cask "handbrake"
 cask "hex-fiend" # fast hex editor
 cask "hugin" # panorama photo stitcher
 cask "imageoptim"
+cask "inkscape" # vector graphics editor
 cask "istat-menus"
 cask "karabiner-elements" # keyboard customizer (remap any key to another)
 cask "key-codes" # display key code, unicode value and modifier keys state for any key combination
@@ -87,6 +88,7 @@ cask "logi-options-plus"
 cask "obs"
 cask "obsidian"
 cask "paragon-ntfs"
+cask "pinta" # simple GTK paint program
 cask "poedit" # translation editor (gettext)
 cask "postico" # gui client for Postgres
 cask "rectangle" # keyboard shortcuts window manager
