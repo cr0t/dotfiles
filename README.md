@@ -33,13 +33,24 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
-### Brew in Apps and Utilities
+### Brew Apps and Utilities
 
 In case of fresh machine installation, consider to run `brew bundle --no-lock`
 command in the ~/.dotfiles directory to install command line apps, utilities,
 and desktop applications.
 
 See [`Brewfile`](Brewfile) for the apps.
+
+> [!tip]
+>
+> Some of the apps (e.g., `chromedriver`) don't have all the signatures as
+> modern macOS versions require. Right click and "Open" trick on the executable
+> doesn't work anymore. We have to explicitly (and manually) let the macOS know
+> that it's safe to run these binaries, for example like this:
+>
+> ```shell
+> xattr -d com.apple.quarantine $(which chromedriver)
+> ```
 
 ### Docker CLI and Colima
 
