@@ -19,7 +19,6 @@ brew "ssh-vault" # encrypt/decrypt messages with SSH keys
 brew "tldr"
 brew "tree"
 brew "tree-sitter"
-brew "vale"
 brew "wakeonlan"
 brew "wordnet"
 brew "zbar" # barcodes-reading tools (incl. QR ones)
@@ -76,6 +75,7 @@ cask "elgato-stream-deck"
 cask "firefox"
 cask "font-meslo-lg-nerd-font"
 cask "gnucash"
+cask "google-chrome"
 cask "handbrake"
 cask "hex-fiend" # fast hex editor
 cask "hugin" # panorama photo stitcher
