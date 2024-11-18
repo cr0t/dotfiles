@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "ansiblels", "bashls", "cssls", "elixirls", "elmls", "harper_ls", "html", "lua_ls", "solargraph", "svelte", "ts_ls",
+    "ansiblels", "bashls", "cssls", "elixirls", "elmls", "harper_ls", "html", "lua_ls", "ruby_lsp", "svelte", "ts_ls",
     "yamlls"
   },
 })
