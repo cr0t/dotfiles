@@ -111,18 +111,22 @@ defmodule GatoGlow.LogListener do
 
   defp all_on() do
     Enum.each(@elgato_devices, fn {ip, settings} ->
-      GatoGlow.ElgatoController.on(
-        {ip, settings[:name]},
-        settings[:temperature],
-        settings[:brightness],
-        settings[:temp_range]
-      )
+      Task.start(fn ->
+        GatoGlow.ElgatoController.on(
+          {ip, settings[:name]},
+          settings[:temperature],
+          settings[:brightness],
+          settings[:temp_range]
+        )
+      end)
     end)
   end
 
   defp all_off() do
     Enum.each(@elgato_devices, fn {ip, %{name: name}} ->
-      GatoGlow.ElgatoController.off({ip, name})
+      Task.start(fn ->
+        GatoGlow.ElgatoController.off({ip, name})
+      end)
     end)
   end
 end
