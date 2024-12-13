@@ -3,6 +3,8 @@
 Mix.install([{:httpoison, "~> 2.2.1"}])
 
 defmodule GatoGlow do
+  require Logger
+
   @selfname Path.basename(__ENV__.file)
 
   @moduledoc """
@@ -22,7 +24,11 @@ defmodule GatoGlow do
     cmd(parsed, args)
   end
 
-  defp cmd([watch: true], _), do: GatoGlow.Application.start(nil, [])
+  defp cmd([watch: true], _) do
+    Logger.info("#{@selfname} is starting to watch...")
+
+    GatoGlow.Application.start(nil, [])
+  end
 
   defp cmd(_parsed, _args) do
     IO.puts(@moduledoc)
@@ -98,7 +104,7 @@ defmodule GatoGlow.LogListener do
   end
 
   def handle_info(msg, port) do
-    IO.inspect(msg, label: "Unexpected message for LogListener")
+    Logger.warning("Unexpected message for LogListener: #{inspect(msg)}")
 
     {:noreply, port}
   end
