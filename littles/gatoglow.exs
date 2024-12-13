@@ -134,9 +134,13 @@ defmodule GatoGlow.ElgatoController do
       lights: [%{brightness: brightness, on: 1, temperature: temperature}]
     }
 
-    Logger.info("Switch on #{ip} - #{name}")
+    try do
+      HTTPoison.put!("http://#{ip}:9123/elgato/lights", :json.encode(payload))
 
-    HTTPoison.put!("http://#{ip}:9123/elgato/lights", :json.encode(payload))
+      Logger.info("Switched on #{ip} - #{name}")
+    rescue
+      _ -> Logger.info("Unable to switch on #{ip} - #{name}")
+    end
   end
 
   def off({ip, name}) do
@@ -145,9 +149,13 @@ defmodule GatoGlow.ElgatoController do
       lights: [%{on: 0}]
     }
 
-    Logger.info("Switch off #{ip} - #{name}")
+    try do
+      HTTPoison.put!("http://#{ip}:9123/elgato/lights", :json.encode(payload))
 
-    HTTPoison.put!("http://#{ip}:9123/elgato/lights", :json.encode(payload))
+      Logger.info("Switched off #{ip} - #{name}")
+    rescue
+      _ -> Logger.info("Unable to switch off #{ip} - #{name}")
+    end
   end
 
   @doc """
