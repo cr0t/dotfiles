@@ -98,15 +98,16 @@ default_prompt = prefix <> counter <> " " <> info <> " " <> last
 alive_prompt = prefix <> counter <> " " <> info <> " " <> alive <> last
 
 IEx.configure(
-  default_prompt: default_prompt,
   alive_prompt: alive_prompt,
-  inspect: [limit: 5_000, pretty: true],
-  history_size: 100,
+  auto_reload: true,
   colors: [
     eval_result: [:green, :bright],
     eval_error: [:red, :bright],
     eval_info: [:blue, :bright]
-  ]
+  ],
+  default_prompt: default_prompt,
+  history_size: 100,
+  inspect: [limit: 5_000, pretty: true]
 )
 
 ###
