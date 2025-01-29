@@ -1,8 +1,4 @@
 " For more documentation see http://vimdoc.sourceforge.net/htmldoc/filetype.html or simply run `:h ftdetect`
-au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
-au BufRead,BufNewFile mix.lock set filetype=elixir
-au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile *.livemd set filetype=markdown
 
 " For some reason, markdown_fenced_languages is in conflict with Lazy.nvim
