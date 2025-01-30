@@ -1,8 +1,8 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "ansiblels", "bashls", "cssls", "elixirls", "elmls", "harper_ls", "html", "lua_ls", "ruby_lsp", "svelte", "ts_ls",
-    "yamlls"
+    "ansiblels", "bashls", "cssls", "elixirls", "elmls", "emmet_language_server", "harper_ls",
+    "html", "lua_ls", "ruby_lsp", "svelte", "ts_ls", "yamlls"
   },
 })
 
@@ -26,6 +26,14 @@ require("mason-lspconfig").setup_handlers({
           }
         }
       }
+    })
+  end,
+  ["emmet_language_server"] = function()
+    require("lspconfig").emmet_language_server.setup({
+      filetypes = {
+        "css", "elixir", "eruby", "heex", "html", "javascript", "javascriptreact", "less", "sass",
+        "scss", "pug", "typescriptreact"
+      },
     })
   end,
 })
