@@ -5,6 +5,7 @@ brew "bat"
 brew "btop" # resource monitor for processor, memory, disks, network and processes
 brew "direnv"
 brew "dust"
+brew "fastfetch" # cross-platform neofetch-like system information tool
 brew "fd"
 brew "fswatch"
 brew "fzf"
