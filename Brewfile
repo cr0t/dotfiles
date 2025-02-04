@@ -12,6 +12,7 @@ brew "fzf"
 brew "gping"
 brew "htop"
 brew "kubectx"
+brew "lychee" # fast, async, resource-friendly link checker
 brew "mtr"
 brew "ripgrep"
 brew "smartmontools"
