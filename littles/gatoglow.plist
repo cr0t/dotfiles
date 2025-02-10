@@ -14,7 +14,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/Users/cr0t/.asdf/shims:/usr/local/bin:/usr/bin:/bin</string>
+        <string>/Users/cr0t/.asdf/shims:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
         <key>HOME</key>
         <string>/Users/cr0t</string>
     </dict>

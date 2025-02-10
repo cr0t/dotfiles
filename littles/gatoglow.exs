@@ -11,7 +11,19 @@ defmodule GatoGlow do
   GatoGlow is a tiny utility that switches on and off configured Elgato lights correspondingly to
   macOS camera power on and off events. The utility watches the system log for that.
 
-  ## Usage
+  ## Daemon...
+
+  It can (and should) be used as macOS agent (a daemon utility that works in the background). To
+  make it work like that, we need to copy the `gatoglow.plist` (lies next to this file) into
+  `~/Library/LaunchAgents/` folder, and then control it via these commands:
+
+      launchctl load ~/Library/LaunchAgents/gatoglow.plist
+      # or
+      launchctl unload ~/Library/LaunchAgents/gatoglow.plist
+
+  See logs in the `~/Library/Logs/gatoglow*.log` files.
+
+  ## Basic Usage
 
       $ #{@selfname} --watch
   """
@@ -19,6 +31,8 @@ defmodule GatoGlow do
   @args [watch: :boolean]
 
   def main(args) do
+    configure_logger()
+
     {parsed, args} = OptionParser.parse!(args, strict: @args)
 
     cmd(parsed, args)
@@ -34,6 +48,12 @@ defmodule GatoGlow do
     IO.puts(@moduledoc)
 
     System.halt(0)
+  end
+
+  defp configure_logger() do
+    formatter = Logger.default_formatter(format: "$date $time [$level] $message\n")
+
+    :logger.update_handler_config(:default, :formatter, formatter)
   end
 end
 
