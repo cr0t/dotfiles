@@ -48,5 +48,5 @@
   required = true
 [include]
   path = ~/.gitconfig.local
-[includeIf "gitdir:~/athanor/wt/**"]
-  path = ~/athanor/wt/.gitconfig
+[includeIf "gitdir:~/Workspace/wt/**"]
+  path = ~/Workspace/wt/.gitconfig
