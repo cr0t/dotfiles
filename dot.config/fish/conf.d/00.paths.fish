@@ -7,13 +7,6 @@
 # - https://fishshell.com/docs/current/#configuration
 
 if status is-login
-    # --path option allows us to manipulate PATH directly, see more:
-    # https://fishshell.com/docs/current/cmds/fish_add_path.html
-    fish_add_path --path $HOME/.dotfiles/littles
-    fish_add_path --path $HOME/.mix/escripts
-    fish_add_path --path $HOME/.local/bin
-    fish_add_path --path $HOME/.asdf/shims
-
     if not set -q HOMEBREW_PREFIX
         # M-based macOS
         if test -x /opt/homebrew/bin/brew
@@ -25,4 +18,11 @@ if status is-login
             eval (/usr/local/bin/brew shellenv)
         end
     end
+
+    # --path option allows us to manipulate PATH directly, see more:
+    # https://fishshell.com/docs/current/cmds/fish_add_path.html
+    fish_add_path --path $HOME/.dotfiles/littles
+    fish_add_path --path $HOME/.mix/escripts
+    fish_add_path --path $HOME/.local/bin
+    fish_add_path --path $HOME/.asdf/shims
 end
