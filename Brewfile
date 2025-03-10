@@ -23,6 +23,7 @@ brew "tree"
 brew "tree-sitter"
 brew "wakeonlan"
 brew "wordnet"
+brew "yt-dlp" # audio/video downloader
 brew "zbar" # barcodes-reading tools (incl. QR ones)
 
 # Erlang's stuff
