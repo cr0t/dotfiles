@@ -189,15 +189,6 @@ export PATH="$PATH:~/.dotfiles/littles"
 > temp scripts for your current projects) which you do not want to commit to
 > this repo, put these scripts there.
 
-### Adding `elgato.sh` to Crontab
-
-Consider adding this little automatization helper to run after each boot by
-adding this to crontab:
-
-```text
-@reboot /Users/cr0t/.dotfiles/littles/elgato.sh &
-```
-
 ## Set Local Environment Variables
 
 `fish`'s alternative to `.bashrc` is located at `~/.config/fish/config.fish`.
