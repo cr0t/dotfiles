@@ -33,7 +33,7 @@ Enjoy!
 
 > To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
-### Brew Apps and Utilities
+### Brew Apps, Utilities, and Co.
 
 In case of fresh machine installation, consider to run `brew bundle --no-lock`
 command in the ~/.dotfiles directory to install command line apps, utilities,
@@ -51,6 +51,13 @@ See [`Brewfile`](Brewfile) for the apps.
 > ```shell
 > xattr -d com.apple.quarantine $(which chromedriver)
 > ```
+
+After installation, (considering you're on the macOS) configure Karabiner elements to
+use CapsLock as CTRL on all keyboards.
+
+> [!note]
+>
+> ...note to self: consider to include `~/.config/karabiner` in the dotfiles.
 
 ### Docker CLI and Colima
 
