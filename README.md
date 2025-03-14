@@ -35,9 +35,16 @@ Enjoy!
 
 ### Brew Apps and Utilities
 
-In case of fresh machine installation, consider to run `brew bundle --no-lock`
-command in the ~/.dotfiles directory to install command line apps, utilities,
-and desktop applications.
+In case of fresh machine installation, consider to install command line apps, utilities,
+and desktop applications. To do so:
+
+```shell
+$ cd ~/.dotfiles
+$ /opt/homebrew/bin/brew tap hashicorp/tap
+$ /opt/homebrew/bin/brew bundle
+```
+
+Be ready to input your user's password when installing some apps.
 
 See [`Brewfile`](Brewfile) for the apps.
 
