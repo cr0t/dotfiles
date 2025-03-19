@@ -94,7 +94,8 @@ cask "paragon-ntfs"
 cask "pinta" # simple GTK paint program
 cask "poedit" # translation editor (gettext)
 cask "postico" # gui client for Postgres
-cask "rectangle" # keyboard shortcuts window manager
+# cask "rectangle" # keyboard shortcuts window manager
+cask "rectangle-pro" # keyboard shortcuts window manager, paid pro version
 cask "slack"
 cask "telegram"
 cask "transmission"
