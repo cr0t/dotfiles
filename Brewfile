@@ -67,12 +67,14 @@ brew "tmux"
 # Casks
 # cask "adobe-creative-cloud"
 cask "alacritty"
+cask "appcleaner"
 cask "betterdisplay"
+cask "bettermouse" # lightweight replacement for Logi+
 cask "bitwarden"
 cask "bruno" # like a Postman, but local
 # cask "charles" # proxy, middle man, debug
 cask "chromedriver" # for headless testing via Chrome
-cask "db-browser-for-sqlite" # https://sqlitebrowser.org/
+# cask "db-browser-for-sqlite" # https://sqlitebrowser.org/
 cask "elgato-control-center"
 # cask "elgato-stream-deck"
 # cask "firefox"
@@ -88,7 +90,7 @@ cask "inkscape" # vector graphics editor
 cask "istat-menus"
 cask "karabiner-elements" # keyboard customizer (remap any key to another)
 cask "key-codes" # display key code, unicode value and modifier keys state for any key combination
-cask "logi-options-plus"
+# cask "logi-options-plus"
 cask "obs"
 cask "obsidian"
 cask "paragon-ntfs"
