@@ -9,6 +9,7 @@ brew "fastfetch" # cross-platform neofetch-like system information tool
 brew "fd" # alternative to the find utility
 brew "fswatch"
 brew "fzf"
+brew "git-who" # Who wrote this code? ... https://github.com/sinclairtarget/git-who
 brew "gping"
 brew "htop"
 brew "kubectx"
