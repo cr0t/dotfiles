@@ -4,16 +4,18 @@
 # - https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 # - https://ductile.systems/zdiff3/
 # - https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+# - https://www.youtube.com/watch?v=CAnQ4b0uais
 # - and many other places/talks/people/etc.
 [user]
   name = Sergey Kuznetsov
   email = kuznecov.sg@gmail.com
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO04XojxNytNXJ5pBJPsbwreDevoGe6BuAgWfu1gkimQ kuznecov.sg@gmail.com
 [alias]
-  st = status
+  st = status -s # much shorter version of the status command output, use `git status` to get the full output
   co = checkout
   aa = add . --all
   pf = push --force-with-lease # safe 'force push'
+  pr = pull --rebase # GitHub PR? Not really...
   staash = stash --include-untracked
   blaame = blame -w -C -C -C # ignore whitespaces and moved lines of code
 [core]
