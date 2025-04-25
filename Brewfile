@@ -105,9 +105,10 @@ cask "telegram"
 cask "transmission"
 # cask "unshaky" # fix for double key presses on Apple's butterfly keyboard
 cask "utm" # virtual machines via QEMU
-# cask "valentina-studio" # visual editors for data
-cask "visual-studio-code"
+# cask "valentina-studio"
+# cask "visual-studio-code"
 cask "vlc"
 # cask "vmware-fusion"
 # cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
+cask "zed"
