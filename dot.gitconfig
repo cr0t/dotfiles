@@ -5,6 +5,7 @@
 # - https://ductile.systems/zdiff3/
 # - https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
 # - https://www.youtube.com/watch?v=CAnQ4b0uais
+# - https://www.youtube.com/watch?v=DZI0Zl-1JqQ (You Don’t Know Git - Edward Thomson)
 # - and many other places/talks/people/etc.
 [user]
   name = Sergey Kuznetsov
@@ -16,6 +17,8 @@
   aa = add . --all
   pf = push --force-with-lease # safe 'force push'
   pr = pull --rebase # GitHub PR? Not really...
+  lol = log --oneline --decorate
+  graph = log --oneline --graph --decorate
   staash = stash --include-untracked
   blaame = blame -w -C -C -C # ignore whitespaces and moved lines of code
 [core]
