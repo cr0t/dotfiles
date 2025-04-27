@@ -19,6 +19,7 @@
   pr = pull --rebase # GitHub PR? Not really...
   lol = log --oneline --decorate
   graph = log --oneline --graph --decorate
+  wdiff = diff --word-diff # highlight changed words (instead of lines)
   staash = stash --include-untracked
   blaame = blame -w -C -C -C # ignore whitespaces and moved lines of code
 [core]
