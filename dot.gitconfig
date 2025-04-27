@@ -46,6 +46,9 @@
   autosquash = true # cleans "fixup! ..." commits
 [rerere]
   enabled = true # REuse REcorded REsolution (auto-fix repetative merge conflicts)
+[grep]
+  lineNumber = true
+  patternType = perl # git grep '[Cc]opyright\s+\d'
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
