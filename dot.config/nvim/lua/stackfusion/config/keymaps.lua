@@ -18,6 +18,9 @@ wk.add({
   { "<leader>l", desc = "Toggle invisibles" },
   { "<leader>n", desc = "Hide search highlight" },
 
+  -- Diagnostics list (in the Telescope)
+  { "<leader>d", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+
   -- Some special "bufferline.nvim" treatments
   { "<leader>]", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
   { "<leader>[", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
