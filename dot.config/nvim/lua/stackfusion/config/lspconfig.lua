@@ -3,7 +3,7 @@ require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ansiblels', 'bashls', 'cssls', 'elixirls', 'elmls', 'emmet_language_server', 'harper_ls',
-    'html', 'lua_ls', 'ruby_lsp', 'svelte', 'ts_ls', 'yamlls'
+    'html', 'lua_ls', 'ruby_lsp', 'svelte', 'ts_ls', 'yamlls', 'zls'
   },
 })
 
