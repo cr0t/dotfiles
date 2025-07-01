@@ -83,7 +83,7 @@ cask "font-meslo-lg-nerd-font"
 cask "gimp"
 cask "gnucash"
 cask "google-chrome"
-cask "handbrake"
+cask "handbrake-app"
 cask "hex-fiend" # fast hex editor
 # cask "hugin" # panorama photo stitcher
 cask "imageoptim"
