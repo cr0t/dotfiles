@@ -52,15 +52,14 @@ brew "exercism"
 brew "exiftool"
 brew "ffmpeg"
 brew "fish"
-# brew "flyctl"
 brew "git"
 brew "git-lfs"
-brew "hashicorp/tap/terraform"
 brew "imagemagick"
 brew "neovim"
 brew "newsboat"
 brew "nmap"
 brew "openssl"
+brew "opentofu" # drop-in replacement for Terraform
 brew "rbenv-gemset"
 brew "tmate"
 brew "tmux"
@@ -85,7 +84,7 @@ cask "gnucash"
 cask "google-chrome"
 cask "handbrake-app"
 cask "hex-fiend" # fast hex editor
-# cask "hugin" # panorama photo stitcher
+# cask "hugin" # panorama photo stitcher, package got deprecated in 2025, install manually
 cask "imageoptim"
 cask "inkscape" # vector graphics editor
 cask "istat-menus"
@@ -108,7 +107,6 @@ cask "utm" # virtual machines via QEMU
 # cask "valentina-studio"
 # cask "visual-studio-code"
 cask "vlc"
-# cask "vmware-fusion"
 # cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark"
 cask "zed"
