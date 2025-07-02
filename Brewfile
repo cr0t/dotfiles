@@ -19,7 +19,7 @@ brew "ripgrep"
 brew "smartmontools"
 brew "socat"
 brew "ssh-vault" # encrypt/decrypt messages with SSH keys
-brew "tldr" # man "replacement" (quick help)
+brew "tlrc" # man pages "replacement" (TL;DR.) - short help
 brew "tree"
 brew "tree-sitter"
 brew "wakeonlan"
