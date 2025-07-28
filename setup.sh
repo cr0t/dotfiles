@@ -18,6 +18,8 @@ FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
 FISH_CONF_TO="$HOME/.config/fish/conf.d"
 FISH_FUNC_FROM="$REPO_DIR/dot.config/fish/functions"
 FISH_FUNC_TO="$HOME/.config/fish/functions"
+KARABINER_FROM="$REPO_DIR/dot.config/karabiner"
+KARABINER_TO="$HOME/.config/karabiner"
 KITTY_FROM="$REPO_DIR/dot.config/kitty"
 KITTY_TO="$HOME/.config/kitty"
 ALACRITTY_FROM="$REPO_DIR/dot.config/alacritty"
@@ -116,6 +118,7 @@ function _create_links {
   _link $TMUX_FROM $TMUX_TO
   _link $FISH_CONF_FROM $FISH_CONF_TO
   _link $FISH_FUNC_FROM $FISH_FUNC_TO
+  _link $KARABINER_FROM $KARABINER_TO
   _link $KITTY_FROM $KITTY_TO
   _link $ALACRITTY_FROM $ALACRITTY_TO
   _link $NEWSBOAT_FROM $NEWSBOAT_TO
@@ -146,6 +149,7 @@ function _remove_links {
   _unlink $NEWSBOAT_TO
   _unlink $ALACRITTY_TO
   _unlink $KITTY_TO
+  _unlink $KARABINER_TO
   _unlink $FISH_CONF_TO
   _unlink $FISH_FUNC_TO
   _unlink $TMUX_TO
