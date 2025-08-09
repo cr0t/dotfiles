@@ -37,23 +37,24 @@ return {
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     event = "VeryLazy",
-    opts = function()
-      local lualine_require = require("lualine_require")
-      lualine_require.require = require
-
-      local opts = {
-        options = {
-          theme = "auto",
-          globalstatus = vim.o.laststatus == 3,
-          disabled_filetypes = {
-            statusline = { "starter" }
-          },
+    opts = {
+      options = {
+        theme = "auto",
+        globalstatus = vim.o.laststatus == 3,
+        disabled_filetypes = {
+          statusline = { "starter" }
         },
-        extensions = { "nvim-tree" }
-      }
-
-      return opts
-    end
+      },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { "filename", "lsp_status" },
+        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" }
+      },
+      extensions = { "nvim-tree" }
+    }
   },
 
   -- Extra UI/UX stuff
