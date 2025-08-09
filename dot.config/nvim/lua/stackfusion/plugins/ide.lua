@@ -4,11 +4,32 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = "*",
     event = { "BufReadPre", "BufNewFile" },
-    lazy = vim.fn.argc(-1) == 0,     -- load treesitter early when opening a file from the cmdline
+    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
     build = ":TSUpdate",
     config = function()
       require("stackfusion.config.highlighting")
     end
+  },
+
+  {
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      keymap = {
+        preset = 'enter'
+      },
+      completion = {
+        documentation = { auto_show = false }
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' }
+      },
+    },
+    opts_extend = { "sources.default" }
   },
 
   -- LSP servers + Autocompletion
@@ -18,17 +39,11 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",                      -- suggests modules/functions
-      "hrsh7th/cmp-buffer",                        -- suggests stuff from other opened buffers
-      "hrsh7th/cmp-path",                          -- suggests filenames and paths from the current project
-      "hrsh7th/cmp-nvim-lsp-signature-help",       -- shows function signature while typing arguments
       "onsails/lspkind.nvim",
     },
     config = function()
       require("stackfusion.config.lspconfig")
       require("stackfusion.config.diagnostics")
-      require("stackfusion.config.autocompletion")
     end
   },
 
