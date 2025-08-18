@@ -79,21 +79,21 @@ defmodule GatoGlow.LogListener do
   @camera_events ~s[/Users/cr0t/.dotfiles/littles/scruffy.sh log stream --color none --style compact --predicate 'subsystem == "com.apple.UVCExtension" AND composedMessage CONTAINS "Post PowerLog"']
 
   @elgato_devices %{
-    "192.168.1.90" => %{
+    "elgato-ring-light-1d0f.local" => %{
       name: "Ring Light",
       brightness: 50,
       temperature: 4250,
       # 2950-7000 (precisely, 2903-7017)
       temp_range: 143..344
     },
-    "192.168.1.91" => %{
+    "elgato-key-light-air-eb9e.local" => %{
       name: "Key Light Air #2",
       brightness: 50,
       temperature: 4250,
       # but we don't know for real: it allows any values from 40 to 10000...
       temp_range: 143..344
     },
-    "192.168.1.93" => %{
+    "elgato-light-strip-82da.local" => %{
       name: "Light Strip",
       brightness: 50,
       temperature: 4250,
