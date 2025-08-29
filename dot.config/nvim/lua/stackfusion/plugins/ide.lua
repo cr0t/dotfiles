@@ -23,7 +23,7 @@ return {
         preset = 'enter'
       },
       completion = {
-        documentation = { auto_show = false }
+        documentation = { auto_show = true }
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' }
