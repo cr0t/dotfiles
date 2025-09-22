@@ -27,6 +27,12 @@ wk.add({
   { "<C-]>",     "<cmd>BufferLineMoveNext<cr>",  desc = "Move next" },
   { "<C-[>",     "<cmd>BufferLineMovePrev<cr>",  desc = "Move prev" },
 
+  -- The same as previous, but in LazyVim-way (using SHIFT + H/L to switch, and + CTRL to move tabs)
+  { "L",     "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+  { "H",     "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+  { "<C-L>", "<cmd>BufferLineMoveNext<cr>",  desc = "Move next" },
+  { "<C-H>", "<cmd>BufferLineMovePrev<cr>",  desc = "Move prev" },
+
   -- Now it's time to add some extra - Neovim-related only
   { "<leader>m", mini_map.toggle,                desc = "Toggle mini-map" },
   { "<leader>t", trim_whitespace,                desc = "Trim whitespace" },
