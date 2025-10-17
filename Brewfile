@@ -23,6 +23,7 @@ brew "tlrc" # man pages "replacement" (TL;DR.) - short help
 brew "tree"
 brew "tree-sitter"
 brew "wakeonlan"
+brew "watchexec" # alternative to fswatch
 brew "wordnet"
 brew "yt-dlp" # audio/video downloader
 brew "zbar" # barcodes-reading tools (incl. QR ones)
