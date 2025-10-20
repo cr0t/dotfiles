@@ -34,3 +34,8 @@ kubectx company=arn:aws:eks:eu-central-1:3...staging-eu
 kubectx homelab
 kubectx -
 ```
+
+## Aliases
+
+Check [k8s.fish](../dot.config/fish/conf.d/k8s.fish) for the aliases we have
+created over time that slightly simplify daily tasks to run various commands.

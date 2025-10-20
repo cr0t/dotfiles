@@ -35,6 +35,8 @@ Host under-tv
 Host gitlab.company.org
   Hostname gitlab.company.org
   IdentityFile ~/.ssh/id_ed25519_company
+
+  Include /Users/cr0t/.colima/ssh_config
 ```
 
 > [!NOTE]
