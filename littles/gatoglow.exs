@@ -81,21 +81,21 @@ defmodule GatoGlow.LogListener do
   @elgato_devices %{
     "elgato-ring-light-1d0f.local" => %{
       name: "Ring Light",
-      brightness: 50,
+      brightness: 70,
       temperature: 4250,
       # 2950-7000 (precisely, 2903-7017)
       temp_range: 143..344
     },
     "elgato-key-light-air-eb9e.local" => %{
       name: "Key Light Air #2",
-      brightness: 50,
+      brightness: 70,
       temperature: 4250,
       # but we don't know for real: it allows any values from 40 to 10000...
       temp_range: 143..344
     },
     "elgato-light-strip-82da.local" => %{
       name: "Light Strip",
-      brightness: 50,
+      brightness: 70,
       temperature: 4250,
       # 3550-6550 (precisely, 3503–6557)
       temp_range: 153..285
