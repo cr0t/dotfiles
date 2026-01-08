@@ -110,5 +110,5 @@ cask "utm" # virtual machines via QEMU
 # cask "visual-studio-code"
 cask "vlc"
 # cask "xquartz" # for :observer.start() running in Docker
-cask "wireshark"
+cask "wireshark-app"
 cask "zed"
