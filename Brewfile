@@ -17,6 +17,7 @@ brew "lychee" # fast, async, resource-friendly link checker
 brew "mtr"
 brew "ripgrep"
 brew "smartmontools"
+brew "snitch" # a prettier way to inspect network connections
 brew "socat"
 brew "ssh-vault" # encrypt/decrypt messages with SSH keys
 brew "tlrc" # man pages "replacement" (TL;DR.) - short help
