@@ -24,6 +24,7 @@ brew "tree"
 brew "tree-sitter"
 brew "wakeonlan"
 brew "watchexec" # alternative to fswatch
+brew "witr" # why is this running? ps, top, lsof, ss, systemctl, docker ps...
 brew "wordnet"
 brew "yt-dlp" # audio/video downloader
 brew "zbar" # barcodes-reading tools (incl. QR ones)
