@@ -9,3 +9,7 @@ Brewfile.lock.json
 
 # Neovim's plugin manager artifact
 lazy-lock.json
+
+# Fish's Bass plugin (can be installed via `fisher install edc/bass`)
+/dot.config/fish/functions/__bass.py
+/dot.config/fish/functions/bass.fish

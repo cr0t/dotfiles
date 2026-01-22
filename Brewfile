@@ -55,6 +55,7 @@ brew "exercism"
 brew "exiftool"
 brew "ffmpeg"
 brew "fish"
+brew "fisher" # plugin manager for fish (e.g., fisher install edc/bass)
 brew "git"
 brew "git-lfs"
 brew "imagemagick"
