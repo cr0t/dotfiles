@@ -5,6 +5,7 @@ brew "bat" # clone of cat with syntax highlighting
 brew "btop" # resource monitor for processor, memory, disks, network and processes
 brew "direnv"
 brew "dust"
+brew "eza" # modern alternative to ls
 brew "fastfetch" # cross-platform neofetch-like system information tool
 brew "fd" # alternative to the find utility
 brew "fswatch"
