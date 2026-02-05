@@ -1,9 +1,5 @@
 # Extra Notes
 
-## Vale Spell Checker
-
-Download and install `vale`'s configured styles with `vale sync` command. Run it from home directory after linking all the configuration files.
-
 ## Copy and Update `.gitconfig.local`
 
 After setting up these files, you'll see `.gitconfig.local.example` one that is
