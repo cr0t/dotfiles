@@ -3,8 +3,6 @@
 Mix.install([{:httpoison, "~> 2.3"}])
 
 defmodule Lights do
-  alias Config.Reader
-
   require Logger
 
   @selfname Path.basename(__ENV__.file)
@@ -47,19 +45,30 @@ defmodule Lights do
   ## Basic Usage
 
       $ #{@selfname} --watch
+      $ #{@selfname} --on
+      $ #{@selfname} --off
   """
 
   def main(argv) do
-    {parsed, _args} = OptionParser.parse!(argv, strict: [watch: :boolean])
+    configure_logger()
+    load_settings()
 
-    case parsed do
+    {parsed_args, _} =
+      OptionParser.parse!(argv, strict: [on: :boolean, off: :boolean, watch: :boolean])
+
+    case parsed_args do
+      [on: true] ->
+        Lights.Controller.turn_all(:on)
+
+      [off: true] ->
+        Lights.Controller.turn_all(:off)
+
       [watch: true] ->
-        configure_logger()
-        load_settings()
-
         Logger.info("#{@selfname} starts watching...")
 
         Lights.Application.start(nil, [])
+
+        Process.sleep(:infinity)
 
       _ ->
         IO.puts(@moduledoc)
@@ -107,7 +116,7 @@ defmodule Lights.Watchdog do
   use GenServer
 
   @scruffy Path.expand("~/.dotfiles/littles/scruffy.sh")
-  @mac_log ~s[#{@scruffy} sudo log stream --color none --style compact --predicate '(subsystem == "com.apple.UVCExtension" AND composedMessage CONTAINS "Post PowerLog") OR (subsystem == "com.apple.cmio" AND (composedMessage CONTAINS "CMIOGraphStart" OR composedMessage CONTAINS "CMIOGraphStop"))']
+  @mac_log ~s[#{@scruffy} sudo log stream --color none --style compact --predicate 'subsystem == "com.apple.cmio" AND (composedMessage CONTAINS "CMIOGraphStart Calling Start" OR composedMessage CONTAINS "CMIOGraphStop Calling Stop")']
 
   def start_link(_opts),
     do: GenServer.start_link(__MODULE__, nil, name: __MODULE__)
@@ -122,12 +131,6 @@ defmodule Lights.Watchdog do
 
   def handle_info({_port, {:data, log_line}}, port) do
     cond do
-      String.contains?(log_line, "\"VDCAssistant_Power_State\" = On") ->
-        Lights.Controller.turn_all(:on)
-
-      String.contains?(log_line, "\"VDCAssistant_Power_State\" = Off") ->
-        Lights.Controller.turn_all(:off)
-
       String.contains?(log_line, "CMIOGraphStart Calling Start()") ->
         Lights.Controller.turn_all(:on)
 
@@ -174,7 +177,15 @@ defmodule Lights.Controller do
 
   defp turn_lamp(lamp_id, action) when action in [:on, :off] do
     url = "#{base_url()}/api/services/light/turn_#{action}"
-    body = :json.encode(%{entity_id: lamp_id})
+
+    # While it's possible to define custom light profiles, we use one of defaults that are defined:
+    # https://github.com/home-assistant/core/blob/dev/homeassistant/components/light/light_profiles.csv
+    body =
+      case action do
+        :on -> :json.encode(%{entity_id: lamp_id, profile: "energize"})
+        :off -> :json.encode(%{entity_id: lamp_id})
+      end
+
     headers = auth_headers()
 
     Logger.info("turning #{lamp_id} #{action}")
@@ -187,5 +198,3 @@ defmodule Lights.Controller do
 end
 
 Lights.main(System.argv())
-
-Process.sleep(:infinity)
