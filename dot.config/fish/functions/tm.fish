@@ -16,19 +16,27 @@ function tm --description="Simplified tmux session manager"
     #     return
     # end
 
+    # lets build a session name (or use default '<hostname> <os_type>' template)
     set --local session_name
+    set --local session_prefix
+    set --local session_os_type (uname | grep -iq darwin && printf '\uf179' || printf '\uf17c')
 
-    # lets build a session name (or use default '<name>[at]<os_type>' template)
     if count $argv > /dev/null
-        set session_name (string join '-' $argv)
+        set session_prefix (string join '-' $argv)
     else
-        # unfortunately, hostname is not a reliable source when using OpenVPN
-        # set --local host (hostname | string split '.')[1]
-        set --local os_type (uname | string lower)
-        set session_name (string join '[at]' $USER $os_type)
+        # WARNING: hostname sometimes might be quite long (e.g., when using corporate VPN)
+        set session_prefix (hostname -s | string lower)
     end
 
-    # tmux doesn't allow us to use dots in a session name
+    # truncate prefix to 32 chars max
+    if test (string length $session_prefix) -gt 30
+        set session_prefix (string sub -l 28 $session_prefix)…
+    end
+
+    # add operating system icon icon
+    set session_name (string join ' ' $session_prefix $session_os_type)
+
+    # tmux doesn't allow us to use dots (could appear in the hostname) in the session name
     set session_name (string replace --all '.' '-' $session_name)
 
     # create new session (detached - in case we're inside another tmux session now)
@@ -36,7 +44,7 @@ function tm --description="Simplified tmux session manager"
         tmux new-session -d -s $session_name
     end
 
-    # find a way how to connect to the session
+    # find a way how to connect to the session: switch to existing or attach to newly created
     if set -q TMUX
         tmux switch-client -t $session_name
     else
