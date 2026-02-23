@@ -4,6 +4,9 @@
 # - tm ls                # list existing tmux sessions
 # - tm blog              # opens (or switches to) the 'blog' session
 # - tm my pet project    # opens (...) the 'my-pet-project' session
+#
+# P.S. There is a (even more) simplified Bash-version in the tm.bash file. Add it to .bashrc, so
+# to use it similarly on the remote machines (where we do not want to install fish).
 function tm --description="Simplified tmux session manager"
     if contains 'ls' $argv
         tmux list-sessions
