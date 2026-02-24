@@ -1,31 +1,25 @@
 #!/bin/bash
 
-REPO_DIR=$(cd "$(dirname $0)"; pwd -P)
-FILES=$(ls -d $REPO_DIR/dot.*)
+set -euo pipefail
+
+REPO_DIR=$(cd "$(dirname "$0")"; pwd -P)
+
+# dot.config/* subdirectories to link (source relative to REPO_DIR->dest relative to HOME)
+# Convention: path under dot.config/ maps to ~/.config/ by stripping the 'dot.' prefix
+CONFIG_DIRS=(
+  "dot.config/nvim"
+  "dot.config/vim.d"
+  "dot.config/tmux.d"
+  "dot.config/fish/conf.d"
+  "dot.config/fish/functions"
+  "dot.config/karabiner"
+  "dot.config/kitty"
+  "dot.config/alacritty"
+  "dot.config/newsboat"
+)
+
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
 TMUX_TPM="$HOME/.tmux/plugins/tpm"
-
-# ~/.config directory might contain other applications configuration file while
-# we use the system and install more utilities; and this is why we want to be
-# precise in what and where we want to link
-VIM_FROM="$REPO_DIR/dot.config/vim.d"
-VIM_TO="$HOME/.config/vim.d"
-NEOVIM_FROM="$REPO_DIR/dot.config/nvim"
-NEOVIM_TO="$HOME/.config/nvim"
-TMUX_FROM="$REPO_DIR/dot.config/tmux.d"
-TMUX_TO="$HOME/.config/tmux.d"
-FISH_CONF_FROM="$REPO_DIR/dot.config/fish/conf.d"
-FISH_CONF_TO="$HOME/.config/fish/conf.d"
-FISH_FUNC_FROM="$REPO_DIR/dot.config/fish/functions"
-FISH_FUNC_TO="$HOME/.config/fish/functions"
-KARABINER_FROM="$REPO_DIR/dot.config/karabiner"
-KARABINER_TO="$HOME/.config/karabiner"
-KITTY_FROM="$REPO_DIR/dot.config/kitty"
-KITTY_TO="$HOME/.config/kitty"
-ALACRITTY_FROM="$REPO_DIR/dot.config/alacritty"
-ALACRITTY_TO="$HOME/.config/alacritty"
-NEWSBOAT_FROM="$REPO_DIR/dot.config/newsboat"
-NEWSBOAT_TO="$HOME/.config/newsboat"
 
 # Colors
 RED='\033[0;31m'
@@ -33,134 +27,117 @@ GRN='\033[0;32m'
 YEL='\033[0;33m'
 CLR='\033[0m'
 
-function _echo_error {
-  echo -e "${RED}$1${CLR}"
+_error()   { echo -e "${RED}$1${CLR}"; }
+_warning() { echo -e "${YEL}$1${CLR}"; }
+_success() { echo -e "${GRN}$1${CLR}"; }
+
+# Derives the destination path for a dot.config/* entry:
+# dot.config/nvim -> $HOME/.config/nvim
+_dest() {
+  local src="$1"            # e.g. "dot.config/nvim"
+  local rel="${src/dot./.}" # e.g. ".config/nvim"
+
+  echo "$HOME/$rel"         # e.g. "/home/user/.config/nvim"
 }
 
-function _echo_warning {
-  echo -e "${YEL}$1${CLR}"
-}
+# Creates a symlink FROM → TO, with safety checks
+_link() {
+  local from="$1" to="$2"
 
-function _echo_success {
-  echo -e "${GRN}$1${CLR}"
-}
+  echo -n "Linking $from → $to : "
 
-# Replaces 'dot.' with a simple '.' in the given parameter
-function _linkpath {
-  BASENAME=$(basename $1)
-  NO_DOT="${BASENAME/dot./.}"
-  echo "$HOME/$NO_DOT"
-}
+  if [ -e "$to" ] || [ -L "$to" ]; then
+    _error "already exists, consider backing it up!"
 
-# Wrapper to make a soft link
-function _link {
-  FROM=$1
-  TO=$2
-
-  echo -n "Linking $FROM : "
-
-  if [ -d $TO ]; then
-    _echo_error "$TO already exists, consider to back it up!"
     return 1
   fi
 
-  ln -s $FROM $TO && _echo_success "done"
+  ln -s "$from" "$to" && _success "done"
 }
 
-# Wrapper to unlink configuration directory or file
-function _unlink {
+# Removes a symlink
+_unlink() {
   echo -n "Removing $1 : "
-  rm $1 && _echo_success "done"
+  unlink "$1" && _success "done"
 }
 
-# Installs vim-plug package manager, if it's not installed yet
-function _install_vim_plug {
-  if [ ! -f $VIM_PLUG ]; then
-    echo "Install vim-plug..."
-    # https://github.com/junegunn/vim-plug
-    curl -fLo $VIM_PLUG --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+_install_vim_plug() {
+  if [ ! -f "$VIM_PLUG" ]; then
+    echo "Installing vim-plug..."
+
+    curl -fLo "$VIM_PLUG" --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 }
 
-# Installs tmux plugin manager, if it's not installed yet
-function _install_tmux_tpm {
-  if [ ! -d $TMUX_TPM ]; then
-    echo "Install tmux tpm..."
-    # https://github.com/tmux-plugins/tpm
-    git clone --quiet https://github.com/tmux-plugins/tpm $TMUX_TPM
+_install_tmux_tpm() {
+  if [ ! -d "$TMUX_TPM" ]; then
+    echo "Installing tmux tpm..."
+
+    git clone --quiet https://github.com/tmux-plugins/tpm "$TMUX_TPM"
   fi
 }
 
-# 1. Links regular dot.* files from the repository to their counterparts
-# 2. Runs vim-plug installation
-# 3. Runs fish configuration linking process
-function _create_links {
-  for f in $FILES; do
-    if [ ! -d $f ]; then
-      LINKPATH=$(_linkpath $f)
-      echo -n "Linking $f to $LINKPATH : "
-      LN_OUTPUT=$(ln -s $f $LINKPATH 2>&1)
+_create_links() {
+  # Link top-level dot.* files (e.g. dot.bashrc → ~/.bashrc)
+  for f in "$REPO_DIR"/dot.*; do
+    [ -d "$f" ] && continue
 
-      if [ $? -eq 0 ]; then
-        _echo_success "done"
-      else
-        _echo_error "already exists"
-      fi
+    local dest="$HOME/.${f##*/dot.}"
+
+    echo -n "Linking $f → $dest : "
+
+    if ln -s "$f" "$dest" 2>/dev/null; then
+      _success "done"
+    else
+      _error "already exists"
     fi
   done
 
-  # ensure that parent directories exist before linking configuration
-  mkdir -p ~/.config/fish
-  mkdir -p ~/.vim
+  # Link dot.config/* directories
+  for src in "${CONFIG_DIRS[@]}"; do
+    local dest=$(_dest "$src")
 
-  _link $NEOVIM_FROM $NEOVIM_TO
-  _link $VIM_FROM $VIM_TO
-  _link $TMUX_FROM $TMUX_TO
-  _link $FISH_CONF_FROM $FISH_CONF_TO
-  _link $FISH_FUNC_FROM $FISH_FUNC_TO
-  _link $KARABINER_FROM $KARABINER_TO
-  _link $KITTY_FROM $KITTY_TO
-  _link $ALACRITTY_FROM $ALACRITTY_TO
-  _link $NEWSBOAT_FROM $NEWSBOAT_TO
+    mkdir -p "$(dirname "$dest")"
 
-  # extra setup – steps below will not be reverted on 'unlink' command
+    _link "$REPO_DIR/$src" "$dest"
+  done
+
+  # Extra setup (not reverted by 'clean')
+  mkdir -p "$HOME/.vim"
+
   _install_vim_plug
   _install_tmux_tpm
 
   echo "---"
 
-  _echo_warning "BREW: Consider to run 'brew bundle --no-lock' if it's a fresh macOS installation!"
-  _echo_warning "FISH: Consider to run 'cp ~/.config/fish/config.fish.example ~/.config/fish/config.fish'"
-  _echo_warning "NVIM: Install or update plugins via 'vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall'"
-  _echo_warning "TMUX: Install plugins via <prefix + I> if you're inside a tmux session"
+  _warning "BREW: Consider running 'brew bundle --no-lock' on a fresh macOS install"
+  _warning "FISH: Consider running 'cp ~/.config/fish/config.fish.example ~/.config/fish/config.fish'"
+  _warning "NVIM: Install plugins via 'vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall'"
+  _warning "NVIM: Install plugins via 'nvim --headless \"+Lazy! sync\" +qa && nvim --headless \"+MasonUpdate\" +qa'"
+  _warning "TMUX: Install plugins via <prefix + I> inside a tmux session"
 }
 
-# 1. Removes links from regular dot.* files
-# 2. Runs fish configuration clean up process
-function _remove_links {
-  for f in $FILES; do
-    if [ ! -d $f ]; then
-      LINKPATH=$(_linkpath $f)
-      echo -n "Removing $LINKPATH : "
-      rm $LINKPATH && _echo_success "done"
-    fi
+_remove_links() {
+  # Remove top-level dot.* symlinks
+  for f in "$REPO_DIR"/dot.*; do
+    [ -d "$f" ] && continue
+
+    local dest="$HOME/.${f##*/dot.}"
+
+    echo -n "Removing $dest : "
+
+    unlink "$dest" && _success "done"
   done
 
-  _unlink $NEWSBOAT_TO
-  _unlink $ALACRITTY_TO
-  _unlink $KITTY_TO
-  _unlink $KARABINER_TO
-  _unlink $FISH_CONF_TO
-  _unlink $FISH_FUNC_TO
-  _unlink $TMUX_TO
-  _unlink $VIM_TO
-  _unlink $NEOVIM_TO
+  # Remove dot.config/* symlinks (reverse order for cleanliness)
+  for (( i=${#CONFIG_DIRS[@]}-1; i>=0; i-- )); do
+    _unlink "$(_dest "${CONFIG_DIRS[$i]}")"
+  done
 }
 
-###
-
-case "$1" in
-  "link") _create_links;;
-  "clean") _remove_links;;
-  *) echo "Please, specify the task: setup.sh <link|clean>" && exit 1;;
+case "${1:-}" in
+  link)  _create_links ;;
+  clean) _remove_links ;;
+  *)     echo "Usage: setup.sh <link|clean>" && exit 1 ;;
 esac
