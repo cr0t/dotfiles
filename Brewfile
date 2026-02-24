@@ -71,7 +71,7 @@ brew "tmux"
 
 # Casks
 # cask "adobe-creative-cloud"
-cask "alacritty"
+cask "alacritty" # use icon from https://yoolk.ninja/icons/alacritty/ (or assets/alacritty.icns.zip)
 cask "appcleaner"
 cask "betterdisplay"
 cask "bettermouse" # lightweight replacement for Logi+
