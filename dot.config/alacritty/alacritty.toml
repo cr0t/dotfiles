@@ -102,6 +102,7 @@ mods = "Command"
 [window]
 decorations = "buttonless"
 decorations_theme_variant = "Dark"
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 160
