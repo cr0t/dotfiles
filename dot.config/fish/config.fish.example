@@ -9,3 +9,9 @@ if status is-interactive
     set -x HOMEBREW_NO_ENV_HINTS 1
     set -x EDITOR nvim
 end
+
+# Automatically start (or attach to) tmux session when connected over SSH
+if status is-interactive && test -z "$TMUX" && set -q SSH_CONNECTION
+    # tm is a tiny wrapper over the tmux, see functions/tm.fish
+    tm
+end
