@@ -112,7 +112,7 @@ _create_links() {
   echo "---"
 
   _warning "BREW: Consider running 'brew bundle --no-lock' on a fresh macOS install"
-  _warning "FISH: Consider running 'cp ~/.config/fish/config.fish.example ~/.config/fish/config.fish'"
+  _warning "FISH: Consider running 'cp ~/.dotfiles/dot.config/fish/config.fish.example ~/.config/fish/config.fish'"
   _warning "NVIM: Install plugins via 'vim -c PlugInstall -c PlugUpgrade -c PlugUpdate -c qall'"
   _warning "NVIM: Install plugins via 'nvim --headless \"+Lazy! sync\" +qa && nvim --headless \"+MasonUpdate\" +qa'"
   _warning "TMUX: Install plugins via <prefix + I> inside a tmux session"
