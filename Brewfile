@@ -16,6 +16,7 @@ brew "htop"
 brew "kubectx"
 brew "lychee" # fast, async, resource-friendly link checker
 brew "mtr"
+brew "parallel" # like args, but simpler
 brew "ripgrep"
 brew "smartmontools"
 brew "snitch" # a prettier way to inspect network connections
