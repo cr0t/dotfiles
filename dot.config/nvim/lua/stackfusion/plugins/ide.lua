@@ -69,5 +69,12 @@ return {
     config = function()
       require("gitsigns").setup()
     end
+  },
+
+  -- Diagnostics, quickfix list, etc.
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
   }
 }

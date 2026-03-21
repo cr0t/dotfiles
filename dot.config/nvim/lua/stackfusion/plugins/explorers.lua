@@ -42,6 +42,7 @@ return {
       -- └────────────────────────────────────────────────┘
 
       local telescope_actions = require("telescope.actions")
+      local open_with_trouble = require("trouble.sources.telescope").open
 
       local opts = {
         defaults = {
@@ -50,9 +51,15 @@ return {
           layout_config = { prompt_position = "top" },
           sorting_strategy = "ascending",
           mappings = {
-            i = { ["<esc>"] = telescope_actions.close } -- press ESC once to close the modal
+            i = {
+              ["<esc>"] = telescope_actions.close, -- press ESC once to close the modal
+              ["<c-d>"] = open_with_trouble
+            },
+            n = {
+              ["<c-d>"] = open_with_trouble
+            },
           },
-          winblend = 5,                                 -- pseudo-transparency for the modal (0..100)
+          winblend = 5, -- pseudo-transparency for the modal (0..100)
           preview = {
             treesitter = false
           }
