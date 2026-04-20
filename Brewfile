@@ -25,6 +25,7 @@ brew "ssh-vault" # encrypt/decrypt messages with SSH keys
 brew "tlrc" # man pages "replacement" (TL;DR.) - short help
 brew "tree"
 brew "tree-sitter"
+brew "tree-sitter-cli" # for Neovim 0.12+
 brew "wakeonlan"
 brew "watchexec" # alternative to fswatch
 brew "witr" # why is this running? ps, top, lsof, ss, systemctl, docker ps...
