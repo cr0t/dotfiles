@@ -1,7 +1,7 @@
 # Do not forget that you can (and should) use .iex.exs files per each project
 # to simplify your life. You can write something like this:
 #
-# File.exists?(Path.expand("~/.iex.exs")) && import_file("~/.iex.exs")
+# import_file_if_available("~/.iex.exs")
 #
 # alias Project.{Repo, User, Post}
 #
