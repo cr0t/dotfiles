@@ -15,6 +15,7 @@ brew "gping"
 brew "htop"
 brew "kubectx"
 brew "lychee" # fast, async, resource-friendly link checker
+brew "mise"
 brew "mtr"
 brew "parallel" # like args, but simpler
 brew "ripgrep"
