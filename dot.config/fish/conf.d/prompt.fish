@@ -43,7 +43,10 @@ function trimmed_git_prompt
 end
 
 function fish_prompt
-    set -l last_status $status
+    set -l last_status $status # capture before anything else
+
+    __cage_status
+
     if test $last_status = 0
         set arrow "$green>"
     else
@@ -70,4 +73,26 @@ end
 # https://github.com/rafaelrinaldi/pure/blob/master/functions/_pure_string_width.fish
 function __pure_string_width
     echo (string length (string replace -ra '\e\[[^m]*m' '' $argv[1]))
+end
+
+function __cage_status
+    # we're inside VM
+    if set -q __cage_vm
+        echo -n (set_color green)"caged "(set_color normal)
+        return
+    end
+
+    # we're on the host
+    if not command -q cage
+        return
+    end
+
+    set -l cage_status (cage prompt 2>/dev/null)
+
+    switch $cage_status
+        case running
+            echo -n (set_color bryellow)"caged "(set_color normal)
+        case stopped
+            echo -n (set_color red)"caged "(set_color normal)
+    end
 end
