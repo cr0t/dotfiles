@@ -1,11 +1,6 @@
 [general]
 import = ["~/.config/alacritty/themes/nightfox.toml"]
 
-# The path to program might not work properly for non-macOS installations
-# [shell]
-# program = "/opt/homebrew/bin/fish"
-# args = ["--login"] # , "--command=tbase"]
-
 [env]
 TERM = "xterm-256color"
 
