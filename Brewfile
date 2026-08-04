@@ -87,7 +87,7 @@ cask "elgato-control-center"
 # cask "elgato-stream-deck"
 # cask "firefox"
 cask "font-meslo-lg-nerd-font"
-cask "gimp"
+cask "gimp" # consider https://github.com/Diolinux/PhotoGIMP patch
 cask "gnucash"
 cask "google-chrome"
 cask "handbrake-app"
