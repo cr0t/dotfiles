@@ -102,6 +102,9 @@ option_as_alt = "Both"
 [window.dimensions]
 columns = 160
 lines = 50
+# for asciinema recording, it's convenient to use smaller window size:
+# columns = 120
+# lines = 40
 
 [window.padding]
 x = 8
