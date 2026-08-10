@@ -1,0 +1,6 @@
+[tools]
+elixir = "1.20.3-otp-29"
+erlang = "29.0.5"
+node = "26.7.0"
+ruby = "4.0.6"
+zig = "0.16.0"
