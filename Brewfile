@@ -118,3 +118,7 @@ cask "vlc"
 # cask "xquartz" # for :observer.start() running in Docker
 cask "wireshark-app"
 cask "zed"
+
+# Extra casks
+tap "sozercan/repo"
+cask "kaset" # YouTube Music macOS-native player
