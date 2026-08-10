@@ -7,15 +7,16 @@ REPO_DIR=$(cd "$(dirname "$0")"; pwd -P)
 # dot.config/* subdirectories to link (source relative to REPO_DIR->dest relative to HOME)
 # Convention: path under dot.config/ maps to ~/.config/ by stripping the 'dot.' prefix
 CONFIG_DIRS=(
-  "dot.config/nvim"
-  "dot.config/vim.d"
-  "dot.config/tmux.d"
+  "dot.config/alacritty"
   "dot.config/fish/conf.d"
   "dot.config/fish/functions"
   "dot.config/karabiner"
   "dot.config/kitty"
-  "dot.config/alacritty"
+  "dot.config/mise"
   "dot.config/newsboat"
+  "dot.config/nvim"
+  "dot.config/tmux.d"
+  "dot.config/vim.d"
 )
 
 VIM_PLUG="$HOME/.vim/autoload/plug.vim"
@@ -58,7 +59,12 @@ _link() {
 # Removes a symlink
 _unlink() {
   echo -n "Removing $1 : "
-  unlink "$1" && _success "done"
+
+  if unlink "$1"; then
+    _success "done"
+  else
+    _error "failed"
+  fi
 }
 
 _install_vim_plug() {
@@ -83,7 +89,8 @@ _create_links() {
   for f in "$REPO_DIR"/dot.*; do
     [ -d "$f" ] && continue
 
-    local dest="$HOME/.${f##*/dot.}"
+    local dest
+    dest="$HOME/.${f##*/dot.}"
 
     echo -n "Linking $f → $dest : "
 
@@ -96,11 +103,12 @@ _create_links() {
 
   # Link dot.config/* directories
   for src in "${CONFIG_DIRS[@]}"; do
-    local dest=$(_dest "$src")
+    local dest
+    dest=$(_dest "$src")
 
     mkdir -p "$(dirname "$dest")"
 
-    _link "$REPO_DIR/$src" "$dest"
+    _link "$REPO_DIR/$src" "$dest" || true
   done
 
   # Extra setup (not reverted by 'clean')
@@ -123,16 +131,21 @@ _remove_links() {
   for f in "$REPO_DIR"/dot.*; do
     [ -d "$f" ] && continue
 
-    local dest="$HOME/.${f##*/dot.}"
+    local dest
+    dest="$HOME/.${f##*/dot.}"
 
     echo -n "Removing $dest : "
 
-    unlink "$dest" && _success "done"
+    if unlink "$dest"; then
+      _success "done"
+    else
+      _error "failed (missing?)"
+    fi
   done
 
   # Remove dot.config/* symlinks (reverse order for cleanliness)
   for (( i=${#CONFIG_DIRS[@]}-1; i>=0; i-- )); do
-    _unlink "$(_dest "${CONFIG_DIRS[$i]}")"
+    _unlink "$(_dest "${CONFIG_DIRS[$i]}")" || true
   done
 }
 
