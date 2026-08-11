@@ -77,11 +77,65 @@ RESET=$'\033[0m'
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
 info()   { printf '%s[info]%s  %s\n' "$CYAN" "$RESET" "$*"; }
-ok()     { printf '%s[ok]%s    %s\n' "$GREEN" "$RESET" "$*"; }
+ok()     { printf '%s[okay]%s  %s\n' "$GREEN" "$RESET" "$*"; }
 warn()   { printf '%s[warn]%s  %s\n' "$YELLOW" "$RESET" "$*"; }
-err()    { printf '%s[FAIL]%s  %s\n' "$RED" "$RESET" "$*"; }
+err()    { printf '%s[fail]%s  %s\n' "$RED" "$RESET" "$*"; }
 dim()    { printf '%s        %s%s\n' "$DIM" "$*" "$RESET"; }
 header() { printf '\n%s-- %s --%s\n' "$BOLD" "$*" "$RESET"; }
+
+# Determine a repo's "main" branch.
+#
+# Preferred method: ask the remote which branch its HEAD points at. This is
+# the authoritative, no-guesswork answer -- it's exactly what `git clone`
+# uses to decide what to check out -- and it works regardless of naming
+# convention (main, master, staging, trunk, ...).
+#
+# Falls back to the old main/master heuristic if there's no remote, the
+# remote HEAD symref can't be resolved (offline, auth issue, etc.), or the
+# resolved branch doesn't actually exist as a local branch.
+#
+# Prints the branch name on stdout and returns 0, or returns 1 if nothing
+# could be determined.
+detect_main_branch() {
+  local remote_head=""
+
+  if git remote get-url origin &>/dev/null; then
+    # Use the cached symref if we already have one (fast, offline-safe).
+    remote_head="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true)"
+
+    # Not cached -- try to populate it. This is a lightweight remote query
+    # (equivalent to `git ls-remote --symref origin HEAD`), not a full
+    # fetch, so it's cheap even ahead of the retry-guarded fetch below.
+    if [[ -z "$remote_head" ]]; then
+      if git remote set-head origin --auto &>/dev/null; then
+        remote_head="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true)"
+      fi
+    fi
+  fi
+
+  if [[ -n "$remote_head" ]]; then
+    local candidate="${remote_head#origin/}"
+
+    if git show-ref --verify --quiet "refs/heads/$candidate"; then
+      dim "resolved via origin/HEAD -> $candidate" >&2
+      echo "$candidate"
+      return 0
+    else
+      warn "origin/HEAD points at '$candidate' but no local branch '$candidate' exists -- falling back." >&2
+    fi
+  fi
+
+  # Fallback: old main/master heuristic.
+  local candidate
+  for candidate in main master; do
+    if git show-ref --verify --quiet "refs/heads/$candidate"; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
 
 # Retry a `git fetch` with exponential backoff. Returns 0 on success, 1 if
 # every attempt failed. Transient network/auth errors (like an SSH cert
@@ -168,15 +222,8 @@ for repo in "${repos[@]}"; do
   # ── Determine the main branch ─────────────────────────────────────────
   main_branch=""
 
-  for candidate in main master; do
-    if git show-ref --verify --quiet "refs/heads/$candidate"; then
-      main_branch="$candidate"
-      break
-    fi
-  done
-
-  if [[ -z "$main_branch" ]]; then
-    warn "No 'main' or 'master' branch found."
+  if ! main_branch="$(detect_main_branch)"; then
+    warn "Could not determine a main branch (checked origin/HEAD, 'main', 'master')."
 
     printf '%s  ► Skipped%s\n' "$YELLOW" "$RESET"
 
