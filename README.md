@@ -16,6 +16,12 @@ A set of configuration files I prefer to have across my computers.
 See [https://macos-defaults.com/](https://macos-defaults.com/) for more options
 that we can control using the `default` command.
 
+You can consider to disable default font smoothing in Alacritty too (this makes it render fonts less bold):
+
+```console
+defaults write org.alacritty AppleFontSmoothing -int 0
+```
+
 ## Installation
 
 These files use "symlink" strategy, and it worked for many years on both macOS
