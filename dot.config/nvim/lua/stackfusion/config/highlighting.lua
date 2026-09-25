@@ -1,4 +1,6 @@
-require("nvim-treesitter.configs").setup({
+local treesitter = require("nvim-treesitter")
+
+treesitter.setup({
   auto_install = vim.fn.executable "git" == 1 and vim.fn.executable "tree-sitter" == 1, -- only if git and tree-sitter available
   ignore_install = { "javascript" },
   ensure_installed = {

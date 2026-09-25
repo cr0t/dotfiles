@@ -1,12 +1,10 @@
 return {
   -- (Advanced) Syntax highlighting
   {
-    "nvim-treesitter/nvim-treesitter",
-    version = "*",
-    branch = "main",
-    event = { "BufReadPre", "BufNewFile" },
+    'nvim-treesitter/nvim-treesitter',
     lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-    build = ":TSUpdate",
+    build = ':TSUpdate',
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("stackfusion.config.highlighting")
     end
