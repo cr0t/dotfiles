@@ -5,19 +5,13 @@
     <key>Label</key>
     <string>lights</string>
 
+    <!-- IMPORTANT: double-check pathes below! -->
+
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/cr0t/.dotfiles/littles/elgato/lights.exs</string>
+      <string>/Users/cr0t/.dotfiles/littles/elgato/lights.sh</string>
       <string>--watch</string>
     </array>
-
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>PATH</key>
-        <string>/Users/cr0t/.asdf/shims:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
-        <key>HOME</key>
-        <string>/Users/cr0t</string>
-    </dict>
 
     <key>RunAtLoad</key>
     <true/>
@@ -25,10 +19,13 @@
     <key>KeepAlive</key>
     <true/>
 
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
     <key>StandardOutPath</key>
     <string>/Users/cr0t/Library/Logs/lights.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/cr0t/Library/Logs/lights_error.log</string>
+    <string>/Users/cr0t/Library/Logs/lights.error.log</string>
 </dict>
 </plist>
