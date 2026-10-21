@@ -39,11 +39,36 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
       "onsails/lspkind.nvim",
+      "b0o/SchemaStore.nvim",
     },
     config = function()
       require("stackfusion.config.lspconfig")
       require("stackfusion.config.diagnostics")
     end
+  },
+
+  -- Formatting (uses project's own Prettier from the nearest node_modules/.bin, falls back to LSP)
+  {
+    "stevearc/conform.nvim",
+    version = "*",
+    event = "BufWritePre",
+    cmd = "ConformInfo",
+    opts = {
+      formatters_by_ft = {
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
+        markdown = { "prettier" },
+        yaml = { "prettier" },
+      },
+      default_format_opts = { lsp_format = "fallback" },
+      format_on_save = { timeout_ms = 1000 },
+    },
   },
 
   -- Code outline

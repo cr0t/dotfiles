@@ -3,12 +3,10 @@ local ts = require("nvim-treesitter")
 ts.setup({})
 
 ts.install({
-  "bash", "c", "css", "diff", "dockerfile", "elixir", "elm", "erlang",
-  "fish", "git_config", "gitcommit", "gitignore", "heex", "html", "jsdoc",
-  "json", "lua", "luadoc", "luap", "markdown", "markdown_inline",
-  "mermaid", "python", "query", "regex", "ruby", "scss", "sql", "ssh_config",
-  "svelte", "terraform", "toml", "tsx", "typescript", "vim", "vimdoc",
-  "xml", "yaml",
+  "bash", "c", "css", "diff", "dockerfile", "elixir", "elm", "erlang", "fish", "git_config", "gitcommit", "gitignore",
+  "heex", "html", "javascript", "jsdoc", "json", "lua", "luadoc", "luap", "markdown", "markdown_inline", "mermaid",
+  "python", "query", "regex", "ruby", "scss", "sql", "ssh_config", "svelte", "terraform", "toml", "tsx", "typescript",
+  "vim", "vimdoc", "xml", "yaml",
 })
 
 -- Start highlighting per filetype
