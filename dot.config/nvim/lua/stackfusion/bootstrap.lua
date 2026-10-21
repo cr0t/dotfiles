@@ -41,6 +41,11 @@ local function bootstrap()
 
   disable_standard_plugins()
 
+  -- New (experimental in 0.12) messages UI: long messages collapse with a "[+N]" indicator (see them with `g<`)...
+  --
+  -- Read more about it here: https://neovim.io/doc/user/news-0.12/#_ui
+  require("vim._core.ui2").enable({})
+
   require("stackfusion.lazy")
   require("stackfusion.config.keymaps")
   require("stackfusion.config.extras")
