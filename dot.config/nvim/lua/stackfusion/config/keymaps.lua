@@ -21,22 +21,18 @@ wk.add({
   -- Diagnostics list (in the Telescope)
   { "<leader>d", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
 
-  -- Some special "bufferline.nvim" treatments
-  { "<leader>]", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-  { "<leader>[", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-  { "<C-]>",     "<cmd>BufferLineMoveNext<cr>",  desc = "Move next" },
-  { "<C-[>",     "<cmd>BufferLineMovePrev<cr>",  desc = "Move prev" },
-
-  -- The same as previous, but in LazyVim-way (using SHIFT + H/L to switch, and + CTRL to move tabs)
-  { "L",     "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-  { "H",     "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-  { "<C-L>", "<cmd>BufferLineMoveNext<cr>",  desc = "Move next" },
-  { "<C-H>", "<cmd>BufferLineMovePrev<cr>",  desc = "Move prev" },
+  -- Buffers navigation
+  { "<leader>]", "<cmd>BufferLineCycleNext<cr>",   desc = "Next buffer" },
+  { "<leader>[", "<cmd>BufferLineCyclePrev<cr>",   desc = "Prev buffer" },
+  { "L",         "<cmd>BufferLineCycleNext<cr>",   desc = "Next buffer" },
+  { "H",         "<cmd>BufferLineCyclePrev<cr>",   desc = "Prev buffer" },
+  { "<A-l>",     "<cmd>BufferLineMoveNext<cr>",    desc = "Move next" },
+  { "<A-h>",     "<cmd>BufferLineMovePrev<cr>",    desc = "Move prev" },
 
   -- Now it's time to add some extra - Neovim-related only
-  { "<leader>m", mini_map.toggle,                desc = "Toggle mini-map" },
-  { "<leader>t", trim_whitespace,                desc = "Trim whitespace" },
-  { "<C-w>z",    "<cmd>MaximizerToggle<cr>",     desc = "Maximize window" },
+  { "<leader>m", mini_map.toggle,                  desc = "Toggle mini-map" },
+  { "<leader>t", trim_whitespace,                  desc = "Trim whitespace" },
+  { "<C-w>z",    "<cmd>MaximizerToggle<cr>",       desc = "Maximize window" },
 })
 
 -- IDE-/LSP-ish
