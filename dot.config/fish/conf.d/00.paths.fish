@@ -24,5 +24,4 @@ if status is-login
     fish_add_path --path $HOME/.dotfiles/littles
     fish_add_path --path $HOME/.mix/escripts
     fish_add_path --path $HOME/.local/bin
-    fish_add_path --path $HOME/.asdf/shims
 end
