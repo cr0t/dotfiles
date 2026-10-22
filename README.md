@@ -77,8 +77,8 @@ Based on this [blog post](https://dev.to/elliotalexander/how-to-use-docker-witho
 ## Languages and tools: `mise`
 
 We use [mise](https://mise.jdx.dev/) for language runtimes and tools. The global
-[`config.toml`](config.toml) (Erlang, Elixir, Node.js, Ruby, Zig) is symlinked to
-`~/.config/mise/config.toml` by `setup.sh link`.
+[`config.toml`](dot.config/mise/config.toml) (Erlang, Elixir, Node.js, Ruby, Zig)
+is symlinked to `~/.config/mise/config.toml` by `setup.sh link`.
 
 Install everything defined in the config:
 
