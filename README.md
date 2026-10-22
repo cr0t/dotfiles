@@ -2,77 +2,55 @@
 
 A set of configuration files I prefer to have across my computers.
 
-> [!tip]
->
-> On macOS consider to set keyboard repeat to the fastest values via console:
->
-> ```console
-> defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-> defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-> ```
->
-> [Source](https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x)
-
-See [https://macos-defaults.com/](https://macos-defaults.com/) for more options
-that we can control using the `default` command.
-
-You can consider to disable default font smoothing in Alacritty too (this makes it render fonts less bold):
-
-```console
-defaults write org.alacritty AppleFontSmoothing -int 0
-```
-
 ## Installation
 
-These files use "symlink" strategy, and it worked for many years on both macOS
-and Linux. `setup.sh` manages creation of the symlinks to various directories
-or directly to some files in the user home, so it is safe in most cases.
-
-Clone the repo, link:
+Files are symlinked into place by `setup.sh`, which has worked for years on both
+macOS and Linux:
 
 ```console
 git clone https://github.com/cr0t/dotfiles.git ~/.dotfiles
 ~/.dotfiles/setup.sh link
 ```
 
-Enjoy!
+To clean up the links, run `~/.dotfiles/setup.sh clean`.
 
-> To clean up the links, run `~/.dotfiles/setup.sh clean`.
+### macOS tweaks
 
-### Brew Apps, Utilities, and Co.
+Speed up the keyboard repeat (see [macos-defaults.com](https://macos-defaults.com/)
+for more options):
 
-In case of fresh machine installation, consider to run `brew bundle --no-lock`
-command in the ~/.dotfiles directory to install command line apps, utilities,
-and desktop applications.
+```console
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
+```
 
-See [`Brewfile`](Brewfile) for the apps.
+Optionally, make fonts in Alacritty less bold:
+
+```console
+defaults write org.alacritty AppleFontSmoothing -int 0
+```
+
+(When installed) Karabiner-Elements is configured to use CapsLock as CTRL on all
+keyboards.
+
+### Brew apps
+
+On a fresh macOS machine, run `brew bundle --no-lock` in `~/.dotfiles` to
+install the apps and utilities from the [`Brewfile`](Brewfile).
 
 > [!tip]
 >
-> Some of the apps (e.g., `chromedriver`) don't have all the signatures as
-> modern macOS versions require. Right click and "Open" trick on the executable
-> doesn't work anymore. We have to explicitly (and manually) let the macOS know
-> that it's safe to run these binaries, for example like this:
+> Some apps (e.g., `chromedriver`) lack signatures modern macOS requires, and
+> the right click → "Open" trick no longer works. Remove the quarantine flag:
 >
 > ```shell
 > xattr -d com.apple.quarantine $(which chromedriver)
 > ```
 
-After installation, (considering you're on the macOS) configure Karabiner elements to
-use CapsLock as CTRL on all keyboards.
-
-> [!note]
->
-> ...note to self: consider to include `~/.config/karabiner` in the dotfiles.
-
 ### Docker CLI and Colima
 
-As we do not really need to use Docker Desktop (especially, because its license
-might cost money in some cases), we use free CLI version. However, it cannot
-work out-of-box and needs some _love_, or actually, **runtime**, for which we
-use [Colima](https://github.com/abiosoft/colima). All of the packages we need
-are in the [`Brewfile`](Brewfile), but we need a manual touch to do the magic.
-
+We use the free Docker CLI with [Colima](https://github.com/abiosoft/colima) as
+the runtime instead of Docker Desktop (all packages are in the `Brewfile`).
 Save this as `~/.docker/config.json`:
 
 ```json
@@ -86,122 +64,78 @@ Save this as `~/.docker/config.json`:
 }
 ```
 
-Before running Docker-commands, run `colima start` and wait for VM to set up.
+Run `colima start` and wait for the VM before using Docker commands. To push to
+GitHub Container Registry, log in with a token that has the `write:packages`
+scope ([generate one here](https://github.com/settings/tokens)):
 
-> [!tip]
->
-> Don't forget to sign in to GitHub Registry (to push images there) by running:
->
-> `docker login --username cr0t ghcr.io`
->
-> Use a token with 'write:packages' scope as a password. You can generate one
-> [here](https://github.com/settings/tokens).
+```console
+docker login --username cr0t ghcr.io
+```
 
-This setup is based on this [blog post](https://dev.to/elliotalexander/how-to-use-docker-without-docker-desktop-on-macos-217m).
+Based on this [blog post](https://dev.to/elliotalexander/how-to-use-docker-without-docker-desktop-on-macos-217m).
+
+## Languages and tools: `mise`
+
+We use [mise](https://mise.jdx.dev/) for language runtimes and tools. The global
+[`config.toml`](config.toml) (Erlang, Elixir, Node.js, Ruby, Zig) is symlinked to
+`~/.config/mise/config.toml` by `setup.sh link`.
+
+Install everything defined in the config:
+
+```console
+env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" mise install
+```
+
+> [!note]
+>
+> `KERL_BUILD_DOCS=yes` builds the Erlang docs, so `h :rand.uniform` (and
+> similar) works in IEx.
+
+To bump a version, run `mise use --global <tool>@<version>` and commit the
+updated `config.toml`.
 
 ## Neovim/Vim
 
-Check [Neovim as asdf's plugin](#extra-neovim-as-asdfs-plugin) notes on how to
-install up-to-date version of Neovim in Ubuntu, for example.
-
-Follow this checklist:
+Checklist:
 
 - Nerd Fonts (MesloLGS)
-- Install ASDF plugins and Elixir, Erlang, Node.js, and Ruby _(to allow setting
-up all the LSPs defined in Mason)_
+- Languages installed via `mise` (Elixir, Erlang, Node.js, Ruby), so Mason can
+  set up all the LSPs
 
-> [!note]
->
-> Please, refer to the [docs/NVIM.md](docs/NVIM.md) for details.
-
-## Configure `asdf`
-
-Install all the plugins we will need:
+On Ubuntu, apt's Neovim is old (~0.7), so install a recent one with `mise`:
 
 ```console
-asdf plugin add erlang
-asdf plugin add elixir
-asdf plugin add nodejs
-asdf plugin add ruby
-asdf plugin add zig
+mise use --global neovim@stable
 ```
 
-…and the languages themselves:
-
-```console
-env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" asdf install erlang 28.1
-asdf install elixir 1.19.0-otp-28
-asdf install nodejs 24.10.0
-asdf install ruby 3.4.7
-asdf install zig 0.15.2
-```
-
-> [!note]
->
-> These options for Erlang installation command will ensure building the docs,
-> so we can use `h :rand.uniform` (and similar) commands during IEx sessions.
-
-Now we can set globally available (for the user, of course) languages versions:
-
-```console
-echo "erlang 28.1" >> ~/.tool-versions
-echo "elixir 1.19.0-otp-28" >> ~/.tool-versions
-echo "nodejs 24.10.0" >> ~/.tool-versions
-echo "ruby 3.4.7" >> ~/.tool-versions
-echo "zig 0.15.2" >> ~/.tool-versions
-```
-
-### Extra: Neovim as `asdf`'s plugin
-
-Consider installing Neovim via `asdf` plugin.
-
-In Ubuntu, for example, it allows installing stable version 0.8+ (apt's version
-is only ~0.7 at the moment of writing).
-
-```console
-asdf plugin add neovim
-asdf install neovim 0.11.4
-asdf set --home neovim stable
-```
+See [docs/NVIM.md](docs/NVIM.md) for details.
 
 ## Setup `.ssh`
 
-Don't forget to create the `~/.ssh` folder and set proper permissions:
+Create `~/.ssh` and set proper permissions (see also [`docs/SSH.md`](docs/SSH.md)):
 
 ```console
 chmod 700 ~/.ssh
 chmod -R go= ~/.ssh
-chmod -w ~/.ssh/id_rsa*
-chmod -w ~/.ssh/id_ed*
+chmod -w ~/.ssh/id_rsa* ~/.ssh/id_ed*
 ```
-
-See examples and more information in the [`docs/SSH.md`](docs/SSH.md) file.
 
 ## Directory `littles`
 
-Contains a set of my tiny scripts, a variety of helpers, snippets, etc. Most of
-them are pretty much for my personal needs. Read the source and, if you need,
-install them manually to the bin directory; or make them available in your
-`PATH` env variable, like this:
+My tiny scripts and helpers, mostly for personal needs. Read the source and
+install what you need into a bin directory, or add the directory to `PATH`:
 
 ```bash
-export PATH="$PATH:~/.dotfiles/littles"
+export PATH="$PATH:$HOME/.dotfiles/littles"
 ```
 
-> **Local `littles`**
->
-> By default, we set up `$PATH` to check `~/.local/bin` directory too. If you
-> need to have some scripts available only on some particular machine (like
-> temp scripts for your current projects) which you do not want to commit to
-> this repo, put these scripts there.
+`~/.local/bin` is on `$PATH` too: put machine-specific or temporary scripts
+there, so they stay out of this repo.
 
-## Set Local Environment Variables
+## Local environment variables and shell setup
 
-`fish`'s alternative to `.bashrc` is located at `~/.config/fish/config.fish`.
-We do not overwrite this file by these dotfiles, so it's totally local to a
-machine.
-
-To define a new variable we do something like that in this file:
+`~/.config/fish/config.fish` is not overwritten by these dotfiles, so it stays
+local to the machine. Put machine-specific variables there:
 
 ```fish
 if status is-interactive
@@ -214,5 +148,5 @@ end
 
 ## Extra
 
-Check [`docs/EXTRA.md`](docs/EXTRA.md) for more notes about these dotfiles, or
-[`docs/KUBERNETES.md`](docs/KUBERNETES.md) for my personal k8s cheat sheet.
+See [`docs/EXTRA.md`](docs/EXTRA.md) for more notes, or
+[`docs/KUBERNETES.md`](docs/KUBERNETES.md) for my k8s cheat sheet.

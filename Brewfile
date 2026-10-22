@@ -1,6 +1,5 @@
 # Little nice utilities
 brew "ack"
-brew "asdf"
 brew "bat" # clone of cat with syntax highlighting
 brew "btop" # resource monitor for processor, memory, disks, network and processes
 brew "direnv"
