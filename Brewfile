@@ -17,6 +17,7 @@ brew "lychee" # fast, async, resource-friendly link checker
 brew "mise"
 brew "mtr"
 brew "parallel" # like args, but simpler
+brew "prettierd" # to be used with conform.nvim formatter
 brew "ripgrep"
 brew "smartmontools"
 brew "snitch" # a prettier way to inspect network connections
