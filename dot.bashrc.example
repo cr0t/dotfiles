@@ -1,0 +1,35 @@
+# NOTE: use this snippet on the machines where we are too lazy to install fish!
+
+# tm: simple tmux session manager
+#   tm            -> default session (hostname)
+#   tm ls         -> list sessions
+#   tm my project -> session 'my-project'
+tm() {
+    if [[ "$1" == "ls" ]]; then
+        tmux list-sessions
+        return
+    fi
+
+    local name
+    if (( $# )); then
+        name=$(IFS=-; echo "$*")
+    else
+        name=$(hostname -s)
+    fi
+    name=${name,,}      # lowercase
+    name=${name//./-}   # tmux disallows dots
+    name=${name:0:30}   # truncate
+
+    tmux has-session -t "=$name" 2>/dev/null || tmux new-session -d -s "$name"
+
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "=$name"
+    else
+        tmux attach-session -t "=$name"
+    fi
+}
+
+# Auto-attach on SSH login
+if [[ $- == *i* && -z "$TMUX" && -n "$SSH_CONNECTION" ]] && command -v tmux >/dev/null; then
+    tm
+fi
