@@ -36,10 +36,11 @@ tm() {
     fi
 }
 
-# Auto-attach on SSH login
+# Auto-attach to tmux on SSH login
 #
-# `exec` replaces the login shell with tmux, so when tmux ends (last shell
-# exits, or you detach), the SSH connection closes too.
+# If tmux ends cleanly (last shell exits, or user detaches), we `exit` so the
+# SSH connection closes too. If tmux fails for any reason (non-zero status),
+# we fall through to a regular shell instead of getting locked out.
 #
 # To skip auto-attach (get a plain shell):
 #
@@ -47,10 +48,12 @@ tm() {
 #   ssh -t host bash --norc          # doesn't read ~/.bashrc at all
 #   ssh host command                 # non-interactive; this block never runs
 #
-# Or, on the machine itself: `touch ~/.no_tmux` to disable it (rm to re-enable).
-if [[ $- == *i* && -z "$TMUX" && -z "$NO_TMUX" && -n "$SSH_CONNECTION" 
-      && ! -e ~/.no_tmux ]] && command -v tmux >/dev/null; then
+# Or, on the machine itself: `touch ~/.no_tm` to disable it (rm to re-enable).
+if [[ $- == *i* && -z "$TMUX" && -z "$NO_TM" && -n "$SSH_CONNECTION" \
+      && ! -e ~/.no_tm ]] && command -v tmux >/dev/null; then
     _name=$(_tm_name)
-    tmux has-session -t "=$_name" 2>/dev/null || tmux new-session -d -s "$_name"
-    exec tmux attach-session -t "=$_name"
+
+    { tmux has-session -t "=$_name" 2>/dev/null || tmux new-session -d -s "$_name"; } \
+        && tmux attach-session -t "=$_name" \
+        && exit
 fi
