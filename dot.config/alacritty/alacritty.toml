@@ -24,4 +24,5 @@ bindings = [
   { key = "Key3", mods = "Control", chars = "\u00013" },
   { key = "Key4", mods = "Control", chars = "\u00014" },
   { key = "Key5", mods = "Control", chars = "\u00015" },
+  { key = "Return", mods = "Command", action = "ToggleFullscreen" },
 ]
