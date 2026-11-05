@@ -12,7 +12,38 @@ git clone https://github.com/cr0t/dotfiles.git ~/.dotfiles
 ~/.dotfiles/setup.sh link
 ```
 
-To clean up the links, run `~/.dotfiles/setup.sh clean`.
+Commands:
+
+| Command  | What it does                                                         |
+| -------- | -------------------------------------------------------------------- |
+| `link`   | Symlinks the dotfiles into `$HOME`; skips anything that exists       |
+| `status` | Shows every entry as `ok`, `missing` or `conflict`                   |
+| `diff`   | Shows diffs between existing files and the ones in this repo         |
+| `clean`  | Removes the symlinks created by this repo (never touches real files) |
+
+Options:
+
+- `-f`, `--force` (`link`): back up conflicting files, then replace them
+- `-n`, `--dry-run`: print what would happen without changing anything
+
+### Existing configs (e.g., Omarchy)
+
+Distros and apps often ship their own configs (Omarchy does for Alacritty,
+Neovim, tmux, etc.). By default `link` skips them, so nothing is lost. To see
+what differs and then take over:
+
+```console
+~/.dotfiles/setup.sh status        # what is linked, missing or in conflict
+~/.dotfiles/setup.sh diff          # existing files vs. the ones in this repo
+~/.dotfiles/setup.sh link --force  # back up conflicts, then link
+```
+
+Backups go to `~/.dotfiles-backup/<timestamp>/` (override with
+`DOTFILES_BACKUP_DIR`) and keep their path relative to `$HOME`, so restoring
+is a plain `mv`.
+
+Run `~/.dotfiles/setup.sh clean` to remove the links. It only removes symlinks
+that point into this repo and leaves everything else alone.
 
 ### macOS tweaks
 
@@ -56,9 +87,7 @@ Save this as `~/.docker/config.json`:
 ```json
 {
   "auths": {},
-  "cliPluginsExtraDirs": [
-    "/opt/homebrew/lib/docker/cli-plugins"
-  ],
+  "cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"],
   "credsStore": "osxkeychain",
   "currentContext": "colima"
 }
@@ -80,16 +109,24 @@ We use [mise](https://mise.jdx.dev/) for language runtimes and tools. The global
 [`config.toml`](dot.config/mise/config.toml) (Erlang, Elixir, Node.js, Ruby, Zig)
 is symlinked to `~/.config/mise/config.toml` by `setup.sh link`.
 
-Install everything defined in the config:
+The tools are declared with `lazy = true` (requires mise v2026.9.0 or newer):
+each one is installed the first time you run one of its commands. A bare
+`mise install` skips lazy tools, so pass `--include-lazy` to install everything
+defined in the config up front:
 
 ```console
-env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" mise install
+env KERL_BUILD_DOCS=yes KERL_CONFIGURE_OPTIONS="--without-javac" mise install --include-lazy
 ```
 
 > [!note]
 >
 > `KERL_BUILD_DOCS=yes` builds the Erlang docs, so `h :rand.uniform` (and
 > similar) works in IEx.
+
+> [!note]
+>
+> Lazy tools rely on mise's shims, so keep `activate_shims` enabled (it is by
+> default).
 
 To bump a version, run `mise use --global <tool>@<version>` and commit the
 updated `config.toml`.
