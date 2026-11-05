@@ -1,6 +1,6 @@
 [tools]
-elixir = "1.20.5-otp-29"
-erlang = "29.1.2"
-node = "26.13.0"
-ruby = "4.0.9"
-zig = "0.17.1"
+elixir = { version = "1.20.5-otp-29", lazy = true }
+erlang = { version = "29.1.2", lazy = true }
+node   = { version = "26.13.0", lazy = true }
+ruby   = { version = "4.0.9", lazy = true }
+zig    = { version = "0.17.1", lazy = true }
