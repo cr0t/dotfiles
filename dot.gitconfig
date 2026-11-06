@@ -27,7 +27,9 @@
 [init]
   defaultBranch = master
 [branch]
-  sort = -committerdate
+  sort = -committerdate # sorts branches by most recent commit first
+[tag]
+  sort = -version:refname # sorts version numbers as you would expect
 [commit]
   gpgSign = true
   verbose = true # include a diff when writing a commit message
@@ -36,8 +38,9 @@
 [merge]
   conflictStyle = zdiff3 # show original code in the middle
 [diff]
-  algorithm = histogram
+  algorithm = histogram # clearer diffs on moved/edited lines
   colorMoved = plain # moved lines get a different color than added/removed ones
+  mnemonicPrefix = true # more intuitive refs in diff output
 [log]
   date = iso # shorter dates in git log
 [fetch]
@@ -54,6 +57,7 @@
   updateRefs = true # when rebasing a stack of branches, the intermediate move too
 [rerere]
   enabled = true # REuse REcorded REsolution (auto-fix repetative merge conflicts)
+  autoUpdate = true # apply stored conflict resolutions automatically
 [grep]
   lineNumber = true
   patternType = perl # git grep '[Cc]opyright\s+\d'
