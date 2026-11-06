@@ -104,6 +104,7 @@ _backup() {
 
   _run mkdir -p "$(dirname "$target")"
   _run mv "$to" "$target"
+
   BACKED_UP=$((BACKED_UP + 1))
 }
 
@@ -176,6 +177,25 @@ _install_tmux_tpm() {
   fi
 }
 
+# "<file we manage>|<alternate location a tool may also load or prefer>"
+SHADOWS=(
+  "$HOME/.gitconfig|$HOME/.config/git/config"
+  "$HOME/.tmux.conf|$HOME/.config/tmux/tmux.conf"
+)
+
+# Warns when both locations exist
+_check_shadows() {
+  local pair ours alt
+
+  for pair in "${SHADOWS[@]}"; do
+    ours="${pair%%|*}" alt="${pair#*|}"
+
+    if [ -e "$ours" ] && [ -e "$alt" ]; then
+      _row warning "$YEL" "$alt" "may override or merge with $ours"
+    fi
+  done
+}
+
 cmd_link() {
   local i failed=0
   _collect
@@ -190,6 +210,9 @@ cmd_link() {
   _install_tmux_tpm
 
   echo "---"
+
+  _check_shadows
+
   ((BACKED_UP)) && _warning "Backed up $BACKED_UP item(s) to $BACKUP_DIR"
   ((failed)) && _error "$failed item(s) skipped; run '$0 diff' to inspect, '$0 link --force' to replace"
 
@@ -205,6 +228,7 @@ cmd_link() {
 
 cmd_clean() {
   local i
+
   _collect
 
   # Reverse order for cleanliness
@@ -215,6 +239,7 @@ cmd_clean() {
 
 cmd_status() {
   local i state
+
   _collect
 
   for i in "${!SRCS[@]}"; do
@@ -225,10 +250,13 @@ cmd_status() {
     conflict) _row "$state" "$RED" "${DESTS[$i]}" ;;
     esac
   done
+
+  _check_shadows
 }
 
 cmd_diff() {
   local i
+
   _collect
 
   for i in "${!SRCS[@]}"; do

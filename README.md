@@ -42,6 +42,11 @@ Backups go to `~/.dotfiles-backup/<timestamp>/` (override with
 `DOTFILES_BACKUP_DIR`) and keep their path relative to `$HOME`, so restoring
 is a plain `mv`.
 
+`link` and `status` also warn when an alternate location is present next to a
+file we manage (e.g., `~/.config/tmux/tmux.conf` next to `~/.tmux.conf`), since
+the tool may load it instead of, or in addition to, ours. For tmux, check what
+was loaded with `tmux display -p '#{config_files}'`.
+
 Run `~/.dotfiles/setup.sh clean` to remove the links. It only removes symlinks
 that point into this repo and leaves everything else alone.
 
