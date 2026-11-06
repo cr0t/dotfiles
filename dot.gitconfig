@@ -37,19 +37,28 @@
   conflictstyle = zdiff3 # show original code in the middle
 [diff]
   algorithm = histogram
+  colorMoved = plain # moved lines get a different color than added/removed ones
+[log]
+  date = iso # shorter dates in git log
 [fetch]
   prune = true # removes any remote-tracking references that no longer exist on the remote
+  pruneTags = true # deletes local tags if they are removed on the remote
 [pull]
   ff = only
 [push]
   default = current # push the local branch to a remote branch with the same name
+  autoSetupRemote = true # first `git push` on new branch just works; no need in '... -u origin'
 [rebase]
-  autosquash = true # cleans "fixup! ..." commits
+  autoSquash = true # cleans "fixup! ..." commits
+  autoStash = true # rebase with a dirty worktree; git stashes and restores automatically
+  updateRefs = true # when rebasing a stack of branches, the intermediate move too
 [rerere]
   enabled = true # REuse REcorded REsolution (auto-fix repetative merge conflicts)
 [grep]
   lineNumber = true
   patternType = perl # git grep '[Cc]opyright\s+\d'
+[help]
+  autoCorrect = true # "Did you mean ...?" in case of typo
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
