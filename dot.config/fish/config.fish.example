@@ -8,6 +8,8 @@ if status is-interactive
     set -x KUBECONFIG "$HOME/.kube/config-work:$HOME/.kube/config-homelab"
     set -x HOMEBREW_NO_ENV_HINTS 1
     set -x EDITOR nvim
+
+    fish-ssh-agent # also run ssh-add ~/.ssh/id_ed25519, for example
 end
 
 # Automatically start (or attach to) tmux session when connected over SSH
