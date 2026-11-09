@@ -1,7 +1,8 @@
 [tools]
-elixir = { version = "1.20.5-otp-29", lazy = true }
-erlang = { version = "29.1.2", lazy = true }
-node   = { version = "26.13.0", lazy = true }
-ruby   = { version = "4.0.9", lazy = true }
-zig    = { version = "0.17.1", lazy = true }
-go     = { version = "1.27.3", lazy = true }
+elixir      = { version = "1.20.5-otp-29", lazy = true }
+erlang      = { version = "29.1.2",        lazy = true }
+go          = { version = "1.27.3",        lazy = true }
+node        = { version = "26.13.0",       lazy = true }
+ruby        = { version = "4.0.9",         lazy = true }
+tree-sitter = { version = "0.27.2",        lazy = true }
+zig         = { version = "0.17.1",        lazy = true }
