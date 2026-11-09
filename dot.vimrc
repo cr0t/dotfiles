@@ -71,7 +71,6 @@ set smartcase  " make searches case sensitive if search starts with a capital
 " misc. & fine-tuning
 set hidden                  " vim won't complain opening a new file, even if current buffer has unsaved changes
 set autoread                " autoread file modifications
-set lazyredraw              " it is meant to be set temporarily only, but could potentially increase performance
 set history=1000            " store more items in the command/search history
 set sessionoptions+=globals " useful for saving extra info in sessions (e.g. buffer positions)
 
