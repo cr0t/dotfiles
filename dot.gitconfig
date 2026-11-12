@@ -24,6 +24,7 @@
   blaame = blame -w -C -C -C # ignore whitespaces and moved lines of code
 [core]
   excludesFile = ~/.gitignore
+  quotepath = false # show emojis in directory and file names
 [init]
   defaultBranch = master
 [branch]
