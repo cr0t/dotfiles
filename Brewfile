@@ -80,6 +80,7 @@ cask "bruno" # like a Postman, but local
 cask "chromedriver" # for headless testing via Chrome
 cask "elgato-control-center"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-lora"
 cask "font-meslo-lg-nerd-font"
 cask "gimp" # consider https://github.com/Diolinux/PhotoGIMP patch
 cask "gnucash"
