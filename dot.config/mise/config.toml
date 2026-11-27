@@ -1,7 +1,7 @@
 [tools]
 elixir      = { version = "1.20.5-otp-29", lazy = true }
-erlang      = { version = "29.1.2", lazy = true }
-gh          = { version = "2.105.0", lazy = true }
+erlang      = { version = "29.1.3", lazy = true }
+gh          = { version = "2.106.0", lazy = true }
 go          = { version = "1.27.4", lazy = true }
 node        = { version = "26.13.1", lazy = true }
 ruby        = { version = "4.0.10", lazy = true }
